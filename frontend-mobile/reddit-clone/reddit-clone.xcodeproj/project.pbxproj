@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC738EB3274B959D00A8752C /* LogInViewController.swift */; };
+		CC738EB6274BBBF900A8752C /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC738EB5274BBBF900A8752C /* FindPWViewController.swift */; };
 		CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */; };
 		CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C602749F8D800A41E14 /* SceneDelegate.swift */; };
 		CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C622749F8D800A41E14 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC738EB3274B959D00A8752C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		CC738EB5274BBBF900A8752C /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
 		CCD23C5B2749F8D800A41E14 /* reddit-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reddit-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD23C602749F8D800A41E14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 		CCD23C5D2749F8D800A41E14 /* reddit-clone */ = {
 			isa = PBXGroup;
 			children = (
+				CC738EB5274BBBF900A8752C /* FindPWViewController.swift */,
 				CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */,
 				CCD23C602749F8D800A41E14 /* SceneDelegate.swift */,
 				CCD23C622749F8D800A41E14 /* ViewController.swift */,
@@ -63,6 +68,7 @@
 				CCD23C672749F8DA00A41E14 /* Assets.xcassets */,
 				CCD23C692749F8DA00A41E14 /* LaunchScreen.storyboard */,
 				CCD23C6C2749F8DA00A41E14 /* Info.plist */,
+				CC738EB3274B959D00A8752C /* LogInViewController.swift */,
 			);
 			path = "reddit-clone";
 			sourceTree = "<group>";
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */,
 				CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */,
 				CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */,
+				CC738EB6274BBBF900A8752C /* FindPWViewController.swift in Sources */,
 				CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
