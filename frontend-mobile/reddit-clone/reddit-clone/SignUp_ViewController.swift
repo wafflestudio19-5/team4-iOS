@@ -31,6 +31,10 @@ class SignUp_ViewController: UIViewController {
         usernameTF.addLeftPadding()
         passwordTF.addLeftPadding()
         }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 
