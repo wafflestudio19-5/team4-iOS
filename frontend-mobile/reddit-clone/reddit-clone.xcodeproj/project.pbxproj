@@ -10,6 +10,8 @@
 		CC1E17162750CA68003C1A1E /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1E17152750CA68003C1A1E /* LogIn.storyboard */; };
 		CC1E172027511749003C1A1E /* PasswordFind.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1E171F27511749003C1A1E /* PasswordFind.storyboard */; };
 		CC1E1722275117A1003C1A1E /* PasswordFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E1721275117A1003C1A1E /* PasswordFindViewController.swift */; };
+		CC1E172527512056003C1A1E /* addLeftPaddingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */; };
+		CC1E17272751206C003C1A1E /* gradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E17262751206C003C1A1E /* gradientButton.swift */; };
 		CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC738EB3274B959D00A8752C /* LogInViewController.swift */; };
 		CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */; };
 		CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C602749F8D800A41E14 /* SceneDelegate.swift */; };
@@ -23,6 +25,8 @@
 		CC1E17152750CA68003C1A1E /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		CC1E171F27511749003C1A1E /* PasswordFind.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordFind.storyboard; sourceTree = "<group>"; };
 		CC1E1721275117A1003C1A1E /* PasswordFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFindViewController.swift; sourceTree = "<group>"; };
+		CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLeftPaddingTextfield.swift; sourceTree = "<group>"; };
+		CC1E17262751206C003C1A1E /* gradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradientButton.swift; sourceTree = "<group>"; };
 		CC738EB3274B959D00A8752C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CCD23C5B2749F8D800A41E14 /* reddit-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reddit-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC1E172327512018003C1A1E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */,
+				CC1E17262751206C003C1A1E /* gradientButton.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CCD23C522749F8D700A41E14 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +77,7 @@
 		CCD23C5D2749F8D800A41E14 /* reddit-clone */ = {
 			isa = PBXGroup;
 			children = (
+				CC1E172327512018003C1A1E /* Utils */,
 				CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */,
 				CCD23C602749F8D800A41E14 /* SceneDelegate.swift */,
 				CCD23C622749F8D800A41E14 /* ViewController.swift */,
@@ -154,6 +168,8 @@
 			files = (
 				CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */,
 				CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */,
+				CC1E172527512056003C1A1E /* addLeftPaddingTextfield.swift in Sources */,
+				CC1E17272751206C003C1A1E /* gradientButton.swift in Sources */,
 				CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */,
 				CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */,
 				CC1E1722275117A1003C1A1E /* PasswordFindViewController.swift in Sources */,
