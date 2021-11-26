@@ -11,19 +11,44 @@ class LogInViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIStackView!
     @IBOutlet weak var cancelBT: UIButton!
-    
     @IBOutlet weak var signupBT: UIButton!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var termsLabel: UILabel!
+    
+    
+    @IBOutlet weak var googleAuthButton: UIButton!
+    @IBOutlet weak var appleAuthButton: UIButton!
+    
+    
+    @IBOutlet weak var usernmTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
+    
+    
+    @IBOutlet weak var footerView: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setHeaderView()
+        setMainView()
+        setFooterView()
+        
     }
 
+    // a function to make sure the interface keyboards go down
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     fileprivate func setHeaderView() {
         // cancel button
         cancelBT.setTitle("", for: .normal)
         let cancelImageConfig = UIImage.SymbolConfiguration(textStyle: .subheadline)
-        let cancelImage = UIImage(systemName: "xmark", withConfiguration: cancelImageConfig)
+        let cancelImage = UIImage(
+            systemName: "xmark",
+            withConfiguration: cancelImageConfig
+        )
         cancelBT.setImage(cancelImage, for: .normal)
         cancelBT.tintColor = .systemGray
         
@@ -35,18 +60,175 @@ class LogInViewController: UIViewController {
             .font: font,
             .paragraphStyle: paragraphStyle
         ]
-        let signUpTitle = NSAttributedString(string: "Sign Up", attributes: attributes)
+        let signUpTitle = NSAttributedString(
+            string: "Sign Up",
+            attributes: attributes
+        )
         signupBT.setAttributedTitle(signUpTitle, for: .normal)
+    }
+    
+    fileprivate func setMainView() {
+        setTitleTermsView()
+        setAuthenticationView()
+        setTextFieldsView()
+    }
+    
+    fileprivate func setTitleTermsView() {
+        // title label
+        let titleStr = "Log In"
+        let font = UIFont.boldSystemFont(ofSize: 30)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font
+        ]
+        let loginTitle = NSAttributedString(
+            string: titleStr,
+            attributes: attributes
+        )
+        titleLabel?.attributedText = loginTitle
+        
+        // terms label
+        let link1Str = "User Agreement"
+        let link2Str = "Privacy Policy"
+        let termsStr = String(
+            format: "By continuing, you agree to our %@ and %@",
+            link1Str,
+            link2Str
+        )
+        
+        let termsAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.systemGray,
+            .font: UIFont.systemFont(ofSize: 14)
+        ]
+        
+        let linkAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.systemBlue,
+            .font: UIFont.systemFont(ofSize: 14)
+        ]
+        
+        let attributedStr = NSAttributedString(
+            string: termsStr,
+            attributes: termsAttributes
+        )
+        
+        let mutableStr = NSMutableAttributedString(attributedString: attributedStr)
+        mutableStr.setAttributes(
+            linkAttributes,
+            range: (termsStr as NSString).range(of: link1Str)
+        )
+        mutableStr.setAttributes(
+            linkAttributes,
+            range: (termsStr as NSString).range(of: link2Str)
+        )
+        termsLabel.sizeToFit()
+        termsLabel.numberOfLines = 3
+        termsLabel.attributedText = mutableStr
+    }
+    
+    fileprivate func setAuthenticationView() {
+        // TODO: make a sub class of UIButton as rounded button(used often in the application)
+        
+        // common attributes for the Authentication buttons
+        let navyColor = CGColor(red: 9/255, green: 9/255, blue: 44/255, alpha: 100)
+        let buttonHeight = 40
+        let font = UIFont.boldSystemFont(ofSize: 18)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor(cgColor: navyColor)
+        ]
+        
+        let googleButtonStr = NSAttributedString(
+            string: "Continue with Google",
+            attributes: attributes
+        )
+        
+        googleAuthButton.setAttributedTitle(googleButtonStr, for: .normal)
+        // Button borders
+        googleAuthButton.layer.cornerRadius = googleAuthButton.frame.height / 2
+        googleAuthButton.layer.borderWidth = 1
+        googleAuthButton.layer.borderColor = navyColor
+        
+        // Button image
+        let logoFrame = CGRect(x:15, y: buttonHeight/2 - 10, width: 15, height: 15)
+        
+        let googleLogoView = UIImageView(frame: logoFrame)
+        let googleLogo = UIImage(named: "google-logo")
+        googleLogoView.image = googleLogo
+        googleLogoView.contentMode = .scaleAspectFill
+        googleAuthButton.addSubview(googleLogoView)
+        
+        // TODO: use struct to set the frame of the imageview
+        //logoView?.frame = CGRect(x: 20, y: buttonHeight/2 + 10, width: 20, height: 20)
+        
+        let appleButtonStr = NSAttributedString(
+            string: "Continue with Google",
+            attributes: attributes
+        )
+        appleAuthButton.setAttributedTitle(appleButtonStr, for: .normal)
+        // Button borders
+        appleAuthButton.layer.cornerRadius = googleAuthButton.frame.height / 2
+        appleAuthButton.layer.borderWidth = 1
+        appleAuthButton.layer.borderColor = navyColor
+        
+        let appleLogoView = UIImageView(frame: logoFrame)
+        let appleLogo = UIImage(systemName: "applelogo")?.withRenderingMode(.alwaysOriginal)
+        appleLogoView.image = appleLogo
+        appleLogoView.contentMode = .scaleAspectFill
+        appleAuthButton.addSubview(appleLogoView)
+    }
+    
+    fileprivate func setTextFieldsView() {
+        let verylightGray = CGColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 0.8)
+        
+        usernmTextField.layer.masksToBounds = true
+        usernmTextField.backgroundColor = UIColor(cgColor: verylightGray)
+        usernmTextField.layer.cornerRadius = pwTextField.frame.height / 2
+        usernmTextField.borderStyle = .none
+        
+        
+        pwTextField.layer.masksToBounds = true
+        pwTextField.backgroundColor = UIColor(cgColor: verylightGray)
+        pwTextField.layer.cornerRadius = pwTextField.frame.height / 2
+        pwTextField.borderStyle = .none
+        usernmTextField.placeholder = "Username"
+        pwTextField.placeholder = "Password"
+
+        usernmTextField.addLeftPadding()
+        pwTextField.addLeftPadding()
         
     }
     
+    fileprivate func setFooterView() {
+        
+        let verylightGray = CGColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 0.8)
+        let font = UIFont.boldSystemFont(ofSize: 18)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor(cgColor: verylightGray)
+        ]
+        let attribtedStr = NSAttributedString(string: "Continue", attributes: attributes)
+        continueButton.setAttributedTitle(attribtedStr, for: .normal)
+        continueButton.applyGradient(colors: [UIColor.systemPink.cgColor, UIColor.systemOrange.cgColor])
+    }
+    
+
+    
+    
+    
     @IBAction func findPassword(_ sender: Any) {
-        let findpwVC = FindPWViewController()
+        let storyboard = UIStoryboard(name: "PasswordFind", bundle: nil)
+        
+        let findpwVC = storyboard.instantiateViewController(withIdentifier: "pwfind")
         print("tap find password")
         
         //findpwVC.modalPresentationStyle = .fullScreen
         findpwVC.modalPresentationStyle = .overCurrentContext
-        //self.navigationController?.pushViewController(findpwVC, animated: true)
+
         present(findpwVC, animated: true)
     }
     /*
@@ -59,4 +241,35 @@ class LogInViewController: UIViewController {
     }
     */
 
+}
+
+//padding textfield (textfield 왼쪽에 빈공간 생성)
+extension UITextField {
+    
+    func addLeftPadding() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
+    }
+}
+
+//extension to make gradition on UIButton
+extension UIButton
+{
+    
+    func applyGradient(colors: [CGColor]) {
+        self.backgroundColor = nil
+        self.layoutIfNeeded()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.frame = self.bounds
+        gradientLayer.cornerRadius = self.frame.height/2
+
+        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.contentVerticalAlignment = .center
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.titleLabel?.textColor = UIColor.white
+    }
 }
