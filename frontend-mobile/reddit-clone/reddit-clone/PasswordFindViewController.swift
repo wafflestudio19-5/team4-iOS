@@ -174,6 +174,7 @@ extension PasswordFindViewController {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
+            // DEBUG: Delete after review
             print(self.view.frame.height)
             print(self.footerView.frame.origin.y)
             print(self.view.frame.height - self.footerView.frame.origin.y)

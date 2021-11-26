@@ -51,6 +51,7 @@ class LogInViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    // MARK: - Header View
     fileprivate func setHeaderView() {
         // cancel button
         cancelBT.setTitle("", for: .normal)
@@ -77,12 +78,14 @@ class LogInViewController: UIViewController {
         signupBT.setAttributedTitle(signUpTitle, for: .normal)
     }
     
+    // MARK: - Main View
     fileprivate func setMainView() {
         setTitleTermsView()
         setAuthenticationView()
         setTextFieldsView()
     }
     
+    // MARK: - Log In Title and Terms Label
     fileprivate func setTitleTermsView() {
         // title label
         let titleStr = "Log In"
@@ -134,6 +137,7 @@ class LogInViewController: UIViewController {
         termsLabel.attributedText = mutableStr
     }
     
+    // MARK: - Google and Apple Button
     fileprivate func setAuthenticationView() {
         // TODO: make a sub class of UIButton as rounded button(used often in the application)
         
@@ -189,6 +193,7 @@ class LogInViewController: UIViewController {
         appleAuthButton.addSubview(appleLogoView)
     }
     
+    // MARK: - TextFields
     fileprivate func setTextFieldsView() {
         let verylightGray = CGColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 0.8)
         
@@ -210,6 +215,7 @@ class LogInViewController: UIViewController {
         
     }
     
+    // MARK: - FooterView
     fileprivate func setFooterView() {
         let verylightGray = CGColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 0.8)
         let font = UIFont.boldSystemFont(ofSize: 18)
@@ -272,6 +278,7 @@ extension LogInViewController {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
+            // DEBUG: Delete after review
             print(self.view.frame.height)
             print(self.footerView.frame.origin.y)
             print(self.view.frame.height - self.continueButton.frame.origin.y)
