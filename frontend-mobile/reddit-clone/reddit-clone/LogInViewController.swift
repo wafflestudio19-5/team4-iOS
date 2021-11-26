@@ -8,22 +8,40 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-    let findpwVC = FindPWViewController()
+
+    @IBOutlet weak var headerView: UIStackView!
+    @IBOutlet weak var cancelBT: UIButton!
+    
+    @IBOutlet weak var signupBT: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
+        setHeaderView()
     }
-    /*
-    @IBAction func cancelActBT(_ sender: UIButton) {
+
+    fileprivate func setHeaderView() {
+        // cancel button
+        cancelBT.setTitle("", for: .normal)
+        let cancelImageConfig = UIImage.SymbolConfiguration(textStyle: .subheadline)
+        let cancelImage = UIImage(systemName: "xmark", withConfiguration: cancelImageConfig)
+        cancelBT.setImage(cancelImage, for: .normal)
+        cancelBT.tintColor = .systemGray
+        
+        // sign up button
+        let font = UIFont.boldSystemFont(ofSize: 18)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .right
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .paragraphStyle: paragraphStyle
+        ]
+        let signUpTitle = NSAttributedString(string: "Sign Up", attributes: attributes)
+        signupBT.setAttributedTitle(signUpTitle, for: .normal)
+        
     }
     
-    @IBAction func signupActBT(_ sender: Any) {
-    }
-    */
-
     @IBAction func findPassword(_ sender: Any) {
+        let findpwVC = FindPWViewController()
         print("tap find password")
         
         //findpwVC.modalPresentationStyle = .fullScreen
