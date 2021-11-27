@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D5AD764274BCF69004030C3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5AD763274BCF69004030C3 /* SignUp.storyboard */; };
+		5D5AD768274C7549004030C3 /* SignUp_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */; };
 		CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */; };
 		CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C602749F8D800A41E14 /* SceneDelegate.swift */; };
 		CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C622749F8D800A41E14 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D5AD763274BCF69004030C3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_ViewController.swift; sourceTree = "<group>"; };
 		CCD23C5B2749F8D800A41E14 /* reddit-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reddit-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD23C602749F8D800A41E14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				CCD23C602749F8D800A41E14 /* SceneDelegate.swift */,
 				CCD23C622749F8D800A41E14 /* ViewController.swift */,
 				CCD23C642749F8D800A41E14 /* Main.storyboard */,
+				5D5AD763274BCF69004030C3 /* SignUp.storyboard */,
+				5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */,
 				CCD23C672749F8DA00A41E14 /* Assets.xcassets */,
 				CCD23C692749F8DA00A41E14 /* LaunchScreen.storyboard */,
 				CCD23C6C2749F8DA00A41E14 /* Info.plist */,
@@ -127,6 +133,7 @@
 			files = (
 				CCD23C6B2749F8DA00A41E14 /* LaunchScreen.storyboard in Resources */,
 				CCD23C682749F8DA00A41E14 /* Assets.xcassets in Resources */,
+				5D5AD764274BCF69004030C3 /* SignUp.storyboard in Resources */,
 				CCD23C662749F8D800A41E14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +147,7 @@
 			files = (
 				CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */,
 				CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */,
+				5D5AD768274C7549004030C3 /* SignUp_ViewController.swift in Sources */,
 				CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
