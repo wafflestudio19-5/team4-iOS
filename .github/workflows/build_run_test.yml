@@ -18,13 +18,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: generate project files
-        run: | 
-          brew install xcodegen
-          cd reddit-clone
-          sudo xcodegen generate
-          ls -l
-          cd ../
       - uses: actions/checkout@v2
       - name: run test
-        run: xcodebuild clean -project reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
+        run: |
+          brew install xcodegen
+          xcodegen generate reddit-clone/project.yml
+          xcodebuild clean -project reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
