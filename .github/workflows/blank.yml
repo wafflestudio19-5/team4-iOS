@@ -19,5 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v2
-    - name: Force Xcode 13
+      name: Force Xcode 13
+      run: sudo xcode-select -switch /Applications/Xcode_13.1.app
+    - name: run test
       run: xcodebuild clean -project frontend-mobile/reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=15.0'
