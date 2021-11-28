@@ -1,6 +1,6 @@
 import UIKit
 
-class SignUp_ViewController: UIViewController {
+class SignUpViewController: UIViewController {
     
     @IBOutlet weak var cancelBT: UIButton!
     @IBOutlet weak var loginBT: UIButton!
@@ -35,37 +35,4 @@ class SignUp_ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-}
-
-
-//extension to make gradition on UIButton
-extension UIButton
-{
-    
-    func applyGradient(colors: [CGColor]) {
-            self.backgroundColor = nil
-            self.layoutIfNeeded()
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = colors
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-            gradientLayer.frame = self.bounds
-            gradientLayer.cornerRadius = self.frame.height/2
-
-            self.layer.insertSublayer(gradientLayer, at: 0)
-            self.contentVerticalAlignment = .center
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.titleLabel?.textColor = UIColor.white
-            }
-}
-
-
-//padding textfield (textfield 왼쪽에 빈공간 생성)
-extension UITextField {
-    
-    func addLeftPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
-        self.leftView = paddingView
-        self.leftViewMode = ViewMode.always
-        }
 }
