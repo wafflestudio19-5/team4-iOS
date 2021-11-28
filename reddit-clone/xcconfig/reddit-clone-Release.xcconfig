@@ -6,7 +6,7 @@
 //
 
 #include "reddit-clone-Shared.xcconfig"
-
+#include "Pods/Target Support Files/Pods-reddit-clone/Pods-reddit-clone.release.xcconfig"
 //********************************************//
 //* Currently no build settings in this file *//
 //********************************************//
