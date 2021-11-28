@@ -21,7 +21,10 @@ jobs:
       - name: generate project files
         run: | 
           brew install xcodegen
-          sudo xcodegen generate --spec reddit-clone/project.yml
+          cd reddit-clone
+          sudo xcodegen generate
+          ls -l
+          cd ../
       - uses: actions/checkout@v2
       - name: run test
         run: xcodebuild clean -project reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
