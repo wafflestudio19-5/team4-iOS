@@ -54,6 +54,9 @@
                                                         </fragment>
                                                     </attributedString>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="XTl-MW-tCD" kind="show" id="I0W-Fx-hqv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -273,6 +276,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1802.8985507246377" y="53.571428571428569"/>
+        </scene>
+        <!--SignUpVCID-->
+        <scene sceneID="KaE-3B-qc8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="SignUpVCID" id="XTl-MW-tCD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="n1U-DE-GlJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="srp-rl-6W2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2454" y="-205"/>
         </scene>
     </scenes>
     <resources>
