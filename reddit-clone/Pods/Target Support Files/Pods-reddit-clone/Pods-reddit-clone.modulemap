@@ -1,0 +1,6 @@
+framework module Pods_reddit_clone {
+  umbrella header "Pods-reddit-clone-umbrella.h"
+
+  export *
+  module * { export * }
+}
