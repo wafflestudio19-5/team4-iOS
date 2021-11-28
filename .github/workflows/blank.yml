@@ -20,4 +20,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: run test
-      run: xcodebuild clean -project frontend-mobile/reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=14.0'
+      run: xcodebuild clean -project frontend-mobile/reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
