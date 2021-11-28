@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1E17162750CA68003C1A1E /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1E17152750CA68003C1A1E /* LogIn.storyboard */; };
+		CC1E172027511749003C1A1E /* PasswordFind.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1E171F27511749003C1A1E /* PasswordFind.storyboard */; };
+		CC1E1722275117A1003C1A1E /* PasswordFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E1721275117A1003C1A1E /* PasswordFindViewController.swift */; };
+		CC1E172527512056003C1A1E /* addLeftPaddingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */; };
+		CC1E17272751206C003C1A1E /* gradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E17262751206C003C1A1E /* gradientButton.swift */; };
+		CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC738EB3274B959D00A8752C /* LogInViewController.swift */; };
+		5D5AD764274BCF69004030C3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5AD763274BCF69004030C3 /* SignUp.storyboard */; };
+		5D5AD768274C7549004030C3 /* SignUp_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */; };
 		CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */; };
 		CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C602749F8D800A41E14 /* SceneDelegate.swift */; };
 		CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD23C622749F8D800A41E14 /* ViewController.swift */; };
@@ -16,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC1E17152750CA68003C1A1E /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
+		CC1E171F27511749003C1A1E /* PasswordFind.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordFind.storyboard; sourceTree = "<group>"; };
+		CC1E1721275117A1003C1A1E /* PasswordFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFindViewController.swift; sourceTree = "<group>"; };
+		CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLeftPaddingTextfield.swift; sourceTree = "<group>"; };
+		CC1E17262751206C003C1A1E /* gradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradientButton.swift; sourceTree = "<group>"; };
+		CC738EB3274B959D00A8752C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		5D5AD763274BCF69004030C3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_ViewController.swift; sourceTree = "<group>"; };
 		CCD23C5B2749F8D800A41E14 /* reddit-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reddit-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD23C602749F8D800A41E14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC1E172327512018003C1A1E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC1E172427512056003C1A1E /* addLeftPaddingTextfield.swift */,
+				CC1E17262751206C003C1A1E /* gradientButton.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CCD23C522749F8D700A41E14 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +81,20 @@
 		CCD23C5D2749F8D800A41E14 /* reddit-clone */ = {
 			isa = PBXGroup;
 			children = (
+				CC1E172327512018003C1A1E /* Utils */,
 				CCD23C5E2749F8D800A41E14 /* AppDelegate.swift */,
 				CCD23C602749F8D800A41E14 /* SceneDelegate.swift */,
 				CCD23C622749F8D800A41E14 /* ViewController.swift */,
 				CCD23C642749F8D800A41E14 /* Main.storyboard */,
+				CC1E17152750CA68003C1A1E /* LogIn.storyboard */,
+				5D5AD763274BCF69004030C3 /* SignUp.storyboard */,
+				5D5AD767274C7549004030C3 /* SignUp_ViewController.swift */,
 				CCD23C672749F8DA00A41E14 /* Assets.xcassets */,
 				CCD23C692749F8DA00A41E14 /* LaunchScreen.storyboard */,
 				CCD23C6C2749F8DA00A41E14 /* Info.plist */,
+				CC738EB3274B959D00A8752C /* LogInViewController.swift */,
+				CC1E171F27511749003C1A1E /* PasswordFind.storyboard */,
+				CC1E1721275117A1003C1A1E /* PasswordFindViewController.swift */,
 			);
 			path = "reddit-clone";
 			sourceTree = "<group>";
@@ -125,9 +157,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC1E17162750CA68003C1A1E /* LogIn.storyboard in Resources */,
 				CCD23C6B2749F8DA00A41E14 /* LaunchScreen.storyboard in Resources */,
 				CCD23C682749F8DA00A41E14 /* Assets.xcassets in Resources */,
+				5D5AD764274BCF69004030C3 /* SignUp.storyboard in Resources */,
 				CCD23C662749F8D800A41E14 /* Main.storyboard in Resources */,
+				CC1E172027511749003C1A1E /* PasswordFind.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +173,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC738EB4274B959D00A8752C /* LogInViewController.swift in Sources */,
 				CCD23C632749F8D800A41E14 /* ViewController.swift in Sources */,
+				CC1E172527512056003C1A1E /* addLeftPaddingTextfield.swift in Sources */,
+				CC1E17272751206C003C1A1E /* gradientButton.swift in Sources */,
 				CCD23C5F2749F8D800A41E14 /* AppDelegate.swift in Sources */,
+				5D5AD768274C7549004030C3 /* SignUp_ViewController.swift in Sources */,
 				CCD23C612749F8D800A41E14 /* SceneDelegate.swift in Sources */,
+				CC1E1722275117A1003C1A1E /* PasswordFindViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +327,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8G852ZNFGC;
@@ -304,6 +345,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wafflestudio.eomiso.reddit-clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8G852ZNFGC;
@@ -332,6 +375,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wafflestudio.eomiso.reddit-clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
