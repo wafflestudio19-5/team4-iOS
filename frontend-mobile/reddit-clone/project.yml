@@ -7,6 +7,8 @@ name: reddit-clone
 
 targets:
   reddit-clone:
+    attributes:
+      ProvisioningStyle: Automatic
     sources:
       - reddit-clone     
         #      - Home
@@ -14,7 +16,7 @@ targets:
         # - PostCreation
         # - Notification
         # - Chat
-    platform: [iOS]
+    platform: iOS
     deploymentTarget: 
       iOS: 15.0
     type: application
@@ -25,5 +27,9 @@ targets:
     configFiles:
       Debug: xcconfig/reddit-clone-Debug.xcconfig
       Release: xcconfig/reddit-clone-Release.xcconfig
-
-
+    
+schemes:
+  reddit_clone_scheme:
+    build:
+      targets:
+        reddit-clone: all
