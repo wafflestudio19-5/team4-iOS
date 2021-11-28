@@ -19,11 +19,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: xavierLowmiller/xcodegen-action@1.0.0
-      - uses: actions/checkout@v2
       - name: generate project files
         with:
           spec: project.yaml
           quiet: true
           version: '2.25.0'
+      - uses: actions/checkout@v2
       - name: run test
         run: xcodebuild clean -project reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
