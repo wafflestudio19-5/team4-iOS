@@ -1,0 +1,29 @@
+# 프로젝트 이름
+name: reddit-clone
+
+# 프로젝트 파일 생성 후 실행할 커맨드 
+# options:
+#  postGenCommand: bundle exec podinstall
+
+targets:
+  reddit-clone:
+    sources:
+      - reddit-clone     
+        #      - Home
+        # - Subscription
+        # - PostCreation
+        # - Notification
+        # - Chat
+    platform: [iOS]
+    deploymentTarget: 
+      iOS: 15.0
+    type: application
+    settings:
+      INFOPLIST_FILE: reddit-clone/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.wafflestudio.eomiso.reddit-clone
+
+    configFiles:
+      Debug: xcconfig/reddit-clone-Debug.xcconfig
+      Release: xcconfig/reddit-clone-Release.xcconfig
+
+
