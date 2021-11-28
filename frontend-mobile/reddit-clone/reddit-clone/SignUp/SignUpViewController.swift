@@ -1,6 +1,6 @@
 import UIKit
 
-class SignUp_ViewController: UIViewController {
+class SignUpViewController: UIViewController {
     
     @IBOutlet weak var cancelBT: UIButton!
     @IBOutlet weak var loginBT: UIButton!
