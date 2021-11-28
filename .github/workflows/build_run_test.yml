@@ -19,5 +19,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v2
+    - name: generate project files
+      working-directory: ./reddit-clone
+      run: xcodegen generate
     - name: run test
-      run: xcodebuild clean -project frontend-mobile/reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
+      run: xcodebuild clean -project reddit-clone/reddit-clone.xcodeproj -scheme reddit-clone -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
