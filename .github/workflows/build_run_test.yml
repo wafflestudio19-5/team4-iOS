@@ -23,6 +23,7 @@ jobs:
       run: |
         brew install xcodegen
         cd reddit-clone
-        xcodegen generate --use-cache 
+        xcodegen generate
+        pod install
         xcodebuild clean -project reddit-clone.xcodeproj -scheme reddit_clone_scheme -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
-        xcodebuild build -project reddit-clone.xcodeproj -scheme reddit_clone_scheme -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
+        xcodebuild build -workspace reddit-clone.xcworkspace -scheme reddit_clone_scheme -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
