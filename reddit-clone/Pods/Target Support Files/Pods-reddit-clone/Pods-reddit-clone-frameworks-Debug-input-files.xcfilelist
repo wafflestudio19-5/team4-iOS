@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-reddit-clone/Pods-reddit-clone-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
+${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework
