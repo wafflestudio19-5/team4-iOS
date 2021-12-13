@@ -8,5 +8,5 @@ target 'reddit-clone' do
 
   # Pods for reddit-clone
   pod 'SideMenu', '~> 6.0'
-
+  pod 'Tabman', '~> 2.9'
 end
