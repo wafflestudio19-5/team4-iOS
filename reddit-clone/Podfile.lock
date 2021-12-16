@@ -6,7 +6,7 @@ PODS:
 
 DEPENDENCIES:
   - SideMenu (~> 6.0)
-  - Tabman (~> 2.9)
+  - Tabman (~> 2.11)
 
 SPEC REPOS:
   trunk:
@@ -19,6 +19,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: f72ab8e61cf15df5d6d2f7c983c26288a783cfd2
+PODFILE CHECKSUM: 2616bb3cbc3afd9035ff7a175cf86384c64981ab
 
 COCOAPODS: 1.11.2
