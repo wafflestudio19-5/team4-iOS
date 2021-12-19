@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="83.705357142857139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Side Menu Navigation-->
         <scene sceneID="HUT-rQ-1jJ">
             <objects>
-                <navigationController storyboardIdentifier="SideMenuNavID" automaticallyAdjustsScrollViewInsets="NO" id="yaQ-aL-ald" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SideMenuNavID" automaticallyAdjustsScrollViewInsets="NO" id="yaQ-aL-ald" customClass="CustomSideMenuNavigation" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Upt-qc-H3S">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

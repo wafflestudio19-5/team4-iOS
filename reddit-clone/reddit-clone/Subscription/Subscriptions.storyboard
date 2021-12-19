@@ -12,22 +12,55 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SubscriptsVCID" id="Y6W-OH-hqX" customClass="SubscriptionsViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="pzK-dq-EvC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subscript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-fh-1w9">
-                                <rect key="frame" x="149" y="168" width="160" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-vO-B0Q">
+                                <rect key="frame" x="74" y="45" width="278" height="32"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-it-TJm">
+                                <rect key="frame" x="19" y="41" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="OGU-Fx-MmT"/>
+                                    <constraint firstAttribute="width" constant="40" id="a4z-mg-Pbs"/>
+                                    <constraint firstAttribute="height" constant="40" id="lJy-MJ-GCn"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-0V-usX">
+                                <rect key="frame" x="0.0" y="89" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m6x-zX-gKs"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <viewLayoutGuide key="safeArea" id="y1V-xN-klf"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="NKj-vO-B0Q" secondAttribute="bottom" constant="12" id="Cfr-ES-Fgg"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="centerX" secondItem="pzK-dq-EvC" secondAttribute="centerX" id="MCs-Rx-6d9"/>
+                            <constraint firstItem="0ph-it-TJm" firstAttribute="leading" secondItem="pzK-dq-EvC" secondAttribute="leadingMargin" constant="-1" id="P93-90-wJY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NKj-vO-B0Q" secondAttribute="trailing" constant="42" id="dRX-0j-ffn"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="0ph-it-TJm" secondAttribute="bottom" constant="8" id="jph-yf-FCZ"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="leading" secondItem="y1V-xN-klf" secondAttribute="leading" id="mvW-oc-hxb"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="y1V-xN-klf" secondAttribute="top" constant="1" id="vLq-4x-2v9"/>
+                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="leading" secondItem="0ph-it-TJm" secondAttribute="trailing" constant="15" id="w1I-Ze-KqQ"/>
+                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="centerY" secondItem="0ph-it-TJm" secondAttribute="centerY" id="wtc-LK-gUJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FQ6-be-ZeS"/>
+                    <navigationItem key="navigationItem" id="vv4-Uw-rM8">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barView" destination="eoV-0V-usX" id="cb6-On-mKu"/>
+                        <outlet property="profileImgView" destination="0ph-it-TJm" id="AC0-T7-qzl"/>
+                        <outlet property="searchButton" destination="NKj-vO-B0Q" id="l8f-F3-jOD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,8 +88,17 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
