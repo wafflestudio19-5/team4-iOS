@@ -22,6 +22,9 @@
                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                                <connections>
+                                    <segue destination="kHm-QK-w1b" kind="presentation" id="f9Q-Vn-VPn"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qi7-df-dD9">
                                 <rect key="frame" x="19" y="41" width="40" height="40"/>
@@ -64,6 +67,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1624.6376811594205" y="207.58928571428569"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="IvC-1b-hzc">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SearchVCID" id="kHm-QK-w1b" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yW-Vf-tt8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2306" y="177"/>
         </scene>
         <!--Item-->
         <scene sceneID="2Xl-j4-yZ3">
