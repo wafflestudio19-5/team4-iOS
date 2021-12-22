@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K1v-UE-YsB">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,25 +13,57 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVCID" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HomePage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndq-cT-ccw">
-                                <rect key="frame" x="139" y="288" width="184" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXM-EV-YQc">
+                                <rect key="frame" x="74" y="45" width="292" height="32"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qi7-df-dD9">
+                                <rect key="frame" x="19" y="41" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Atd-yS-v3n"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="tTE-Tb-V3D"/>
+                                    <constraint firstAttribute="height" constant="40" id="u6J-t4-bCG"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f56-n2-BSD">
+                                <rect key="frame" x="0.0" y="89" width="428" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iV0-we-eWb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="Qi7-df-dD9" secondAttribute="bottom" constant="8" id="1i9-BZ-cdY"/>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="mXM-EV-YQc" secondAttribute="bottom" constant="12" id="5fS-0v-6qK"/>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="AI2-BW-vIn"/>
+                            <constraint firstItem="mXM-EV-YQc" firstAttribute="leading" secondItem="Qi7-df-dD9" secondAttribute="trailing" constant="15" id="LkW-Dk-Uex"/>
+                            <constraint firstItem="mXM-EV-YQc" firstAttribute="centerY" secondItem="Qi7-df-dD9" secondAttribute="centerY" id="MWy-7Q-ct7"/>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="1" id="S4f-v2-dgE"/>
+                            <constraint firstItem="Qi7-df-dD9" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="-1" id="cJo-Xg-qfY"/>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gez-sQ-nra"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mXM-EV-YQc" secondAttribute="trailing" constant="42" id="okM-Th-la5"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qn5-x8-alp"/>
+                    <navigationItem key="navigationItem" id="Qn5-x8-alp">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barView" destination="f56-n2-BSD" id="rjD-Za-Txf"/>
+                        <outlet property="searchButton" destination="mXM-EV-YQc" id="B5N-qW-mog"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1625" y="208"/>
+            <point key="canvasLocation" x="1624.6376811594205" y="207.58928571428569"/>
         </scene>
         <!--Item-->
         <scene sceneID="2Xl-j4-yZ3">
@@ -41,7 +73,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2fQ-Ur-wcA">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -55,6 +87,15 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

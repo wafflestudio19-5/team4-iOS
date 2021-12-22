@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PostTVCID" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" rowHeight="175" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="reddit_clone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="353" height="175"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" placeholderIntrinsicWidth="349" placeholderIntrinsicHeight="107" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="353" height="175"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" ambiguous="YES" id="t4K-tE-B0P" customClass="PostTableViewCell" customModule="reddit_clone" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="349" height="175"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="r/BoardName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0P-c1-ixA">
+                                <rect key="frame" x="47" y="14" width="297" height="11"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="293" id="CdQ-cz-1Ov"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" id="Yxr-Id-VrS">
+                                <rect key="frame" x="9" y="11" width="29" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="nya-na-Mfj"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="u/UserName · time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GId-hp-Xoh">
+                                <rect key="frame" x="47" y="28" width="297" height="12"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kug-vU-Oea">
+                                <rect key="frame" x="9" y="49" width="333" height="20"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" id="Ggk-xw-WF0">
+                                <rect key="frame" x="9" y="72" width="333" height="91"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="nd7-zM-ZIe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We Use UIImageView or UILabel acording to the Data. This is test text if data can print more Two lines." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Kd-d3-hyO">
+                                <rect key="frame" x="9" y="72" width="333" height="91"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Kug-vU-Oea" firstAttribute="trailing" secondItem="Ggk-xw-WF0" secondAttribute="trailing" id="2Yv-HT-QB6"/>
+                            <constraint firstItem="g0P-c1-ixA" firstAttribute="leading" secondItem="GId-hp-Xoh" secondAttribute="leading" id="4If-aD-sod"/>
+                            <constraint firstItem="GId-hp-Xoh" firstAttribute="trailing" secondItem="Kug-vU-Oea" secondAttribute="trailing" id="C8f-fR-fn7"/>
+                            <constraint firstItem="Kug-vU-Oea" firstAttribute="trailing" secondItem="4Kd-d3-hyO" secondAttribute="trailing" id="DwS-i0-ACy"/>
+                            <constraint firstItem="Kug-vU-Oea" firstAttribute="top" secondItem="Yxr-Id-VrS" secondAttribute="bottom" constant="7" id="FGz-De-pxG"/>
+                            <constraint firstItem="Ggk-xw-WF0" firstAttribute="top" secondItem="Kug-vU-Oea" secondAttribute="bottom" constant="4.5" id="GDl-Jn-6G3"/>
+                            <constraint firstItem="g0P-c1-ixA" firstAttribute="leading" secondItem="Yxr-Id-VrS" secondAttribute="trailing" constant="8" symbolic="YES" id="Gha-gC-iKA"/>
+                            <constraint firstItem="g0P-c1-ixA" firstAttribute="trailing" secondItem="t4K-tE-B0P" secondAttribute="trailingMargin" id="Im9-RE-1sj"/>
+                            <constraint firstItem="Yxr-Id-VrS" firstAttribute="leading" secondItem="Kug-vU-Oea" secondAttribute="leading" id="J5Y-w7-AkI"/>
+                            <constraint firstItem="GId-hp-Xoh" firstAttribute="top" secondItem="g0P-c1-ixA" secondAttribute="bottom" constant="2" id="J6w-I2-Ygq"/>
+                            <constraint firstItem="Kug-vU-Oea" firstAttribute="leading" secondItem="Ggk-xw-WF0" secondAttribute="leading" id="Okr-qY-FqP"/>
+                            <constraint firstItem="Kug-vU-Oea" firstAttribute="leading" secondItem="4Kd-d3-hyO" secondAttribute="leading" id="QmU-W4-FZO"/>
+                            <constraint firstItem="Yxr-Id-VrS" firstAttribute="top" secondItem="g0P-c1-ixA" secondAttribute="top" constant="-3" id="Tjm-To-hre"/>
+                            <constraint firstItem="Yxr-Id-VrS" firstAttribute="leading" secondItem="t4K-tE-B0P" secondAttribute="leading" constant="10" id="aKc-IB-BUe"/>
+                            <constraint firstAttribute="bottom" secondItem="Ggk-xw-WF0" secondAttribute="bottom" constant="12" id="hER-TV-R4i"/>
+                            <constraint firstItem="Yxr-Id-VrS" firstAttribute="top" secondItem="t4K-tE-B0P" secondAttribute="top" constant="10" id="ldX-Ya-3RO"/>
+                            <constraint firstItem="Ggk-xw-WF0" firstAttribute="top" secondItem="4Kd-d3-hyO" secondAttribute="top" id="n3R-fD-zwz"/>
+                            <constraint firstItem="Yxr-Id-VrS" firstAttribute="bottom" secondItem="GId-hp-Xoh" secondAttribute="bottom" constant="3" id="pUk-es-7Iu"/>
+                            <constraint firstItem="g0P-c1-ixA" firstAttribute="trailing" secondItem="GId-hp-Xoh" secondAttribute="trailing" id="zzk-yZ-6cW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="t4K-tE-B0P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IxG-Ko-Enh"/>
+                    <constraint firstAttribute="bottom" secondItem="t4K-tE-B0P" secondAttribute="bottom" id="MKc-Tg-MvF"/>
+                    <constraint firstItem="t4K-tE-B0P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MXi-Ci-Aut"/>
+                    <constraint firstAttribute="trailing" secondItem="t4K-tE-B0P" secondAttribute="trailing" id="rae-Fj-fhJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+            <point key="canvasLocation" x="160.1449275362319" y="150.33482142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
