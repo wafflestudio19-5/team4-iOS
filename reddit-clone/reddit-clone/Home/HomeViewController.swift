@@ -51,6 +51,13 @@ class HomeViewController: TabmanViewController {
         
         addBar(bar, dataSource: self, at: .custom(view: barView, layout: nil))
     }
+    
+    
+    @IBAction func searchButton(_ sender: Any) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVCID") as? SearchViewController else {return}
+        self.present(vc, animated: true)
+    }
+    
 }
 
 extension HomeViewController: PageboyViewControllerDataSource, TMBarDataSource {

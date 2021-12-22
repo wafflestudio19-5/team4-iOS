@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXM-EV-YQc">
-                                <rect key="frame" x="74" y="45" width="292" height="32"/>
+                                <rect key="frame" x="74" y="46" width="292" height="32"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search"/>
                                 <connections>
-                                    <segue destination="kHm-QK-w1b" kind="presentation" id="f9Q-Vn-VPn"/>
+                                    <action selector="searchButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wmV-3V-NQu"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qi7-df-dD9">
-                                <rect key="frame" x="19" y="41" width="40" height="40"/>
+                                <rect key="frame" x="19" y="42" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Atd-yS-v3n"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="tTE-Tb-V3D"/>
@@ -35,7 +35,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f56-n2-BSD">
-                                <rect key="frame" x="0.0" y="89" width="428" height="50"/>
+                                <rect key="frame" x="0.0" y="90" width="428" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iV0-we-eWb"/>
@@ -50,7 +50,7 @@
                             <constraint firstItem="f56-n2-BSD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="AI2-BW-vIn"/>
                             <constraint firstItem="mXM-EV-YQc" firstAttribute="leading" secondItem="Qi7-df-dD9" secondAttribute="trailing" constant="15" id="LkW-Dk-Uex"/>
                             <constraint firstItem="mXM-EV-YQc" firstAttribute="centerY" secondItem="Qi7-df-dD9" secondAttribute="centerY" id="MWy-7Q-ct7"/>
-                            <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="1" id="S4f-v2-dgE"/>
+                            <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="46" id="S4f-v2-dgE"/>
                             <constraint firstItem="Qi7-df-dD9" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="-1" id="cJo-Xg-qfY"/>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gez-sQ-nra"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mXM-EV-YQc" secondAttribute="trailing" constant="42" id="okM-Th-la5"/>
@@ -61,17 +61,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barView" destination="f56-n2-BSD" id="rjD-Za-Txf"/>
-                        <outlet property="searchButton" destination="mXM-EV-YQc" id="B5N-qW-mog"/>
+                        <outlet property="searchButton" destination="mXM-EV-YQc" id="arS-ws-XJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624.6376811594205" y="207.58928571428569"/>
+            <point key="canvasLocation" x="1623.3644859813082" y="207.34341252699787"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--SearchVCID-->
         <scene sceneID="IvC-1b-hzc">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SearchVCID" id="kHm-QK-w1b" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="SearchVCID" storyboardName="Search" referencedIdentifier="SearchVCID" id="kHm-QK-w1b" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yW-Vf-tt8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2306" y="177"/>
@@ -79,12 +79,11 @@
         <!--Item-->
         <scene sceneID="2Xl-j4-yZ3">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavID" automaticallyAdjustsScrollViewInsets="NO" id="K1v-UE-YsB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavID" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="K1v-UE-YsB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="e4c-Nc-1f3"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2fQ-Ur-wcA">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
