@@ -1,4 +1,5 @@
 import UIKit
+import Tabman
 
 class SignUpViewController: UIViewController {
     
@@ -35,4 +36,32 @@ class SignUpViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
+    @IBAction func loginButtonTouch(_ sender: Any) {
+        if (emailTF.text == nil) {return}
+        if (usernameTF.text == nil) {return}
+        if (passwordTF.text == nil) {return}
+        
+        let datatest: SignUp_UserData = SignUp_UserData(email: emailTF.text!, username: usernameTF.text!, password: passwordTF.text!)
+        
+        let postData = jsonEncoding(param: datatest)
+        networkRequest(postData: postData!)
+        }
+    
+    private func networkRequest(postData: Data) {
+        NetworkFunc.requestPost(url: "/api/v1/users/", method: "POST", sendData: postData) { (data) in
+            DispatchQueue.main.async {
+                let resultData = self.jsonParsing(data: data)
+                print(resultData ?? nil)
+                }
+        }
+        failure: {
+            let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)
+                       let warningAction = UIAlertAction(title: "OK", style: .default)
+                       alert.addAction(warningAction)
+                       self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
