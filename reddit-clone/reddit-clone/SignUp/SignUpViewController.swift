@@ -1,4 +1,5 @@
 import UIKit
+import Tabman
 
 class SignUpViewController: UIViewController {
     
@@ -34,5 +35,17 @@ class SignUpViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    
+    @IBAction func loginButtonTouch(_ sender: Any) {
+        if (emailTF.text == nil) {return}
+        if (usernameTF.text == nil) {return}
+        if (passwordTF.text == nil) {return}
+        
+        let datatest: SignUp_UserData = SignUp_UserData(email: emailTF.text!, username: usernameTF.text!, password: passwordTF.text!)
+        
+        let postData = jsonEncoding(param: datatest)
+        networkRequest(postData: postData!)
     }
 }
