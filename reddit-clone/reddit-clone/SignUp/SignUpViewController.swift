@@ -47,21 +47,5 @@ class SignUpViewController: UIViewController {
         
         let postData = jsonEncoding(param: datatest)
         networkRequest(postData: postData!)
-        }
-    
-    private func networkRequest(postData: Data) {
-        NetworkFunc.requestPost(url: "/api/v1/users/", method: "POST", sendData: postData) { (data) in
-            DispatchQueue.main.async {
-                let resultData = self.jsonParsing(data: data)
-                print(resultData ?? nil)
-                }
-        }
-        failure: {
-            let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)
-                       let warningAction = UIAlertAction(title: "OK", style: .default)
-                       alert.addAction(warningAction)
-                       self.present(alert, animated: true, completion: nil)
-        }
     }
-    
 }

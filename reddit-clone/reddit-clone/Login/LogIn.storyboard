@@ -11,7 +11,7 @@
         <!--Log In View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="LogInStoryboard" id="Y6W-OH-hqX" customClass="LogInViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInVCID" id="Y6W-OH-hqX" customClass="LogInViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +183,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="XHZ-pW-2OG"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -231,6 +231,9 @@
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="tryLogin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DWj-7O-ZAc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -7,7 +7,7 @@ protocol json {
 
 struct NetworkFunc {
     
-    static func requestGet(url: String, completionHandler: @escaping (Data) -> Void, failure: @escaping () -> ()) {
+    static func requestGet(url: String, completionHandler: @escaping (HTTPURLResponse, Data) -> Void, failure: @escaping () -> ()) {
         
         let ip = "54.180.132.95"
         
@@ -41,11 +41,11 @@ struct NetworkFunc {
              }
             */
             
-            completionHandler(data)
+            completionHandler(response, data)
         }.resume()
     }
     
-    static func requestPost(url: String, method: String, sendData: Data, completionHandler: @escaping (Data) -> Void, failure: @escaping () -> ()) {
+    static func requestPost(url: String, sendData: Data, completionHandler: @escaping (HTTPURLResponse, Data) -> Void, failure: @escaping () -> ()) {
         let ip = "54.180.132.95"
         
         /*
@@ -60,7 +60,7 @@ struct NetworkFunc {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = sendData
         
@@ -81,15 +81,8 @@ struct NetworkFunc {
                 failure()
                 return
             }
-            
-            /*
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
-                print("Error: JSON Parsing failed")
-                return
-            }
-             */
-            
-            completionHandler(data)
+            print(response)
+            completionHandler(response, data)
         }.resume()
     }
 }
