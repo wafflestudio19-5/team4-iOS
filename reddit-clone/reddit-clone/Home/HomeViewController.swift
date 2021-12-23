@@ -55,6 +55,8 @@ class HomeViewController: TabmanViewController {
     
     @IBAction func searchButton(_ sender: Any) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVCID") as? SearchViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
     }
     
