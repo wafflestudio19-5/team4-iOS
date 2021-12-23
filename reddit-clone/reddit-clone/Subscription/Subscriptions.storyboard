@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EWM-lD-2v3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -11,46 +11,51 @@
         <!--Subscriptions View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SubscriptsVCID" id="Y6W-OH-hqX" customClass="SubscriptionsViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubscriptionsVCID" id="Y6W-OH-hqX" customClass="SubscriptionsViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pzK-dq-EvC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-vO-B0Q">
-                                <rect key="frame" x="74" y="45" width="278" height="32"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <color key="tintColor" systemColor="systemGray2Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Search"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-it-TJm">
-                                <rect key="frame" x="19" y="41" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="OGU-Fx-MmT"/>
-                                    <constraint firstAttribute="width" constant="40" id="a4z-mg-Pbs"/>
-                                    <constraint firstAttribute="height" constant="40" id="lJy-MJ-GCn"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-0V-usX">
-                                <rect key="frame" x="0.0" y="89" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="m6x-zX-gKs"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-vO-B0Q">
+                                <rect key="frame" x="94" y="44" width="233" height="31"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="233" id="Yhg-Eb-Xuf"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-If-oOM">
+                                <rect key="frame" x="25" y="36" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i2N-If-oOM" secondAttribute="height" multiplier="50:50" id="6U4-8g-ou8"/>
+                                    <constraint firstAttribute="width" constant="40" id="q3u-UB-uWJ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="externaldrive.connected.to.line.below" catalog="system"/>
+                                <connections>
+                                    <segue destination="N0T-1k-x8X" kind="show" id="uLG-CS-QvB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y1V-xN-klf"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
-                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="NKj-vO-B0Q" secondAttribute="bottom" constant="12" id="Cfr-ES-Fgg"/>
+                            <constraint firstItem="i2N-If-oOM" firstAttribute="leading" secondItem="y1V-xN-klf" secondAttribute="leading" constant="25" id="EMV-Zg-4q1"/>
+                            <constraint firstItem="y1V-xN-klf" firstAttribute="trailing" secondItem="NKj-vO-B0Q" secondAttribute="trailing" constant="87" id="L0M-hO-ZFM"/>
                             <constraint firstItem="eoV-0V-usX" firstAttribute="centerX" secondItem="pzK-dq-EvC" secondAttribute="centerX" id="MCs-Rx-6d9"/>
-                            <constraint firstItem="0ph-it-TJm" firstAttribute="leading" secondItem="pzK-dq-EvC" secondAttribute="leadingMargin" constant="-1" id="P93-90-wJY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NKj-vO-B0Q" secondAttribute="trailing" constant="42" id="dRX-0j-ffn"/>
-                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="0ph-it-TJm" secondAttribute="bottom" constant="8" id="jph-yf-FCZ"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="NKj-vO-B0Q" secondAttribute="bottom" constant="9" id="m0F-xC-2f2"/>
                             <constraint firstItem="eoV-0V-usX" firstAttribute="leading" secondItem="y1V-xN-klf" secondAttribute="leading" id="mvW-oc-hxb"/>
-                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="y1V-xN-klf" secondAttribute="top" constant="1" id="vLq-4x-2v9"/>
-                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="leading" secondItem="0ph-it-TJm" secondAttribute="trailing" constant="15" id="w1I-Ze-KqQ"/>
-                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="centerY" secondItem="0ph-it-TJm" secondAttribute="centerY" id="wtc-LK-gUJ"/>
+                            <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="i2N-If-oOM" secondAttribute="bottom" constant="8" id="qBS-6M-LG4"/>
+                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="top" secondItem="pzK-dq-EvC" secondAttribute="top" constant="44" id="sXd-87-Dq5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vv4-Uw-rM8">
@@ -58,7 +63,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barView" destination="eoV-0V-usX" id="cb6-On-mKu"/>
-                        <outlet property="profileImgView" destination="0ph-it-TJm" id="AC0-T7-qzl"/>
                         <outlet property="searchButton" destination="NKj-vO-B0Q" id="l8f-F3-jOD"/>
                     </connections>
                 </viewController>
@@ -66,28 +70,19 @@
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="115.84821428571428"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="qYE-bh-AEH">
+        <!--SideMenuNavID-->
+        <scene sceneID="WUP-CP-Jwb">
             <objects>
-                <navigationController storyboardIdentifier="SubscriptionsNavID" automaticallyAdjustsScrollViewInsets="NO" id="EWM-lD-2v3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Uc7-8Q-Rnd"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eSe-G4-sxp">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="VuL-xc-Rfv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3PT-pF-Zz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="SideMenu" referencedIdentifier="SideMenuNavID" id="N0T-1k-x8X" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wEC-dw-Zyf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayI-VR-Ut0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="115.84821428571428"/>
+            <point key="canvasLocation" x="1451" y="-307"/>
         </scene>
     </scenes>
     <resources>
+        <image name="externaldrive.connected.to.line.below" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
