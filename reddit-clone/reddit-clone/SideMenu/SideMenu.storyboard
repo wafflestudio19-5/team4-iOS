@@ -46,7 +46,9 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Log In"/>
                                         <connections>
-                                            <segue destination="FGb-A8-kzV" kind="showDetail" id="MEJ-6w-0oD"/>
+                                            <segue destination="FGb-A8-kzV" kind="popoverPresentation" popoverAnchorView="0gl-d9-bRe" id="MEJ-6w-0oD">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn0-9N-UYE">
@@ -56,6 +58,11 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign In" cornerStyle="capsule"/>
+                                        <connections>
+                                            <segue destination="SgQ-vZ-JkO" kind="popoverPresentation" popoverAnchorView="Rn0-9N-UYE" id="JMY-U6-yMl">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-UF-dkJ">
                                         <rect key="frame" x="0.0" y="230" width="414" height="50"/>
@@ -114,15 +121,25 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
         </scene>
-        <!--LogInStoryboard-->
+        <!--LogInVCID-->
         <scene sceneID="osg-G6-nNq">
             <objects>
-                <viewControllerPlaceholder storyboardName="LogIn" referencedIdentifier="LogInStoryboard" id="FGb-A8-kzV" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="LogIn" referencedIdentifier="LogInVCID" id="FGb-A8-kzV" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0lT-Iz-ZhQ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqz-bl-ueQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="470" y="-447"/>
+        </scene>
+        <!--SignUpVCID-->
+        <scene sceneID="068-Av-eXb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="SignUpVCID" id="SgQ-vZ-JkO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eyT-oP-Sre"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nx8-cm-zJ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="-395"/>
         </scene>
     </scenes>
     <resources>
