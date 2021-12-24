@@ -42,6 +42,7 @@
                             <constraint firstItem="I3N-ZL-1JI" firstAttribute="leading" secondItem="kwn-1Z-rSl" secondAttribute="trailing" id="tfd-45-2F5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ez3-cM-Gy3"/>
                     <connections>
                         <outlet property="cancelButton" destination="I3N-ZL-1JI" id="uBO-IG-xoB"/>
                         <outlet property="searchBar" destination="kwn-1Z-rSl" id="d7n-4K-5rL"/>
@@ -49,7 +50,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
+            <point key="canvasLocation" x="928.98550724637687" y="77.678571428571431"/>
+        </scene>
+        <!--SearchResultVCID-->
+        <scene sceneID="HeP-6L-rOi">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SearchResultVCID" storyboardName="SearchResult" referencedIdentifier="SearchResultVCID" id="hHH-Lt-JwS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8rD-wo-LRf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1564" y="68"/>
         </scene>
     </scenes>
     <resources>

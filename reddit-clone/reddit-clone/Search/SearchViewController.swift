@@ -28,7 +28,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("start Search")
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultVCID") as? SearchResultViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
+
     }
     
     @IBAction func Cacnel(_ sender: Any) {
