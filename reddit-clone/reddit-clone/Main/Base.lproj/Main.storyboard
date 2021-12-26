@@ -10,6 +10,7 @@
         <scene sceneID="d6E-bO-Chk">
             <objects>
                 <tabBarController id="e4y-wU-r20" customClass="MainViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sGw-zd-TYc"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w0j-zb-Nh0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,37 +22,36 @@
                         <segue destination="9q0-1Z-Azk" kind="relationship" relationship="viewControllers" id="6lw-uz-zYW"/>
                         <segue destination="EKi-QV-ell" kind="relationship" relationship="viewControllers" id="QQd-kS-0EO"/>
                         <segue destination="WjT-mL-Qy5" kind="relationship" relationship="viewControllers" id="SUd-BV-sFm"/>
-                        <segue destination="6Mv-5a-Fxm" kind="show" id="qch-8e-QxY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNu-Qq-6dp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="935" y="-413"/>
         </scene>
-        <!--HomeNavID-->
+        <!--HomeVCID-->
         <scene sceneID="o5b-yS-Ocq">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeNavID" id="j4A-AU-ohM" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeVCID" id="j4A-AU-ohM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RXb-aW-67T"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8S-o1-HJY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70" y="27"/>
         </scene>
-        <!--SubscriptionsNavID-->
+        <!--SubscriptionsVCID-->
         <scene sceneID="ugO-tK-mqO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Subscriptions" referencedIdentifier="SubscriptionsNavID" id="Qlv-1g-lFv" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Subscriptions" referencedIdentifier="SubscriptionsVCID" id="Qlv-1g-lFv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="W3I-m9-pej"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEg-VH-Wib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="533" y="27"/>
         </scene>
-        <!--PostCreationNavID-->
+        <!--PostCreationVCID-->
         <scene sceneID="CNt-8x-fLm">
             <objects>
-                <viewControllerPlaceholder storyboardName="PostCreation" referencedIdentifier="PostCreationNavID" id="9q0-1Z-Azk" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="PostCreation" referencedIdentifier="PostCreationVCID" id="9q0-1Z-Azk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Mc2-GZ-T3R"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gw-Tq-rWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -77,16 +77,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7J-7g-fmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1795" y="27"/>
-        </scene>
-        <!--SideMenuNavID-->
-        <scene sceneID="udo-8y-Uei">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SideMenu" referencedIdentifier="SideMenuNavID" id="6Mv-5a-Fxm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="OX6-Gd-gEd"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="roP-cK-8ZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7" y="-629"/>
         </scene>
     </scenes>
 </document>

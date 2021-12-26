@@ -11,13 +11,13 @@
         <!--Log In View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="LogInStoryboard" id="Y6W-OH-hqX" customClass="LogInViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInVCID" id="Y6W-OH-hqX" customClass="LogInViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-rc-V9j">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FPa-g2-1Gz">
                                         <rect key="frame" x="16" y="0.0" width="382" height="56"/>
@@ -65,7 +65,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="eAt-eM-Msv">
-                                        <rect key="frame" x="16" y="58" width="382" height="698"/>
+                                        <rect key="frame" x="16" y="58" width="382" height="654"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-rm-pxj">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="118"/>
@@ -208,7 +208,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESQ-Pe-Loi">
-                                                <rect key="frame" x="0.0" y="415" width="382" height="283"/>
+                                                <rect key="frame" x="0.0" y="415" width="382" height="239"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="dqP-kl-XmU"/>
@@ -221,7 +221,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekm-sO-VGz">
-                                        <rect key="frame" x="16" y="758" width="382" height="60"/>
+                                        <rect key="frame" x="16" y="714" width="382" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVj-PK-vH9">
                                                 <rect key="frame" x="0.0" y="10" width="382" height="40"/>
@@ -258,6 +258,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xAm-rc-V9j" secondAttribute="bottom" id="WYJ-Z4-GZA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qh2-Ga-rtp"/>
                     <connections>
                         <outlet property="appleAuthButton" destination="jMK-Az-JEW" id="G5g-1q-K5r"/>
                         <outlet property="cancelBT" destination="WiY-CI-G1z" id="zK0-ck-hjR"/>
@@ -275,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802.8985507246377" y="53.571428571428569"/>
+            <point key="canvasLocation" x="2713.04347826087" y="53.571428571428569"/>
         </scene>
         <!--SignUpVCID-->
         <scene sceneID="KaE-3B-qc8">
@@ -285,7 +286,25 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srp-rl-6W2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454" y="-205"/>
+            <point key="canvasLocation" x="3363.04347826087" y="-205.58035714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q6d-KB-5Dh">
+            <objects>
+                <navigationController storyboardIdentifier="LogInNavID" automaticallyAdjustsScrollViewInsets="NO" id="doN-YN-8Hb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dug-OK-4DA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="DbF-tM-blp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lJa-kp-Wie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802.8985507246377" y="53.571428571428569"/>
         </scene>
     </scenes>
     <resources>
