@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-3I-kvQ">
-                                <rect key="frame" x="0.0" y="79" width="1024" height="1267"/>
+                                <rect key="frame" x="0.0" y="135" width="1024" height="1211"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -25,7 +25,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XLB-3I-kvQ" secondAttribute="bottom" id="IZm-Od-zxt"/>
-                            <constraint firstItem="XLB-3I-kvQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="Juu-Qu-8KB"/>
+                            <constraint firstItem="XLB-3I-kvQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="135" id="Juu-Qu-8KB"/>
                             <constraint firstItem="XLB-3I-kvQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UCd-1O-rXu"/>
                             <constraint firstItem="XLB-3I-kvQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="l5p-J9-m4g"/>
                         </constraints>
