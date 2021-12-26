@@ -1,37 +1,32 @@
-//
-//  HomeViewController.swift
-//  reddit-clone
-//
-//  Created by Uiseop Eom on 2021/11/28.
-//
-
 import UIKit
 import Tabman
 import Pageboy
 
-class HomeViewController: TabmanViewController {
+class SearchResultViewController: TabmanViewController {
 
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var justTextLabel: UILabel!
     @IBOutlet weak var barView: UIView!
     
-    //set file name at nibName
+    //set file name at nibName, defined at Home floder
     let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
     
     //Tab bar libary
     private var viewControllers: Array<UIViewController> = []
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         //set button boarder
         searchButton.layer.cornerRadius = 5
         
-        let popularSortVC = UIStoryboard.init(name: "PopularSort", bundle: nil).instantiateViewController(withIdentifier: "PopularSortVCID") as! PopularSortViewController
-        let latestSortVC = UIStoryboard.init(name: "LatestSort", bundle: nil).instantiateViewController(withIdentifier: "LatestSortVCID") as! LatestSortViewController
-        viewControllers.append(popularSortVC)
-        viewControllers.append(latestSortVC)
+        let SearchPostVC = UIStoryboard.init(name: "SearchPost", bundle: nil).instantiateViewController(withIdentifier: "SearchPostVCID") as! SearchPostViewController
+        let SearchCommunityVC = UIStoryboard.init(name: "SearchCommunity", bundle: nil).instantiateViewController(withIdentifier: "SearchCommunityVCID") as! SearchCommunityViewController
+        viewControllers.append(SearchPostVC)
+        viewControllers.append(SearchCommunityVC)
         
         self.dataSource = self
         
@@ -53,16 +48,21 @@ class HomeViewController: TabmanViewController {
     }
     
     
-    @IBAction func searchButton(_ sender: Any) {
+    @IBAction func backButtonClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func searchButtonClick(_ sender: Any) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchVCID") as? SearchViewController else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
+        
     }
-    
 }
 
-extension HomeViewController: PageboyViewControllerDataSource, TMBarDataSource {
+extension SearchResultViewController: PageboyViewControllerDataSource, TMBarDataSource {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {

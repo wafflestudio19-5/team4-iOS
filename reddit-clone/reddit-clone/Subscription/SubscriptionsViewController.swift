@@ -36,12 +36,12 @@ class SubscriptionsViewController: TabmanViewController {
     }
     
     fileprivate func initVCs() {
-        let commuListVC = UIStoryboard.init(name: "CommuList", bundle: nil).instantiateViewController(withIdentifier: "CommuListVCID") as! CommuListViewController
+        //let commuListVC = UIStoryboard.init(name: "CommuList", bundle: nil).instantiateViewController(withIdentifier: "CommuListVCID") as! CommuListViewController
         
-        let customFeedVC = UIStoryboard.init(name: "CustomFeedList", bundle: nil).instantiateViewController(withIdentifier: "CustomFeedListVCID") as! CustomFeedListViewController
+        //let customFeedVC = UIStoryboard.init(name: "CustomFeedList", bundle: nil).instantiateViewController(withIdentifier: "CustomFeedListVCID") as! CustomFeedListViewController
         
-        self.viewControllers.append(commuListVC)
-        self.viewControllers.append(customFeedVC)
+        //self.viewControllers.append(commuListVC)
+        //self.viewControllers.append(customFeedVC)
     }
     
     // create bar
