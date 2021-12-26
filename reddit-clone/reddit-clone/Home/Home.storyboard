@@ -36,7 +36,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP9-zQ-BNO">
-                                <rect key="frame" x="108" y="44" width="233" height="31"/>
+                                <rect key="frame" x="80" y="44" width="233" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="zrQ-7b-qx2"/>
@@ -50,7 +50,7 @@
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="aP9-zQ-BNO" secondAttribute="bottom" constant="9" id="4qF-eo-sJW"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aP9-zQ-BNO" secondAttribute="trailing" constant="87" id="DTG-0v-eoD"/>
+                            <constraint firstItem="aP9-zQ-BNO" firstAttribute="leading" secondItem="xHM-aQ-GWq" secondAttribute="trailing" constant="15" id="6YC-kb-YIv"/>
                             <constraint firstItem="aP9-zQ-BNO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="44" id="FKR-sx-IaM"/>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="xHM-aQ-GWq" secondAttribute="bottom" constant="8" id="QHb-lz-EWP"/>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fJn-38-erq"/>
