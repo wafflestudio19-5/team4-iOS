@@ -9,10 +9,13 @@ import UIKit
 import Tabman
 import Pageboy
 
-class HomeViewController: TabmanViewController {
+class HomeViewController: TabmanViewController, LoginProtocol {
 
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var barView: UIView!
+    
+    var id: String?
+    var token: String?
     
     //set file name at nibName
     let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
@@ -58,6 +61,11 @@ class HomeViewController: TabmanViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
+    }
+    
+    func SendLoginData(_id: String, _token: String) {
+        id = _id
+        token = _token
     }
     
 }
