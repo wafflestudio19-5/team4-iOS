@@ -40,12 +40,15 @@ extension SignUpViewController {
     func networkRequest(postData: Data) {
         NetworkFunc.requestPost(url: "/api/v1/users/", sendData: postData) { (response, data) in
             DispatchQueue.main.async {
-                let resultData = self.jsonParsing(data: data)
-                if let token = response.value(forHTTPHeaderField: "Authentication") {
-                    print("token: " + token)
-                }
+                let resultData: SignUp_Result = self.jsonParsing(data: data) as! SignUp_Result
                 print(resultData ?? nil)
+                if let tokenData = response.value(forHTTPHeaderField: "Authentication") {
+                    print("token: " + tokenData)
+                    self.token = tokenData
+                    self.delegate?.SendLoginData(_id: resultData.username, _token: self.token!)
+                    self.dismiss(animated: true, completion: nil)
                 }
+            }
         }
         failure: {
             let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)

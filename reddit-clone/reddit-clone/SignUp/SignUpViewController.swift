@@ -17,6 +17,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var delegate: LoginProtocol? //login protocol
+    var token: String? //token
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
