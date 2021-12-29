@@ -22,8 +22,10 @@ extension LogInViewController {
                 if let tokenData = response.value(forHTTPHeaderField: "Authentication") {
                     print("token: " + tokenData)
                     self.token = tokenData
+                    self.delegate?.SendLoginData(_id: self.usernmTextField.text!, _token: self.token!)
+                    self.dismiss(animated: true, completion: nil)
                 }
-                }
+            }
         }
         failure: {
             let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)
