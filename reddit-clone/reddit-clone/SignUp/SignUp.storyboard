@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SignUpViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="SignUp_ViewController" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shS-rG-pVN">
-                                <rect key="frame" x="12" y="51" width="40" height="31"/>
+                                <rect key="frame" x="12" y="7" width="40" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="8oM-NR-wRA"/>
                                 </constraints>
@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaU-Jq-SOt">
-                                <rect key="frame" x="290" y="50" width="75" height="34.666666666666657"/>
+                                <rect key="frame" x="290" y="6.5" width="75" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="fbw-w7-ARd"/>
                                 </constraints>
@@ -42,11 +42,11 @@
                                     <action selector="logInBT:" destination="XWm-Ac-Nxq" eventType="touchUpInside" id="zTi-lf-Rj2"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qE-Cr-qxq">
-                                <rect key="frame" x="0.0" y="83" width="375" height="431"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qE-Cr-qxq">
+                                <rect key="frame" x="0.0" y="39" width="375" height="420"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZt-IO-wQX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="427"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4m-NW-K2k">
                                                 <rect key="frame" x="15" y="20" width="352" height="35"/>
@@ -139,14 +139,14 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applelogo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xLD-Fv-3za">
-                                                <rect key="frame" x="35" y="193.66666666666666" width="30" height="29.666666666666657"/>
+                                                <rect key="frame" x="35" y="194" width="30" height="29.5"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="5GD-tw-Jnz"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Google__G__Logo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="aX3-4h-WnZ">
-                                                <rect key="frame" x="35" y="137.33333333333334" width="30" height="29.333333333333343"/>
+                                                <rect key="frame" x="35" y="137.5" width="30" height="29"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                             </imageView>
                                         </subviews>
@@ -188,9 +188,9 @@
                                 <constraints>
                                     <constraint firstItem="KZt-IO-wQX" firstAttribute="leading" secondItem="Q74-5t-Ha7" secondAttribute="leading" id="9Kx-ub-cgg"/>
                                     <constraint firstItem="e4m-NW-K2k" firstAttribute="width" secondItem="8qE-Cr-qxq" secondAttribute="width" constant="-23" id="Lfv-pa-eFE"/>
-                                    <constraint firstItem="KZt-IO-wQX" firstAttribute="bottom" secondItem="Q74-5t-Ha7" secondAttribute="bottom" id="SVJ-bo-Gx0"/>
+                                    <constraint firstItem="KZt-IO-wQX" firstAttribute="bottom" secondItem="Q74-5t-Ha7" secondAttribute="bottom" constant="63" id="SVJ-bo-Gx0"/>
                                     <constraint firstAttribute="trailing" secondItem="KZt-IO-wQX" secondAttribute="trailing" id="o4a-3U-4z3"/>
-                                    <constraint firstAttribute="bottom" secondItem="KZt-IO-wQX" secondAttribute="bottom" id="pwE-Bk-niA"/>
+                                    <constraint firstAttribute="bottom" secondItem="KZt-IO-wQX" secondAttribute="bottom" constant="-7" id="pwE-Bk-niA"/>
                                     <constraint firstItem="KZt-IO-wQX" firstAttribute="top" secondItem="sub-uN-g0P" secondAttribute="top" id="uuA-to-RAD"/>
                                     <constraint firstItem="KZt-IO-wQX" firstAttribute="centerX" secondItem="8qE-Cr-qxq" secondAttribute="centerX" id="xq2-Ei-yI0"/>
                                 </constraints>
@@ -198,7 +198,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Q74-5t-Ha7"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-9g-tHa">
-                                <rect key="frame" x="12" y="738" width="351" height="40"/>
+                                <rect key="frame" x="12" y="627" width="351" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dcH-eN-WXC"/>
                                 </constraints>
@@ -213,7 +213,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reddit-Logomark-Color-Logo.wine" translatesAutoresizingMaskIntoConstraints="NO" id="X9e-PW-6LB">
-                                <rect key="frame" x="156" y="42" width="63" height="63"/>
+                                <rect key="frame" x="156" y="-2" width="63" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="e8x-jM-RXd"/>
                                     <constraint firstAttribute="width" constant="63" id="fA2-hh-pWC"/>
@@ -259,7 +259,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="XWm-Ac-Nxq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-7.2000000000000002" y="78.325123152709367"/>
+            <point key="canvasLocation" x="-7.2000000000000002" y="77.811094452773617"/>
         </scene>
     </scenes>
     <resources>
