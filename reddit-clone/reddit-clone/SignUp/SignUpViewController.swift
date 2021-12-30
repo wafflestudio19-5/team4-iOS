@@ -1,4 +1,5 @@
 import UIKit
+import Tabman
 
 class SignUpViewController: UIViewController {
     
@@ -15,6 +16,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    var delegate: LoginProtocol? //login protocol
+    var token: String? //token
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,5 +88,17 @@ extension SignUpViewController {
     
     @objc func keyboardWillHide(_ noti: NSNotification) {
             self.scrollView.frame.origin.y = self.view.safeAreaInsets.bottom
+    }
+    
+    
+    @IBAction func loginButtonTouch(_ sender: Any) {
+        if (emailTF.text == nil) {return}
+        if (usernameTF.text == nil) {return}
+        if (passwordTF.text == nil) {return}
+        
+        let datatest: SignUp_UserData = SignUp_UserData(email: emailTF.text!, username: usernameTF.text!, password: passwordTF.text!)
+        
+        let postData = jsonEncoding(param: datatest)
+        networkRequest(postData: postData!)
     }
 }

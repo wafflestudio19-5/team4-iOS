@@ -24,7 +24,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-vO-B0Q">
-                                <rect key="frame" x="94" y="44" width="233" height="31"/>
+                                <rect key="frame" x="80" y="44" width="233" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="Yhg-Eb-Xuf"/>
@@ -32,6 +32,9 @@
                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                                <connections>
+                                    <segue destination="REn-iD-w2p" kind="presentation" modalPresentationStyle="fullScreen" id="hln-Vm-ex4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-If-oOM">
                                 <rect key="frame" x="25" y="36" width="40" height="40"/>
@@ -49,8 +52,8 @@
                         <viewLayoutGuide key="safeArea" id="y1V-xN-klf"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
+                            <constraint firstItem="NKj-vO-B0Q" firstAttribute="leading" secondItem="i2N-If-oOM" secondAttribute="trailing" constant="15" id="ECU-Z2-AUX"/>
                             <constraint firstItem="i2N-If-oOM" firstAttribute="leading" secondItem="y1V-xN-klf" secondAttribute="leading" constant="25" id="EMV-Zg-4q1"/>
-                            <constraint firstItem="y1V-xN-klf" firstAttribute="trailing" secondItem="NKj-vO-B0Q" secondAttribute="trailing" constant="87" id="L0M-hO-ZFM"/>
                             <constraint firstItem="eoV-0V-usX" firstAttribute="centerX" secondItem="pzK-dq-EvC" secondAttribute="centerX" id="MCs-Rx-6d9"/>
                             <constraint firstItem="eoV-0V-usX" firstAttribute="top" secondItem="NKj-vO-B0Q" secondAttribute="bottom" constant="9" id="m0F-xC-2f2"/>
                             <constraint firstItem="eoV-0V-usX" firstAttribute="leading" secondItem="y1V-xN-klf" secondAttribute="leading" id="mvW-oc-hxb"/>
@@ -79,6 +82,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayI-VR-Ut0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1451" y="-307"/>
+        </scene>
+        <!--SearchVCID-->
+        <scene sceneID="ovH-NV-1Bh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="SearchVCID" id="REn-iD-w2p" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SJI-OU-TVt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WX6-KB-n2o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2679" y="-19"/>
         </scene>
     </scenes>
     <resources>

@@ -183,7 +183,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="XHZ-pW-2OG"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -231,6 +231,9 @@
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="tryLogin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DWj-7O-ZAc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
