@@ -42,6 +42,18 @@
                                     <action selector="logInBT:" destination="XWm-Ac-Nxq" eventType="touchUpInside" id="zTi-lf-Rj2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-9g-tHa">
+                                <rect key="frame" x="12" y="738" width="351" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dcH-eN-WXC"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Continue" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qE-Cr-qxq">
                                 <rect key="frame" x="0.0" y="83" width="375" height="431"/>
                                 <subviews>
@@ -197,18 +209,6 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="sub-uN-g0P"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Q74-5t-Ha7"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-9g-tHa">
-                                <rect key="frame" x="12" y="738" width="351" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="dcH-eN-WXC"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Continue" cornerStyle="capsule">
-                                    <backgroundConfiguration key="background"/>
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
-                                </buttonConfiguration>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reddit-Logomark-Color-Logo.wine" translatesAutoresizingMaskIntoConstraints="NO" id="X9e-PW-6LB">
                                 <rect key="frame" x="156" y="42" width="63" height="63"/>
                                 <constraints>

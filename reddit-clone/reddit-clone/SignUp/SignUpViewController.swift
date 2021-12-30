@@ -30,9 +30,59 @@ class SignUpViewController: UIViewController {
         emailTF.addLeftPadding()
         usernameTF.addLeftPadding()
         passwordTF.addLeftPadding()
+        
+        //set touch recognizer
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            self.addKeyboardNotifications()
+            
+        }
+        override func viewWillDisappear(_ animated: Bool) {
+            self.removeKeyboardNotifications()
+        }
+    
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+            self.view.endEditing(true)
+        }
+}
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+extension SignUpViewController {
+    // Adding Notification
+    func addKeyboardNotifications(){
+        // install handler that notifies the app when keyboard showup
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        // install handler that notifies the app when keyboard goes down
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    // Removing Notification
+    func removeKeyboardNotifications(){
+        // remove handler that notifies the app when keyboard showup
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        // remove handler that notifies the app when keyboard goes down
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+    }
+    
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+            self.scrollView.frame.origin.y = self.view.safeAreaInsets.bottom
     }
 }
