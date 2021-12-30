@@ -300,8 +300,9 @@ extension LogInViewController {
             print(self.footerView.frame.origin.y)
             print(self.view.frame.height - self.continueButton.frame.origin.y)
             // TODO: self.footerView.frame.origin.y shows negative ( -13 ) WTF..?
-            if self.view.frame.height - self.footerView.frame.origin.y < 300 {
+            if self.view.frame.height - self.footerView.frame.origin.y < 150 {
                 self.footerView.frame.origin.y -= (keyboardHeight - self.view.safeAreaInsets.bottom)
+                self.mainView.frame.origin.y -= 100
             }
             print(self.footerView.frame.origin.y)
         }
@@ -314,6 +315,7 @@ extension LogInViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.footerView.frame.origin.y += (keyboardHeight - self.view.safeAreaInsets.bottom)
+            self.mainView.frame.origin.y += 100
         }
     }
 }
