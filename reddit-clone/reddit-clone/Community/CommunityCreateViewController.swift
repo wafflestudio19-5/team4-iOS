@@ -20,6 +20,8 @@ class CommunityCreateViewController: UIViewController {
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var token: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,14 +31,16 @@ class CommunityCreateViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Click create button
+    @IBAction func createButtonClicked(_ sender: Any) {
+        if communityNameTextField.text == nil {return}
+        if descriptionTextField.text == nil {return}
+        self.token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDA5NjMyNzEsImlhdCI6MTY0MDk1MjQ3MSwiZW1haWwiOiJ0ZXN0QG5hdmVyLmNvbSJ9.mGirK0NLZQlUZhlEiv8VBb39enQoTDj4-W2qpnj-Rk4"
+        
+        let dataset: Community_SendData = Community_SendData(name: communityNameTextField.text!, description: descriptionTextField.text!, topics: ["test"])
+        let postData = jsonEncoding(param: dataset)
+        
+        networkRequest(postData: postData!)
+        
     }
-    */
-
 }
