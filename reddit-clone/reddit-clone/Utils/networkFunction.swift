@@ -98,7 +98,7 @@ struct NetworkFunc {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         print(accessToken)
-        request.addValue(accessToken, forHTTPHeaderField: "Authorization")
+        request.addValue(accessToken, forHTTPHeaderField: "Authentication")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = sendData
         

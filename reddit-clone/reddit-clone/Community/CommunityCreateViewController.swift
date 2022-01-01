@@ -35,7 +35,8 @@ class CommunityCreateViewController: UIViewController {
     @IBAction func createButtonClicked(_ sender: Any) {
         if communityNameTextField.text == nil {return}
         if descriptionTextField.text == nil {return}
-        self.token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDA5NjMyNzEsImlhdCI6MTY0MDk1MjQ3MSwiZW1haWwiOiJ0ZXN0QG5hdmVyLmNvbSJ9.mGirK0NLZQlUZhlEiv8VBb39enQoTDj4-W2qpnj-Rk4"
+        //self.token = "token"
+        //get token and move it
         
         let dataset: Community_SendData = Community_SendData(name: communityNameTextField.text!, description: descriptionTextField.text!, topics: ["test"])
         let postData = jsonEncoding(param: dataset)
