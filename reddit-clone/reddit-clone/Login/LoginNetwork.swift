@@ -22,7 +22,8 @@ extension LogInViewController {
                 if let tokenData = response.value(forHTTPHeaderField: "Authentication") {
                     print("token: " + tokenData)
                     self.token = tokenData
-                    self.delegate?.SendLoginData(_id: self.usernmTextField.text!, _token: self.token!)
+                    let defaults = UserDefaults.standard
+                    defaults.set(tokenData as String, forKey: "token")
                     self.dismiss(animated: true, completion: nil)
                 }
             }
