@@ -255,9 +255,5 @@ class LogInViewController: UIViewController {
         let dataWillPost: Login_UserData = Login_UserData(email: usernmTextField.text!, password: pwTextField.text!)
         let postData = jsonEncoding(param: dataWillPost)
         networkRequest(postData: postData!)
-        //print(self.token)
-        //if self.token == nil {return}
-        //self.delegate?.SendLoginData(_id: self.usernmTextField.text!, _token: self.token!)
-        //self.dismiss(animated: true, completion: nil)
     }
 }

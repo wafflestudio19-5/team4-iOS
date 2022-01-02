@@ -23,12 +23,15 @@ class HomeViewController: TabmanViewController, LoginProtocol {
     //Tab bar libary
     private var viewControllers: Array<UIViewController> = []
     
+    //UserDefaluts
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        //set button boarder
+                
+        //MARK: - set button boarder
         searchButton.layer.cornerRadius = 5
         
         let popularSortVC = UIStoryboard.init(name: "PopularSort", bundle: nil).instantiateViewController(withIdentifier: "PopularSortVCID") as! PopularSortViewController
@@ -38,7 +41,7 @@ class HomeViewController: TabmanViewController, LoginProtocol {
         
         self.dataSource = self
         
-        //create bar
+        //MARK: - create bar
         let bar = TMBar.ButtonBar()
         bar.backgroundView.style = .blur(style: .regular)
         bar.layout.alignment = .centerDistributed
