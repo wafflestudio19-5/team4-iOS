@@ -10,4 +10,7 @@ target 'reddit-clone' do
   pod 'SideMenu', '~> 6.0'
   pod 'Tabman', '~> 2.11'
   pod 'IQKeyboardManagerSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 end
