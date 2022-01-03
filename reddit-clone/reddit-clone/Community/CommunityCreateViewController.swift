@@ -21,6 +21,7 @@ class CommunityCreateViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var token: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,10 @@ class CommunityCreateViewController: UIViewController {
     @IBAction func createButtonClicked(_ sender: Any) {
         if communityNameTextField.text == nil {return}
         if descriptionTextField.text == nil {return}
-        //self.token = "token"
+        self.token = defaults.object(forKey: "token") as? String
         //get token and move it
         
-        let dataset: Community_SendData = Community_SendData(name: communityNameTextField.text!, description: descriptionTextField.text!, topics: ["test"])
+        let dataset: Community_SendData = Community_SendData(name: communityNameTextField.text!, description: descriptionTextField.text!, topics: ["Programming"])
         let postData = jsonEncoding(param: dataset)
         
         networkRequest(postData: postData!)

@@ -23,7 +23,7 @@ extension CommunityCreateViewController {
                 //self.dismiss(animated: true, completion: nil)
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "CommunityHomeVCID") as? CommunityHomeViewController else {return}
                 self.present(vc, animated: true, completion: nil)
-                self.dismiss(animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
             }
         }
         failure: {
