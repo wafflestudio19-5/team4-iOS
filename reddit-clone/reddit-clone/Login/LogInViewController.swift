@@ -256,4 +256,7 @@ class LogInViewController: UIViewController {
         let postData = jsonEncoding(param: dataWillPost)
         networkRequest(postData: postData!)
     }
+    @IBAction func dimissPage(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
