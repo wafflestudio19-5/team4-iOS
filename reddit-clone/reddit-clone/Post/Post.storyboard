@@ -129,7 +129,7 @@
                                         <rect key="frame" x="0.0" y="236.5" width="414" height="537.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="209" id="hdN-IY-fRe" customClass="CommentTableViewCell" customModule="reddit_clone" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="commentCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="209" id="hdN-IY-fRe" customClass="CommentTableViewCell" customModule="reddit_clone" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="209"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdN-IY-fRe" id="ioE-jt-8HV">
