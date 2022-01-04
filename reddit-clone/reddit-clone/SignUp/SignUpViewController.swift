@@ -54,6 +54,11 @@ class SignUpViewController: UIViewController {
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
             self.view.endEditing(true)
         }
+    
+    
+    @IBAction func dismissButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SignUpViewController {

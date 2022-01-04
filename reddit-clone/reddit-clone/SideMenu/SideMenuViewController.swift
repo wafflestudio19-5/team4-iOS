@@ -24,6 +24,7 @@ class SideMenuViewController: UIViewController {
         if userData.object(forKey: "token") != nil {
             buttonOne.setTitle("Log out", for: .normal)
             buttonTwo.setTitle("Profile", for: .normal)
+            loginLabel.text = "u/UserName"
             
         }
         else {
@@ -53,7 +54,10 @@ class SideMenuViewController: UIViewController {
     
     @IBAction func buttonTwoClicked(_ sender: Any) {
         if (userData.object(forKey: "token")) != nil {
-            
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileMainViewControllerVCID") else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
         }
         else {
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVCID") else {return}
