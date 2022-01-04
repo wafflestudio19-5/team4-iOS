@@ -26,6 +26,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=""/>
                                 <connections>
                                     <action selector="cancelBT:" destination="XWm-Ac-Nxq" eventType="touchUpInside" id="JJ6-wj-tWM"/>
+                                    <action selector="dismissButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CB2-zN-fSs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaU-Jq-SOt">

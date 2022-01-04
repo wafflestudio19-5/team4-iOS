@@ -164,6 +164,14 @@
             </objects>
             <point key="canvasLocation" x="670" y="-395"/>
         </scene>
+        <!--ProfileMainViewControllerVCID-->
+        <scene sceneID="RIe-HG-m3j">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ProfileMainViewControllerVCID" storyboardName="ProfileMain" referencedIdentifier="ProfileMainViewControllerVCID" id="Mzs-ac-jqe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fj2-Fr-Yot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829" y="-347"/>
+        </scene>
     </scenes>
     <resources>
         <image name="reddit-logo" width="1200" height="800"/>
