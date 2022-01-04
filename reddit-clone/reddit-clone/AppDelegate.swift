@@ -13,14 +13,21 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
-    public static var user: GIDGoogleUser!
+    public static var googleUser: GIDGoogleUser!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //MARK: - IQKeyboard module
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
+        //MARK: -  reset token and login
+        if UserDefaults.standard.object(forKey: "token") != nil {
+            UserDefaults.standard.removeObject(forKey: "token")
+        }
+        
+        //MARK: - apply google login
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -64,7 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             else    {
                 print("Login Successful")
-                AppDelegate.user = user
+                AppDelegate.googleUser = user
+                print(user.profile?.email)
+                print(user.profile?.name)
+                let idToken = authentication.idToken
+                print(idToken)
             }
         }
     }
