@@ -1,4 +1,5 @@
 import UIKit
+import Tabman
 
 class SignUpViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var delegate: LoginProtocol? //login protocol
+    var token: String? //token
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,9 +34,76 @@ class SignUpViewController: UIViewController {
         emailTF.addLeftPadding()
         usernameTF.addLeftPadding()
         passwordTF.addLeftPadding()
+        
+        //set touch recognizer
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            self.addKeyboardNotifications()
+            
+        }
+        override func viewWillDisappear(_ animated: Bool) {
+            self.removeKeyboardNotifications()
+        }
+    
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+            self.view.endEditing(true)
+        }
+    
+    
+    @IBAction func dismissButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+extension SignUpViewController {
+    // Adding Notification
+    func addKeyboardNotifications(){
+        // install handler that notifies the app when keyboard showup
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        // install handler that notifies the app when keyboard goes down
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    // Removing Notification
+    func removeKeyboardNotifications(){
+        // remove handler that notifies the app when keyboard showup
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        // remove handler that notifies the app when keyboard goes down
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+    }
+    
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+            self.scrollView.frame.origin.y = self.view.safeAreaInsets.bottom
+    }
+    
+    
+    @IBAction func loginButtonTouch(_ sender: Any) {
+        if (emailTF.text == nil) {return}
+        if (usernameTF.text == nil) {return}
+        if (passwordTF.text == nil) {return}
+        
+        let datatest: SignUp_UserData = SignUp_UserData(email: emailTF.text!, username: usernameTF.text!, password: passwordTF.text!)
+        
+        let postData = jsonEncoding(param: datatest)
+        networkRequest(postData: postData!)
     }
 }

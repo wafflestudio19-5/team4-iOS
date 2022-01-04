@@ -36,7 +36,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP9-zQ-BNO">
-                                <rect key="frame" x="108" y="44" width="233" height="31"/>
+                                <rect key="frame" x="80" y="44" width="233" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="zrQ-7b-qx2"/>
@@ -44,13 +44,16 @@
                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search"/>
+                                <connections>
+                                    <segue destination="wKo-fx-tcw" kind="presentation" modalPresentationStyle="fullScreen" id="gLd-Nf-Dt0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="aP9-zQ-BNO" secondAttribute="bottom" constant="9" id="4qF-eo-sJW"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aP9-zQ-BNO" secondAttribute="trailing" constant="87" id="DTG-0v-eoD"/>
+                            <constraint firstItem="aP9-zQ-BNO" firstAttribute="leading" secondItem="xHM-aQ-GWq" secondAttribute="trailing" constant="15" id="6YC-kb-YIv"/>
                             <constraint firstItem="aP9-zQ-BNO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="44" id="FKR-sx-IaM"/>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="top" secondItem="xHM-aQ-GWq" secondAttribute="bottom" constant="8" id="QHb-lz-EWP"/>
                             <constraint firstItem="f56-n2-BSD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fJn-38-erq"/>
@@ -79,6 +82,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9if-TF-EWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1157" y="-215"/>
+        </scene>
+        <!--SearchVCID-->
+        <scene sceneID="7mf-K6-jBP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="SearchVCID" id="wKo-fx-tcw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mt9-sO-IJj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2197" y="207"/>
         </scene>
     </scenes>
     <resources>

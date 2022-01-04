@@ -30,6 +30,9 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var continueButton: UIButton!
     
+    var delegate: LoginProtocol? //login protocol
+    var token: String? //token
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setHeaderView()
@@ -38,6 +41,7 @@ class LogInViewController: UIViewController {
         
     }
     
+    /*
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
         
@@ -45,7 +49,7 @@ class LogInViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
     }
-
+     */
     // a function to make sure the interface keyboards go down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -242,62 +246,14 @@ class LogInViewController: UIViewController {
 
         present(findpwVC, animated: true)
     }
-}
-
-
-// MARK: - Keyboard Notification
-extension LogInViewController {
-    // Adding Notification
-    func addKeyboardNotifications(){
-        // install handler that notifies the app when keyboard showup
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillShow(_:)),
-                                               name: UIResponder.keyboardWillShowNotification ,
-                                               object: nil)
-        // install handler that notifies the app when keyboard goes down
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillHide(_:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
     
-    // Removing Notification
-    func removeKeyboardNotifications(){
-        // remove handler that notifies the app when keyboard showup
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillShowNotification,
-                                                  object: nil)
-        // remove handler that notifies the app when keyboard goes down
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillHideNotification,
-                                                  object: nil)
-    }
     
-    @objc func keyboardWillShow(_ noti: NSNotification) {
-        // Move the view up
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            // DEBUG: Delete after review
-            print(self.view.frame.height)
-            print(self.footerView.frame.origin.y)
-            print(self.view.frame.height - self.continueButton.frame.origin.y)
-            // TODO: self.footerView.frame.origin.y shows negative ( -13 ) WTF..?
-            if self.view.frame.height - self.footerView.frame.origin.y < 300 {
-                self.footerView.frame.origin.y -= (keyboardHeight - self.view.safeAreaInsets.bottom)
-            }
-            print(self.footerView.frame.origin.y)
-        }
+    @IBAction func tryLogin(_ sender: Any) {
+        if (usernmTextField.text == nil) {return}
+        if (pwTextField.text == nil) {return}
         
-    }
-    
-    @objc func keyboardWillHide(_ noti: NSNotification) {
-        // Move the view up
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            self.footerView.frame.origin.y += (keyboardHeight - self.view.safeAreaInsets.bottom)
-        }
+        let dataWillPost: Login_UserData = Login_UserData(email: usernmTextField.text!, password: pwTextField.text!)
+        let postData = jsonEncoding(param: dataWillPost)
+        networkRequest(postData: postData!)
     }
 }
-
