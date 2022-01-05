@@ -26,6 +26,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="68" height="56"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="dimissPage:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l6O-my-7IE"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJL-pp-Set">
                                                 <rect key="frame" x="83" y="0.0" width="50" height="56"/>

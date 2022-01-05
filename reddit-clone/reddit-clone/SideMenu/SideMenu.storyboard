@@ -170,7 +170,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="ProfileMainViewControllerVCID" storyboardName="ProfileMain" referencedIdentifier="ProfileMainViewControllerVCID" id="Mzs-ac-jqe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fj2-Fr-Yot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="829" y="-347"/>
+            <point key="canvasLocation" x="899" y="-344"/>
         </scene>
     </scenes>
     <resources>
