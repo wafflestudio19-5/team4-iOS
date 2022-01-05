@@ -50,13 +50,9 @@ class LatestSortViewController: UIViewController {
         let index = postDataList?.count
         
         //loading data
-        DispatchQueue.main.async() {
-            //self.postDataList.append(contentsOf: data)
-            self.isPaging = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.postTableView.reloadData()
             }
-        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
