@@ -12,7 +12,11 @@ class PostCreationViewController: UIViewController {
     @IBOutlet weak var cancelBT: UIButton!
     @IBOutlet weak var proceedBT: UIButton!
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var communityBT: UIButton!
+    
+    @IBOutlet weak var titleTextField: UITextView!
+    @IBOutlet weak var bodyTextField: UITextView!
     
     @IBOutlet weak var inputTypes: UIStackView!
     @IBOutlet weak var guideBT: UIButton!
@@ -21,6 +25,7 @@ class PostCreationViewController: UIViewController {
         super.viewDidLoad()
 
         setHeaderView()
+        //setMainView()
         setInputTypeView()
         // Do any additional setup after loading the view.
     }
@@ -36,7 +41,10 @@ class PostCreationViewController: UIViewController {
         cancelBT.setImage(cancelImage, for: .normal)
         cancelBT.tintColor = .systemGray
         
+        communityBT.addTarget(self, action: #selector(moveToCommunitySelection), for: .touchUpInside)
         
+        proceedBT.setTitle("Next", for: .normal)
+        guideBT.setTitle("Rules", for: .normal)
     }
     
     fileprivate func setInputTypeView() {
@@ -50,6 +58,20 @@ class PostCreationViewController: UIViewController {
         NSLayoutConstraint.activate(inputTypesViewConstraints)
     }
     
+    fileprivate func setMainView() {
+        mainView.backgroundColor = .red
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
+        titleTextField.topAnchor.constraint(equalTo: communityBT.bottomAnchor, constant: 100).isActive = true
+        titleTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        print("====================================", titleTextField.frame.origin.y)
+    }
+    
+    @objc
+    func moveToCommunitySelection() {
+        let viewController = PostToCommunityViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true)
+    }
 
     /*
     // MARK: - Navigation
