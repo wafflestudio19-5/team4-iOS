@@ -9,6 +9,9 @@ import UIKit
 
 class PostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    
+    @IBOutlet weak var dismissButton: UIButton!
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var subredditNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -50,5 +53,10 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
         
         return cell
+    }
+    
+    
+    @IBAction func dismissButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
