@@ -43,7 +43,6 @@ class LogInViewController: UIViewController {
         appleAuthButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
     }
     
-    /*
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
         
@@ -51,7 +50,7 @@ class LogInViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
     }
-     */
+    
     // a function to make sure the interface keyboards go down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -336,3 +335,53 @@ extension LogInViewController: ASAuthorizationControllerPresentationContextProvi
     
 }
 
+// MARK: - Keyboard Notification
+extension LogInViewController {
+    // Adding Notification
+    func addKeyboardNotifications(){
+        // install handler that notifies the app when keyboard showup
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        // install handler that notifies the app when keyboard goes down
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    // Removing Notification
+    func removeKeyboardNotifications(){
+        // remove handler that notifies the app when keyboard showup
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        // remove handler that notifies the app when keyboard goes down
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+        // Move the view up
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            // TODO: self.footerView.frame.origin.y shows negative ( -13 ) WTF..?
+            if self.view.frame.height - self.footerView.frame.origin.y < 300 {
+                self.footerView.frame.origin.y -= (keyboardHeight - self.view.safeAreaInsets.bottom)
+            }
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+        // Move the view up
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.footerView.frame.origin.y += (keyboardHeight - self.view.safeAreaInsets.bottom)
+        }
+    }
+}
