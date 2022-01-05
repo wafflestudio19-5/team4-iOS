@@ -12,7 +12,7 @@ class PopularSortViewController: UIViewController {
     
     @IBOutlet weak var postTableView: UITableView!
     
-    var postDataList: [PostGetData]?
+    var postDataList: [PostGetData] = []
     
     let defaults = UserDefaults.standard
     
@@ -29,8 +29,11 @@ class PopularSortViewController: UIViewController {
         postTableView.dataSource = self
         postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
         super.viewDidLoad()
+        let testData = PostGetData(id: 0, userId: 1, title: "test", text: "Test Test", images: [], numUpVotes: 0, numDownVotes: 0)
+        print(testData)
+        self.postDataList.append(testData)
+        print(self.postDataList[0])
         paging()
-
     }
     
     
@@ -48,7 +51,7 @@ class PopularSortViewController: UIViewController {
     
     //MARK: - pagination
     func paging() {
-        let index = postDataList?.count
+        let index = postDataList.count
         
         //loading data
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -80,34 +83,18 @@ class PopularSortViewController: UIViewController {
 }
 
  extension PopularSortViewController : UITableViewDelegate, UITableViewDataSource {
-     
-    func numberOfSections(in tableView: UITableView) -> Int {
-            return 2
-        }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            if postDataList == nil {return 0}
-            return postDataList!.count
-        }
-        else if section == 1 && isPaging && hasNextPage {
-            return 1
-        }
-        return 0
+         if self.postDataList == nil {return 0}
+         return self.postDataList.count
      }
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
-            cell.titleLabel.text = postDataList?[indexPath.row].title
-            cell.postId = postDataList?[indexPath.row].id ?? nil
-            return cell
-        }
-        
-        else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath) as? LoadingTableViewCell else { return UITableViewCell() }
+        guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
+        cell.titleLabel.text = postDataList[indexPath.row].title
+         cell.postDataLabel.text = postDataList[indexPath.row].text
+        cell.postId = postDataList[indexPath.row].id ?? nil
         return cell
-        }
      }
      
  }

@@ -2,18 +2,15 @@
 //  LoadingTableViewCell.swift
 //  reddit-clone
 //
-//  Created by Minnie on 2022/01/05.
+//  Created by MinWoo Park on 2022/01/05.
 //
 
 import UIKit
 
 class LoadingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        loadingIndicator.startAnimating()
         // Initialization code
     }
 
@@ -22,4 +19,5 @@ class LoadingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 }

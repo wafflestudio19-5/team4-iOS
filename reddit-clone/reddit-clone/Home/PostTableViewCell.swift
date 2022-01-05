@@ -16,6 +16,7 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleImageView: UILabel!
+    @IBOutlet weak var postDataLabel: UILabel!
     
     var postId: Int?
     
