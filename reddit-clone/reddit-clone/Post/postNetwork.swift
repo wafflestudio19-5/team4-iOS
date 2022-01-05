@@ -33,8 +33,6 @@ extension PostViewController {
                 self.voteUpNumLabel.text = String(upNum!)
                 self.voteDownNumLabel.text = String(downNum!)
                 //MARK: - set postHeight
-                let postDataSize = postDataLabel.sizeThatFits(CGSize(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude))
-                postDataLabel.frame.size = postDataSize
             }
         }
         failure: {
