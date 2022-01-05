@@ -9,6 +9,16 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var subRedditLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleImageView: UILabel!
+    
+    var postId: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
