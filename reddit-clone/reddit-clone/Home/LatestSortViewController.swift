@@ -98,9 +98,10 @@ class LatestSortViewController: UIViewController {
      }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVCID") else {return}
+         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVCID") as? PostViewController else {return}
          vc.modalPresentationStyle = .fullScreen
          vc.modalTransitionStyle = .crossDissolve
+         vc.postNum = indexPath.row
          self.present(vc, animated: true, completion: nil)
      }
  }

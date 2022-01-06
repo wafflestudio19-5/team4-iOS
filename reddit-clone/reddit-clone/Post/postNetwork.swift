@@ -22,7 +22,8 @@ extension PostViewController {
     
     func networkRequest(_token: String?) {
         if _token == nil {return}
-        NetworkFunc.requestGetWithToken(url: "/api/v1/posts/1/", accessToken: _token!) { (response, data) in
+        if postNum == nil {return}
+        NetworkFunc.requestGetWithToken(url: "/api/v1/posts/" + String(postNum! + 1) + "/", accessToken: _token!) { (response, data) in
             DispatchQueue.main.async {
                 print("Get community data success")
                 let returnData = self.jsonDecoding(_data: data)
