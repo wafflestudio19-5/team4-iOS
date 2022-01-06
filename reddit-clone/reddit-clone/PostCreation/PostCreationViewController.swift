@@ -21,9 +21,12 @@ class PostCreationViewController: UIViewController {
     @IBOutlet weak var inputTypes: UIStackView!
     @IBOutlet weak var guideBT: UIButton!
     
+    let defaults = UserDefaults.standard
+    var token: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setHeaderView()
         //setMainView()
         setInputTypeView()
@@ -72,7 +75,18 @@ class PostCreationViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
     }
-
+    
+    
+    @IBAction func proceedButtonClicked(_ sender: Any) {
+        self.token = defaults.object(forKey: "token") as? String
+        if titleTextField.text == nil {return}
+        if bodyTextField.text == nil {return}
+        let sendDataTemp = PostSendData_text(title: titleTextField.text, text: bodyTextField.text, community: "test")
+        guard let sendData = self.jsonEncodingText(param: sendDataTemp) else {return}
+        self.networkRequestText(_data: sendData, _token: token)
+        
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -25,23 +25,26 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var voteDownNumLabel: UILabel!
     
     @IBOutlet weak var commentTableView: UITableView!
-    var token: String?
     
+    var token: String?
     var defaults = UserDefaults.standard
+    
+    var postNum: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //MARK: - Get Token
+        //MARK: - set postHeight
+        let postDataSize = postDataLabel.sizeThatFits(CGSize(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude))
+        postDataLabel.frame.size = postDataSize
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //MARK: - Get Token and network request
         token = defaults.object(forKey: "token") as? String
         DispatchQueue.main.async {
             self.networkRequest(_token: self.token)
         }
-        
-        //MARK: - set postHeight
-        let postDataSize = postDataLabel.sizeThatFits(CGSize(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude))
-        postDataLabel.frame.size = postDataSize
-        
     }
     
     //MARK: - tableview setting
