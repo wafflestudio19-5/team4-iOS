@@ -49,6 +49,12 @@ class LogInViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
+        print(presentingViewController)
+        if let originalVC = presentingViewController as? HomeViewController {
+            DispatchQueue.main.async {
+                originalVC.reloadData()
+            }
+        }
     }
     
     // a function to make sure the interface keyboards go down

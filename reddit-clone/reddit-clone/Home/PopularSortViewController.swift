@@ -29,10 +29,15 @@ class PopularSortViewController: UIViewController {
         postTableView.dataSource = self
         postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
         super.viewDidLoad()
-
-        paging()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let token = defaults.object(forKey: "token")
+        if (token != nil) {
+            networkRequest(_token: token as? String)
+        }
+    }
     
     /*
       func tableView(_ tableView: UITableView, rowForHeightAt indexPath: IndexPath) -> CGFloat {
@@ -48,11 +53,6 @@ class PopularSortViewController: UIViewController {
     
     //MARK: - pagination
     func paging() {
-        let testData = PostGetData(id: 0, userId: 1, title: "test", text: "Test Test", images: [], numUpVotes: 0, numDownVotes: 0)
-        for i in 1...10 {
-            self.postDataList.append(testData)
-        }
-        //loading data
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.postTableView.reloadData()
                 self.isPaging = false
@@ -92,7 +92,7 @@ class PopularSortViewController: UIViewController {
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
-        cell.titleLabel.text = postDataList[indexPath.row].title
+         cell.titleLabel.text = postDataList[indexPath.row].title
          cell.postDataLabel.text = postDataList[indexPath.row].text
          cell.postId = postDataList[indexPath.row].id
         return cell
