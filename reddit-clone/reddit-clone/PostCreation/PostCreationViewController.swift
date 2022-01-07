@@ -21,6 +21,8 @@ class PostCreationViewController: UIViewController {
     @IBOutlet weak var inputTypes: UIStackView!
     @IBOutlet weak var guideBT: UIButton!
     
+    var communityName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

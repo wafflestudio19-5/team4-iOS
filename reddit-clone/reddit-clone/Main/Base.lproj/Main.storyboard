@@ -19,7 +19,7 @@
                     <connections>
                         <segue destination="j4A-AU-ohM" kind="relationship" relationship="viewControllers" id="mn0-ju-xae"/>
                         <segue destination="Qlv-1g-lFv" kind="relationship" relationship="viewControllers" id="0qs-33-Qaf"/>
-                        <segue destination="9q0-1Z-Azk" kind="relationship" relationship="viewControllers" id="6lw-uz-zYW"/>
+                        <segue destination="9q0-1Z-Azk" kind="relationship" relationship="viewControllers" destinationCreationSelector="createPostAction:" id="6lw-uz-zYW"/>
                         <segue destination="EKi-QV-ell" kind="relationship" relationship="viewControllers" id="QQd-kS-0EO"/>
                         <segue destination="WjT-mL-Qy5" kind="relationship" relationship="viewControllers" id="SUd-BV-sFm"/>
                     </connections>
@@ -56,7 +56,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gw-Tq-rWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="27"/>
+            <point key="canvasLocation" x="936" y="78"/>
         </scene>
         <!--ChatNavID-->
         <scene sceneID="2H8-Eq-900">
