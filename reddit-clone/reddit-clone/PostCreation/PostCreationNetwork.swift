@@ -44,7 +44,9 @@ extension PostCreationViewController {
         NetworkFunc.requestPostWithToken(url: "/api/v1/posts/", sendData: data, accessToken: token!) { (response, data) in
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Success", message: "post create success", preferredStyle: UIAlertController.Style.alert)
-                let completeAction = UIAlertAction(title: "OK", style: .default)
+                let completeAction = UIAlertAction(title: "OK", style: .default, handler: {_ in
+                    self.dismissBTpressed()
+                })
                 alert.addAction(completeAction)
                 DispatchQueue.main.async {
                     self.present(alert, animated: true, completion: nil)
