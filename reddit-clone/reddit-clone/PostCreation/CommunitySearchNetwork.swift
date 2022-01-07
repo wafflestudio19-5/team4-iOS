@@ -18,7 +18,7 @@ struct Community: Codable {
 }
 
 struct CommunityList: Codable {
-    let results: [Community]
+    let content: [Community]
 }
 
 
@@ -42,9 +42,9 @@ extension PostToCommunityViewController {
                 print("Get Community List success")
                 let returnData = self.jsonDecoding(_data: data)
                 print(returnData)
-                if (returnData?.results.count != 0) {
-                    for i in 0 ..< (returnData?.results.count)! {
-                        self.communityList.append((returnData?.results[i])!)
+                if (returnData?.content.count != 0) {
+                    for i in 0 ..< (returnData?.content.count)! {
+                        self.communityList.append((returnData?.content[i])!)
                     }
                 }
                 self.paging()
@@ -66,11 +66,15 @@ extension NetworkFunc {
         
         let ip = "54.180.132.95"
         
-        let url = "http://" + ip + "/api/v1/Communities/"
+        let url = "http://" + ip + "/api/v1/communities/"
         var components = URLComponents(string: url)
         
         if lastCommunityID != 0 {
-            let lastCommunityIndex = URLQueryItem(name: "lastPostId", value: String(lastCommunityID + 1))
+            let lastCommunityIndex = URLQueryItem(name: "lastCommunityId", value: String(lastCommunityID + 1))
+            let size = URLQueryItem(name: "size", value: String(30))
+            components?.queryItems = [lastCommunityIndex, size]
+        } else {
+            let lastCommunityIndex = URLQueryItem(name: "lastCommunityId", value: String(1))
             let size = URLQueryItem(name: "size", value: String(30))
             components?.queryItems = [lastCommunityIndex, size]
         }
@@ -78,6 +82,8 @@ extension NetworkFunc {
         guard let newURL = components?.url else {
             return
         }
+        print("===========")
+        print(newURL)
         
         var request = URLRequest(url: newURL)
         request.httpMethod = "GET"

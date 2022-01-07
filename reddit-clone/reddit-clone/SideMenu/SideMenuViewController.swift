@@ -36,7 +36,7 @@ class SideMenuViewController: UIViewController {
         if userData.object(forKey: "token") != nil {
             buttonOne.setTitle("Log out", for: .normal)
             buttonTwo.setTitle("Profile", for: .normal)
-            loginLabel.text = "u/UserName"
+            //loginLabel.text = "u/\()"
             buttonsContainer.insertArrangedSubview(communityCreateBT, at: 4)
         }
         else {

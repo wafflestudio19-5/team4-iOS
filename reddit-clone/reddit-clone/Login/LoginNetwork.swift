@@ -19,11 +19,13 @@ extension LogInViewController {
         NetworkFunc.requestPost(url: "/api/v1/users/signin/", sendData: postData) { (response, data) in
             DispatchQueue.main.async {
                 print("Login Sucess")
+                print("response")
                 if let tokenData = response.value(forHTTPHeaderField: "Authentication") {
                     print("token: " + tokenData)
                     self.token = tokenData
                     let defaults = UserDefaults.standard
                     defaults.set(tokenData as String, forKey: "token")
+                    defaults.set(tokenData as String, forKey: "username")
                     self.dismiss(animated: true, completion: nil)
                 }
             }
