@@ -78,6 +78,11 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         mainContainer.addArrangedSubview(footer)
         setLayout()
         commentBT.addTarget(self, action: #selector(commentBTClicked), for: .touchUpInside)
+        
+        
+        commentTableView.delegate = self
+        commentTableView.dataSource = self
+        
     }
     
     func setLayout() {
@@ -85,11 +90,12 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         commentBT.widthAnchor.constraint(equalToConstant: 100).isActive = true
         footer.addArrangedSubview(textField)
         footer.addArrangedSubview(commentBT)
+        
     }
     
     func sortComments() {
-        var parent: Comment? = nil
-        var pointer: Int = 0
+        //var parent: Comment? = nil
+        //var pointer: Int = 0
         var commentDict: [ Int: [Comment] ] = [:]
         
         for i in 0 ..< commentData.count {
@@ -106,25 +112,28 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         //MARK: - Get Token and network request
+        let nib = UINib(nibName: "CommentsTableViewCell", bundle: nil)
+        commentTableView.register(nib, forCellReuseIdentifier: "CommentsTableViewCell")
+
         token = defaults.object(forKey: "token") as? String
         DispatchQueue.main.async {
             self.networkRequest(_token: self.token)
         }
         
         DispatchQueue.main.async {
-            self.networkRequestComments(_token: self.token)
-            self.sortComments()
+            self.networkRequestGetComments(_token: self.token)
         }
         
     }
     
     //MARK: - tableview setting
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return commentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
+        // careful!
+        guard let cell = commentTableView.dequeueReusableCell(withIdentifier: "CommentsTableViewCell", for: indexPath) as? CommentsTableViewCell else { print("TableViewCell error"); return UITableViewCell() }
         let comment = commentList[indexPath.row]
         
         cell.commentDepth = comment.depth
@@ -133,9 +142,11 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.commentData.text = comment.text
         cell.voteUpNumLabel.text = String(comment.numUpVotes)
         cell.voteDownNumLabel.text = String(comment.numDownVotes)
+        cell.userName.text = "u/" + comment.userName
         
         cell.indentationLevel = comment.depth
         
+        print(cell.frame)
         return cell
     }
     
@@ -153,6 +164,14 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc
     func commentBTClicked() {
+        
+        self.token = defaults.object(forKey: "token") as? String
+//        if textField.text == nil { return }
+        
+        let dataWillPost = CommentToPost(text: textField.text!, depth: 0, parentId: nil, groupId: nil)
+        
+        let postData = jsonEncoding(_data: dataWillPost)
+        networkRequestPostComment(_token: self.token, _data: postData)
         
     }
 }
