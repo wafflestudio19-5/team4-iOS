@@ -109,9 +109,6 @@ PODS:
   - Pageboy (3.6.2)
   - PromisesObjC (2.0.0)
   - SideMenu (6.5.0)
-  - SwiftyComments (0.2.1):
-    - SwipeCellKit (= 2.6.0)
-  - SwipeCellKit (2.6.0)
   - Tabman (2.11.1):
     - Pageboy (~> 3.6.0)
 
@@ -121,7 +118,6 @@ DEPENDENCIES:
   - GoogleSignIn (< 5.0.0)
   - IQKeyboardManagerSwift
   - SideMenu (~> 6.0)
-  - SwiftyComments (from `https://github.com/tsucres/SwiftyComments.git`)
   - Tabman (~> 2.11)
 
 SPEC REPOS:
@@ -143,17 +139,7 @@ SPEC REPOS:
     - Pageboy
     - PromisesObjC
     - SideMenu
-    - SwipeCellKit
     - Tabman
-
-EXTERNAL SOURCES:
-  SwiftyComments:
-    :git: https://github.com/tsucres/SwiftyComments.git
-
-CHECKOUT OPTIONS:
-  SwiftyComments:
-    :commit: e79768d6376a5494af59eedb207b4ac1dd4ad5e4
-    :git: https://github.com/tsucres/SwiftyComments.git
 
 SPEC CHECKSUMS:
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
@@ -173,10 +159,8 @@ SPEC CHECKSUMS:
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
-  SwiftyComments: c4e2f2465f1854bc04f8e09e60659f8b873a17e4
-  SwipeCellKit: 935ca28c187ec6e1ffb2b578cf8ddca842bfdcbb
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: 08adfe969e0bc4a8aecb1c3927d560fae0afe158
+PODFILE CHECKSUM: 237f96ec084f6ace58c4a1d18fc73eac2746a183
 
 COCOAPODS: 1.11.2
