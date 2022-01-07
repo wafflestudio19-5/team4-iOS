@@ -119,6 +119,7 @@ extension PostViewController {
         NetworkFunc.requestPostWithToken(url: "/api/v1/comments/" + String(postNum!) + "/", sendData: _data!, accessToken: _token!) { (response, data) in
             DispatchQueue.main.async {
                 print("Post Comment success")
+                self.commentList = []
                 self.networkRequestGetComments(_token: self.token)
                 self.commentTableView.reloadData()
             }

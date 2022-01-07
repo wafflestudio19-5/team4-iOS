@@ -98,7 +98,7 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //var pointer: Int = 0
         var commentDict: [ Int: [Comment] ] = [:]
         
-        for i in 0 ..< commentData.count {
+        for i in (0..<commentData.count).reversed() {
             let depth = commentData[i].depth
             
             commentDict[depth, default: []].append(commentData[i])

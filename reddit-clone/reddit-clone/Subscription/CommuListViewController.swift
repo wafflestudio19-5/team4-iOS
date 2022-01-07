@@ -11,9 +11,13 @@ import UIKit
 class CommuListViewController: UIViewController {
     
     @IBOutlet weak var commuTableView: UITableView!
+    var communityList: [Community] = []
     
     // set file name at nibName
     let nib = UINib(nibName: "CommuTableViewCell", bundle: nil)
+    var isPaging: Bool = false
+    var hasNextPage: Bool = false
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         // set postTableView delegate and register xib
@@ -28,9 +32,22 @@ class CommuListViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        commuTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let token = defaults.object(forKey: "token")
+        if (token != nil) {
+            networkRequest(_token: token as? String)
+        }
     }
 
-    // MARK: - Table view data source
+    func paging() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.commuTableView.reloadData()
+            self.isPaging = false
+        }
+    }
 
 
 }
@@ -43,11 +60,12 @@ extension CommuListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 30
+        return communityList.count
     }
      
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          guard let cell = commuTableView.dequeueReusableCell(withIdentifier: "CommuTableViewCell") as? CommuTableViewCell else { return UITableViewCell() }
-         return cell
-     }
+        cell.communityName.text = "r/" + communityList[indexPath.row].name
+        return cell
+    }
 }
