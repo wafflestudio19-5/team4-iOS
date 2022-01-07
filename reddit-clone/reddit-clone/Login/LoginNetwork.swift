@@ -25,7 +25,6 @@ extension LogInViewController {
                     self.token = tokenData
                     let defaults = UserDefaults.standard
                     defaults.set(tokenData as String, forKey: "token")
-                    defaults.set(tokenData as String, forKey: "username")
                     self.dismiss(animated: true, completion: nil)
                 }
             }

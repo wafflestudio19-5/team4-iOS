@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Post Creation View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="PostCreationVCID" id="Y6W-OH-hqX" customClass="PostCreationViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,7 +154,9 @@
                         <viewLayoutGuide key="safeArea" id="N15-gN-Os8"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="TmN-Ie-HBr"/>
                     <navigationItem key="navigationItem" id="110-fZ-Ifc"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bodyTextField" destination="XkE-qI-hoG" id="PBx-OJ-JjL"/>
                         <outlet property="cancelBT" destination="zjB-pm-nPT" id="a9z-dF-7lK"/>
