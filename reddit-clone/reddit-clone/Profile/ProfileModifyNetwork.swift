@@ -7,6 +7,9 @@ struct UserInfoChange: Codable {
     let password: String?
 }
 
+struct UserInfoChangeImage: Codable {
+    let filename: Data
+}
 
 struct UserInfoChangeEmail: Codable {
     let email: String
@@ -53,6 +56,14 @@ extension ProfileModifyViewController {
             }
         return data
         }
+    
+    func jsonEncodingImage(postData: UserInfoChangeImage) -> Data? {
+        guard let data = try? JSONEncoder().encode(postData) else {
+            print("Error: Encoding Failed")
+            return nil
+            }
+        return data
+        }
         
     func networkRequest(data: Data, token: String?) {
         if token == nil { return }
@@ -75,7 +86,40 @@ extension ProfileModifyViewController {
             DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
             }
+        }
+    }
+    
+    func networkRequestPhotos(data: Data, token: String?) {
+        if token == nil { return }
+        
+        NetworkFunc.requestPutWithToken(url: "/api/v1/users/profile/image", sendData: data, accessToken: token!) { (response, data) in
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Success", message: "user update success", preferredStyle: UIAlertController.Style.alert)
+                let completeAction = UIAlertAction(title: "OK", style: .default, handler: {_ in
+                })
+                alert.addAction(completeAction)
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        failure: {
+            let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)
+            let warningAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(warningAction)
+            DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+            }
             
         }
+    }
+}
+
+extension String {
+    func base64Encoded() -> String? {
+        if let data = self.data(using: .utf8) {
+            return data.base64EncodedString()
+        }
+        return ""
     }
 }

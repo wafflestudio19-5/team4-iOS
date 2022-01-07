@@ -195,7 +195,7 @@ struct NetworkFunc {
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: HTTP request failed")
                 print(response)
-                print(data)
+                dump(data)
                 failure()
                 return
             }
