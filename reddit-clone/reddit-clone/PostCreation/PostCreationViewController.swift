@@ -43,9 +43,13 @@ class PostCreationViewController: UIViewController {
         cancelBT.setImage(cancelImage, for: .normal)
         cancelBT.tintColor = .systemGray
         
+        cancelBT.addTarget(self, action: #selector(dismissBTpressed), for: .touchUpInside)
+        
+        communityBT.setTitle(communityName, for: .normal)
         communityBT.addTarget(self, action: #selector(moveToCommunitySelection), for: .touchUpInside)
         
         proceedBT.setTitle("Next", for: .normal)
+        proceedBT.addTarget(self, action: #selector(postCreate), for: .touchUpInside)
         guideBT.setTitle("Rules", for: .normal)
     }
     
@@ -67,22 +71,26 @@ class PostCreationViewController: UIViewController {
         titleTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         print("====================================", titleTextField.frame.origin.y)
     }
+    @objc
+    func postCreate() {
+        if titleTextField.text == nil { return }
+        
+        let dataWillPost: PostData = PostData(title: titleTextField.text, text: bodyTextField.text, community: communityName)
+        
+        let postData = jsonEncoding(postData: dataWillPost)
+        networkRequest(data: postData!)
+        
+        dismissBTpressed()
+    }
     
     @objc
     func moveToCommunitySelection() {
-        let viewController = PostToCommunityViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc
+    func dismissBTpressed() {
+        let pvc = self.presentingViewController?.presentingViewController
+        pvc!.dismiss(animated: true, completion: nil)
     }
-    */
-
 }
