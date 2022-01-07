@@ -79,8 +79,8 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             }
             
             guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                           accessToken: authentication.accessToken)
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -93,6 +93,7 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                     print(user.profile?.name)
                     let idToken = authentication.idToken
                     print(idToken)
+                    print(authentication.accessToken)
                 }
             }
     }

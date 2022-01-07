@@ -20,6 +20,10 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var voteUpNumLabel: UILabel!
     @IBOutlet weak var voteDownNumLabel: UILabel!
     
+    var groupID: Int?
+    var parentID: Int?
+    var commentDepth: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

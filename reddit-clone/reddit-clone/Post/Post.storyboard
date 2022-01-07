@@ -263,6 +263,7 @@
                     <connections>
                         <outlet property="commentTableView" destination="axo-jc-FOm" id="2Gm-Bz-8b4"/>
                         <outlet property="dismissButton" destination="fSK-xg-piy" id="mjf-xO-3Go"/>
+                        <outlet property="mainContainer" destination="YpV-XF-tG4" id="gWh-vJ-M6b"/>
                         <outlet property="postDataLabel" destination="xpg-3U-yw6" id="9nl-MM-XId"/>
                         <outlet property="postTitleLabel" destination="vc2-5l-1LX" id="MIt-3C-fo4"/>
                         <outlet property="subredditNameLabel" destination="n1f-fK-RN4" id="clt-Nz-ghG"/>
