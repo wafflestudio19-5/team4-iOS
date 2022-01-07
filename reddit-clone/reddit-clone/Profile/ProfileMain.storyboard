@@ -70,6 +70,9 @@
                                     <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ciw-2I-5j1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -102,6 +105,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="75.669642857142847"/>
+        </scene>
+        <!--ProfileModifyVCID-->
+        <scene sceneID="zzx-IL-EEh">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ProfileModifyVCID" storyboardName="ProfileModify" referencedIdentifier="ProfileModifyVCID" id="sPe-GM-3dh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBe-0d-Rdl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="-59"/>
         </scene>
     </scenes>
     <resources>

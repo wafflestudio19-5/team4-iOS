@@ -164,4 +164,42 @@ struct NetworkFunc {
             completionHandler(response, data)
         }.resume()
     }
+    
+    static func requestPutWithToken(url: String, sendData: Data, accessToken: String, completionHandler: @escaping (HTTPURLResponse, Data) -> Void, failure: @escaping () -> ()) {
+        let ip = "54.180.132.95"
+        
+        guard let url = URL(string: "http://" + ip + url) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue(accessToken, forHTTPHeaderField: "Authentication")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = sendData
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                print("Error: error calling GET")
+                print(error!)
+                failure()
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                failure()
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                print(response)
+                failure()
+                return
+            }
+            print(response)
+            completionHandler(response, data)
+        }.resume()
+    }
+
 }
