@@ -13,10 +13,22 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
     
+    @IBOutlet weak var buttonsContainer: UIStackView!
+    
+    let communityCreateBT: UIButton! = {
+        let button = UIButton()
+        button.setTitle("Create Community", for: .normal)
+        button.layer.borderColor = UIColor.systemIndigo.cgColor
+        button.setTitleColor(.systemIndigo, for: .normal)
+        
+        return button
+    }()
+    
     let userData = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        communityCreateBT.addTarget(self, action: #selector(communityCreate), for: .primaryActionTriggered)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +37,7 @@ class SideMenuViewController: UIViewController {
             buttonOne.setTitle("Log out", for: .normal)
             buttonTwo.setTitle("Profile", for: .normal)
             loginLabel.text = "u/UserName"
-            
+            buttonsContainer.insertArrangedSubview(communityCreateBT, at: 4)
         }
         else {
             buttonOne.setTitle("Log in", for: .normal)
@@ -65,5 +77,13 @@ class SideMenuViewController: UIViewController {
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
         }
+    }
+    
+    @objc
+    func communityCreate() {
+        let storyboard = UIStoryboard(name: "CommunityCreate", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CommunityCreateVCID")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
