@@ -1,6 +1,0 @@
-framework module SwiftyComments {
-  umbrella header "SwiftyComments-umbrella.h"
-
-  export *
-  module * { export * }
-}

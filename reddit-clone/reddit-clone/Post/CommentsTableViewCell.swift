@@ -1,13 +1,13 @@
 //
-//  CommentTableViewCell.swift
+//  CommentsTableViewCell.swift
 //  reddit-clone
 //
-//  Created by MinWoo Park on 2022/01/04.
+//  Created by Uiseop Eom on 2022/01/08.
 //
 
 import UIKit
 
-class CommentTableViewCell: UITableViewCell {
+class CommentsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!

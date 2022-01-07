@@ -17,6 +17,7 @@ class SubscriptionsViewController: TabmanViewController {
     
     // Tab bar library
     private var viewControllers: Array<UIViewController> = []
+    var communityList: [Community] = []
     
     override func viewDidLoad() {
         
