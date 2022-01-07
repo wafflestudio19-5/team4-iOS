@@ -11,33 +11,18 @@ class PopularSortViewController: UIViewController {
 
     
     @IBOutlet weak var postTableView: UITableView!
-    
-    var postDataList: [PostGetData] = []
-    
-    let defaults = UserDefaults.standard
-    
-    var isPaging: Bool = false
-    var hasNextPage: Bool = false
-    
     //set file name at nibName
-    let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
+       let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
     
     override func viewDidLoad() {
         
         //set postTableView delegate and register xib
-        postTableView.delegate = self
-        postTableView.dataSource = self
-        postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
+               postTableView.delegate = self
+               postTableView.dataSource = self
+               postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
         super.viewDidLoad()
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let token = defaults.object(forKey: "token")
-        if (token != nil) {
-            networkRequest(_token: token as? String)
-        }
-    }
     
     /*
       func tableView(_ tableView: UITableView, rowForHeightAt indexPath: IndexPath) -> CGFloat {
@@ -51,6 +36,8 @@ class PopularSortViewController: UIViewController {
              //return tableView.rowHeight
           }
     
+<<<<<<< Updated upstream
+=======
     //MARK: - pagination
     func paging() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -71,7 +58,10 @@ class PopularSortViewController: UIViewController {
                     isPaging = true
                     // reload cell
                     DispatchQueue.main.async {
-                        //self.postTableView.reloadSections(IndexSet(integer: 1), with: .none)
+                        let token = self.defaults.object(forKey: "token")
+                        if (token != nil) {
+                            self.networkRequest(_token: token as? String)
+                        }
                     }
                             
                     // 페이징 메소드 호출
@@ -81,12 +71,20 @@ class PopularSortViewController: UIViewController {
             }
         }
     }
+>>>>>>> Stashed changes
 }
 
  extension PopularSortViewController : UITableViewDelegate, UITableViewDataSource {
-    
+     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         if self.postDataList == nil {return 0}
+<<<<<<< Updated upstream
+         return 10
+     }
+     
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
+         return cell
+=======
          return self.postDataList.count
      }
      
@@ -102,8 +100,10 @@ class PopularSortViewController: UIViewController {
          guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVCID") as? PostViewController else {return}
          vc.modalPresentationStyle = .fullScreen
          vc.modalTransitionStyle = .crossDissolve
-         vc.postNum = indexPath.row
+         vc.postNum = self.postDataList[indexPath.row].id - 1
          self.present(vc, animated: true, completion: nil)
+>>>>>>> Stashed changes
      }
+     
  }
 

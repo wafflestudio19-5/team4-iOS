@@ -17,7 +17,12 @@ extension PopularSortViewController {
     
     func networkRequest(_token: String?) {
         if _token == nil {return}
-        NetworkFunc.requestGetForPopularSort(url: "/api/v1/posts/", accessToken: _token!, lastPostID: self.postDataList.count + 1) { (response, data) in
+        let lastNum: Int
+        
+        if self.postDataList.count == 0 { lastNum = 0 }
+        else { lastNum = self.postDataList[self.postDataList.count - 1].id}
+        
+        NetworkFunc.requestGetForPopularSort(url: "/api/v1/posts/", accessToken: _token!, lastPostID: lastNum) { (response, data) in
             DispatchQueue.main.async {
                 print("Get post List success")
                 let returnData = self.jsonDecoding(_data: data)
@@ -48,9 +53,11 @@ extension NetworkFunc {
         
         let url = "http://" + ip + "/api/v1/posts/"
         var components = URLComponents(string: url)
-        let lastPostIndex = URLQueryItem(name: "lastPostId", value: String(lastPostID))
-        components?.queryItems = [lastPostIndex]
-
+        
+        if lastPostID != 0 {
+            let lastPostIndex = URLQueryItem(name: "lastPostId", value: String(lastPostID))
+            components?.queryItems = [lastPostIndex]
+        }
         guard let newURL = components?.url else {
             return
         }

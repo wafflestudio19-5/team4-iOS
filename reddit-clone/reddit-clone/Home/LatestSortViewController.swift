@@ -10,25 +10,17 @@ import UIKit
 class LatestSortViewController: UIViewController {
     
     @IBOutlet weak var postTableView: UITableView!
-    var postDataList: [PostGetData] = []
-    
-    let defaults = UserDefaults.standard
-    
-    var isPaging: Bool = false
-    var hasNextPage: Bool = false
     
     //set file name at nibName
-    let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
+       let nib = UINib(nibName: "PostTableViewCell",bundle: nil)
     
     override func viewDidLoad() {
         
         //set postTableView delegate and register xib
-        postTableView.delegate = self
-        postTableView.dataSource = self
-        postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
+               postTableView.delegate = self
+               postTableView.dataSource = self
+               postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
         super.viewDidLoad()
-        
-        paging()
     }
     
     
@@ -44,10 +36,12 @@ class LatestSortViewController: UIViewController {
              //return tableView.rowHeight
           }
     
+<<<<<<< Updated upstream
+=======
     //MARK: - pagination
     func paging() {
         let testData = PostGetData(id: 0, userId: 1, title: "test", text: "Test Test", images: [], numUpVotes: 0, numDownVotes: 0)
-        for i in 1...10 {
+        for _ in 1...10 {
             self.postDataList.append(testData)
         }
         //loading data
@@ -79,29 +73,22 @@ class LatestSortViewController: UIViewController {
             }
         }
     }
+>>>>>>> Stashed changes
 }
 
-//MARK: - set tableview cell
  extension LatestSortViewController : UITableViewDelegate, UITableViewDataSource {
-    
+     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         if self.postDataList == nil {return 0}
+<<<<<<< Updated upstream
+         return 10
+=======
          return self.postDataList.count
+>>>>>>> Stashed changes
      }
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
-        cell.titleLabel.text = postDataList[indexPath.row].title
-         cell.postDataLabel.text = postDataList[indexPath.row].text
-         cell.postId = postDataList[indexPath.row].id
-        return cell
+         guard let cell = postTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else { return UITableViewCell() }
+         return cell
      }
-    
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVCID") as? PostViewController else {return}
-         vc.modalPresentationStyle = .fullScreen
-         vc.modalTransitionStyle = .crossDissolve
-         vc.postNum = indexPath.row
-         self.present(vc, animated: true, completion: nil)
-     }
+     
  }

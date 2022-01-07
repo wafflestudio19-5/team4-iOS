@@ -41,7 +41,7 @@ extension SignUpViewController {
         NetworkFunc.requestPost(url: "/api/v1/users/", sendData: postData) { (response, data) in
             DispatchQueue.main.async {
                 let resultData: SignUp_Result = self.jsonParsing(data: data) as! SignUp_Result
-                print(resultData ?? nil)
+                print(resultData)
                 if let tokenData = response.value(forHTTPHeaderField: "Authentication") {
                     print("token: " + tokenData)
                     self.token = tokenData
