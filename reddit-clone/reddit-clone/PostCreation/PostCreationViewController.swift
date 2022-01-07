@@ -84,7 +84,6 @@ class PostCreationViewController: UIViewController {
         let postData = jsonEncodingData(postData: dataWillPost)
         networkRequest(data: postData!, token: self.token)
         
-        dismissBTpressed()
     }
     
     @objc

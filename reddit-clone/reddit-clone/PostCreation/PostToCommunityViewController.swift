@@ -69,7 +69,7 @@ class PostToCommunityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        communityList = ["r/Technology", "r/News"]
+        communityList = ["r/Technology", "r/News", "test"]
         searchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
