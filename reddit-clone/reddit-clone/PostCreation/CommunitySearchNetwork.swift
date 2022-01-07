@@ -11,7 +11,7 @@ import UIKit
 struct Community: Codable {
     let id: Int
     let name: String
-    let num_memebers: Int
+    let num_members: Int
     let num_managers: Int
     let description: String
     let deleted: Bool
@@ -74,9 +74,8 @@ extension NetworkFunc {
             let size = URLQueryItem(name: "size", value: String(30))
             components?.queryItems = [lastCommunityIndex, size]
         } else {
-            let lastCommunityIndex = URLQueryItem(name: "lastCommunityId", value: String(1))
             let size = URLQueryItem(name: "size", value: String(30))
-            components?.queryItems = [lastCommunityIndex, size]
+            components?.queryItems = [size]
         }
         
         guard let newURL = components?.url else {

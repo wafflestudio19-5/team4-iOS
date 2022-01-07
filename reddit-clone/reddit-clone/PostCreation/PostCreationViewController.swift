@@ -28,6 +28,7 @@ class PostCreationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarItem.image = UIImage(systemName: "plus")
         
         setHeaderView()
         //setMainView()

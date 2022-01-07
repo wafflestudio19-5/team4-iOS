@@ -11,6 +11,7 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarItem.image = UIImage(systemName: "message.fill")
 
         // Do any additional setup after loading the view.
     }

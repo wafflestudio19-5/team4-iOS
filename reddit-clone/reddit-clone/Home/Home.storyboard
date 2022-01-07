@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="HomeVCID" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,12 +61,15 @@
                             <constraint firstItem="xHM-aQ-GWq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="sz2-kc-eJh"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nCG-WA-yL1"/>
                     <navigationItem key="navigationItem" id="Qn5-x8-alp">
                         <nil key="title"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barView" destination="f56-n2-BSD" id="rjD-Za-Txf"/>
                         <outlet property="searchButton" destination="aP9-zQ-BNO" id="8EQ-mU-K5l"/>
+                        <outlet property="tabBarItem" destination="nCG-WA-yL1" id="iIY-eh-tba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
