@@ -1,7 +1,9 @@
 import UIKit
 import Tabman
+import Firebase
+import GoogleSignIn
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var cancelBT: UIButton!
     @IBOutlet weak var loginBT: UIButton!
@@ -59,6 +61,40 @@ class SignUpViewController: UIViewController {
     @IBAction func dismissButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: - Google Login For Custom Button
+    @IBAction func googleLogicClicked(_ sender: Any) {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @objc(signIn:didSignInForUser:withError:) func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                }
+                else    {
+                    print("Login Successful")
+                    AppDelegate.googleUser = user
+                    print(user.profile?.email)
+                    print(user.profile?.name)
+                    let idToken = authentication.idToken
+                    print(idToken)
+                }
+            }
+    }
+
 }
 
 extension SignUpViewController {

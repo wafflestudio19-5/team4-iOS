@@ -25,10 +25,10 @@ class PostCreationViewController: UIViewController {
     var token: String?
     
     var communityName: String!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setHeaderView()
         //setMainView()
         setInputTypeView()

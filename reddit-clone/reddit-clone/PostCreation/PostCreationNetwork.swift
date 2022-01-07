@@ -8,17 +8,20 @@
 import Foundation
 import UIKit
 
+
 struct PostData: Codable {
     let title: String
     let text: String
     let community: String
 }
 
+
 struct PostImgData: Codable {
     let title: String
     let images: [String]
     let community: String
 }
+
 
 extension PostCreationViewController {
     func jsonEncodingData(postData: PostData) -> Data? {
@@ -51,7 +54,6 @@ extension PostCreationViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
             }
-
         }
         failure: {
             let alert = UIAlertController(title: "Error", message: "Error has been occured", preferredStyle: UIAlertController.Style.alert)
@@ -62,5 +64,5 @@ extension PostCreationViewController {
             }
         }
     }
-    
+   
 }
