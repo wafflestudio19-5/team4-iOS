@@ -7,8 +7,10 @@
 
 import UIKit
 import AuthenticationServices
+import Firebase
+import GoogleSignIn
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     @IBOutlet weak var headerView: UIStackView!
     @IBOutlet weak var cancelBT: UIButton!
@@ -49,12 +51,52 @@ class LogInViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
+        print(presentingViewController)
+        if let originalVC = presentingViewController as? HomeViewController {
+            DispatchQueue.main.async {
+                originalVC.reloadData()
+            }
+        }
     }
     
     // a function to make sure the interface keyboards go down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    //MARK: - Google Login For Custom Button
+    @IBAction func googleLogicClicked(_ sender: Any) {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                }
+                else    {
+                    print("Login Successful")
+                    AppDelegate.googleUser = user
+                    print(user.profile?.email)
+                    print(user.profile?.name)
+                    let idToken = authentication.idToken
+                    print(idToken)
+                }
+            }
+    }
+
     
     // MARK: - Header View
     fileprivate func setHeaderView() {

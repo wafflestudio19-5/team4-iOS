@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="PopularSortVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PopularSortViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-3I-kvQ">
-                                <rect key="frame" x="0.0" y="135" width="1024" height="1211"/>
+                                <rect key="frame" x="0.0" y="135" width="390" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -30,13 +30,24 @@
                             <constraint firstItem="XLB-3I-kvQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="l5p-J9-m4g"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Cmo-q2-rca"/>
                     <connections>
                         <outlet property="postTableView" destination="XLB-3I-kvQ" id="9gf-gy-q0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
+            <point key="canvasLocation" x="2080" y="125.82938388625591"/>
+        </scene>
+        <!--PostVCID-->
+        <scene sceneID="4ku-cX-vqD">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PostVCID" storyboardName="Post" referencedIdentifier="PostVCID" id="owZ-0o-uwB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7ZB-Uv-kOV"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rei-UX-gr7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3016.1538461538462" y="95.97156398104265"/>
         </scene>
     </scenes>
     <resources>
