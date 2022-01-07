@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         //MARK: -  reset token and login
-        if UserDefaults.standard.object(forKey: "token") != nil {
-            UserDefaults.standard.removeObject(forKey: "token")
-        }
+        //if UserDefaults.standard.object(forKey: "token") != nil {
+        //    UserDefaults.standard.removeObject(forKey: "token")
+        //}
         
         //MARK: - apply google login
         FirebaseApp.configure()

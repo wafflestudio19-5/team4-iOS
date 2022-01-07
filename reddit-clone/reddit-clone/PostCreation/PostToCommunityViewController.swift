@@ -10,8 +10,11 @@ import UIKit
 class PostToCommunityViewController: UIViewController {
     
     var searchController: UISearchController!
-    var communityList: [String]?
-
+    var communityList: [Community] = []
+    
+    let defaults = UserDefaults.standard
+    var isPaging: Bool = false
+    var hasNextPage: Bool = false
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerView, searchView, tableView, UIView()])
@@ -57,11 +60,9 @@ class PostToCommunityViewController: UIViewController {
 
     var tableView: UITableView = {
         let view = UITableView()
-        view.backgroundColor = .purple
         view.translatesAutoresizingMaskIntoConstraints = false
         let nib = UINib(nibName: "CommuTableViewCell", bundle: nil)
         view.register(nib, forCellReuseIdentifier: "CommuTableViewCell")
-        
         
         return view
     }()
@@ -69,11 +70,17 @@ class PostToCommunityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        communityList = ["r/Technology", "r/News", "test"]
         searchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let token = defaults.object(forKey: "token")
+        if (token != nil) {
+            networkRequest(_token: token as? String)
+        }
     }
 
     func setupLayout() {
@@ -98,6 +105,16 @@ class PostToCommunityViewController: UIViewController {
     func pressDismiss() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: - pagination
+    func paging() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.tableView.reloadData()
+                self.isPaging = false
+            }
+    
+    }
+    
 }
 
 extension PostToCommunityViewController: UISearchBarDelegate {
@@ -117,7 +134,7 @@ extension PostToCommunityViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return communityList!.count
+        return communityList.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -125,17 +142,15 @@ extension PostToCommunityViewController: UITableViewDelegate, UITableViewDataSou
         let vc = storyboard.instantiateViewController(withIdentifier: "PostCreationVCID") as? PostCreationViewController
         if let vc = vc {
             vc.modalPresentationStyle = .fullScreen
-            if let community = self.communityList?[indexPath.row] {
-                vc.communityName = community
-                self.present(vc, animated: true)
-            }
+            vc.communityName = self.communityList[indexPath.row].name
+            self.present(vc, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommuTableViewCell", for: indexPath) as! CommuTableViewCell
-        cell.communityName.text = self.communityList![indexPath.row]
+        cell.communityName.text = self.communityList[indexPath.row].name
         
         return cell
     }

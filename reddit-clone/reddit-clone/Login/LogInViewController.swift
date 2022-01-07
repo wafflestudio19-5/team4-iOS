@@ -224,7 +224,7 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         //logoView?.frame = CGRect(x: 20, y: buttonHeight/2 + 10, width: 20, height: 20)
         
         let appleButtonStr = NSAttributedString(
-            string: "Continue with Google",
+            string: "Continue with Apple",
             attributes: attributes
         )
         appleAuthButton.setAttributedTitle(appleButtonStr, for: .normal)
