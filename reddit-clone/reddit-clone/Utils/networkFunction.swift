@@ -180,6 +180,7 @@ struct NetworkFunc {
         request.httpBody = sendData
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
+            dump(request)
             guard error == nil else {
                 print("Error: error calling GET")
                 print(error!)
@@ -194,6 +195,7 @@ struct NetworkFunc {
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: HTTP request failed")
                 print(response)
+                print(data)
                 failure()
                 return
             }

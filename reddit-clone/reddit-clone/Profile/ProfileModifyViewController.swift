@@ -38,16 +38,59 @@ class ProfileModifyViewController: UIViewController {
     }
     
     @IBAction func decideButtonClicked(_ sender: Any) {
-        if self.userNameTextField.text == nil && self.userEmailTextField.text == nil && self.userPasswordTextField.text == nil {
+        
+        /*
+        if self.userEmailTextField.text == nil && self.userProfileNameTextField.text == nil && self.userPasswordTextField.text == nil {
             return
         }
+        var userNameTemp: String?
+        var userMailTemp: String?
+        var userPasswordTemp: String?
         
-        let postDataTemp = UserInfoChange(email: self.userEmailTextField.text, username: self.userNameTextField.text, password: self.userPasswordTextField.text)
+        
+        if self.userProfileNameTextField.text == nil { userNameTemp = nil }
+        else { userNameTemp = self.userProfileNameTextField.text }
+        if self.userEmailTextField.text == nil { userMailTemp = nil }
+        else { userMailTemp = self.userEmailTextField.text }
+        if self.userPasswordTextField.text == nil { userPasswordTemp = nil }
+        else { userPasswordTemp = self.userPasswordTextField.text }
+        
+        
+        let postDataTemp = UserInfoChange(email: userNameTemp, username: userMailTemp, password: userPasswordTemp)
         guard let postData = self.jsonEncoding(postData: postDataTemp) else {return}
         
         let token = UserDefaults.standard.object(forKey: "token")
         if token == nil {return}
         
+        print(postDataTemp)
+        
         self.networkRequest(data: postData, token: token as! String)
+        */
+        
+        let token = UserDefaults.standard.object(forKey: "token")
+        if token == nil {return}
+        
+        var postDataUserName: UserInfoChangeUserName
+        var postDataEmail: UserInfoChangeEmail
+        var postDataPassWord: UserInfoChangePassWord
+        
+        if self.userNameTextField.text != ""{
+            postDataUserName = UserInfoChangeUserName(username: self.userNameTextField.text!)
+            print(postDataUserName)
+            guard let postData = self.jsonEncodingName(postData: postDataUserName) else {return}
+            self.networkRequest(data: postData, token: token as? String)
+        }
+        
+        if self.userEmailTextField.text != ""{
+            postDataEmail = UserInfoChangeEmail(email: self.userEmailTextField.text!)
+            guard let postData = self.jsonEncodingEmail(postData: postDataEmail) else {return}
+            self.networkRequest(data: postData, token: token as? String)
+        }
+        
+        if self.userPasswordTextField.text != ""{
+            postDataPassWord = UserInfoChangePassWord(password: self.userPasswordTextField.text!)
+            guard let postData = self.jsonEncodingPassWord(postData: postDataPassWord) else {return}
+            self.networkRequest(data: postData, token: token as? String)
+        }
     }
 }
