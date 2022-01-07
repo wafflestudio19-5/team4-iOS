@@ -21,6 +21,9 @@ class PostCreationViewController: UIViewController {
     @IBOutlet weak var inputTypes: UIStackView!
     @IBOutlet weak var guideBT: UIButton!
     
+    let defaults = UserDefaults.standard
+    var token: String?
+    
     var communityName: String!
     
     override func viewDidLoad() {
@@ -73,12 +76,13 @@ class PostCreationViewController: UIViewController {
     }
     @objc
     func postCreate() {
+        self.token = defaults.object(forKey: "token") as? String
         if titleTextField.text == nil { return }
         
         let dataWillPost: PostData = PostData(title: titleTextField.text, text: bodyTextField.text, community: communityName)
         
-        let postData = jsonEncoding(postData: dataWillPost)
-        networkRequest(data: postData!)
+        let postData = jsonEncodingData(postData: dataWillPost)
+        networkRequest(data: postData!, token: self.token)
         
         dismissBTpressed()
     }
