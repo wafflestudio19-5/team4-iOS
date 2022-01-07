@@ -71,7 +71,10 @@ class PopularSortViewController: UIViewController {
                     isPaging = true
                     // reload cell
                     DispatchQueue.main.async {
-                        //self.postTableView.reloadSections(IndexSet(integer: 1), with: .none)
+                        let token = self.defaults.object(forKey: "token")
+                        if (token != nil) {
+                            self.networkRequest(_token: token as? String)
+                        }
                     }
                             
                     // 페이징 메소드 호출
@@ -102,7 +105,7 @@ class PopularSortViewController: UIViewController {
          guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVCID") as? PostViewController else {return}
          vc.modalPresentationStyle = .fullScreen
          vc.modalTransitionStyle = .crossDissolve
-         vc.postNum = indexPath.row
+         vc.postNum = self.postDataList[indexPath.row].id
          self.present(vc, animated: true, completion: nil)
      }
  }
