@@ -9,6 +9,8 @@ import UIKit
 
 class CommuTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var communityName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

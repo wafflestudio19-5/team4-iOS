@@ -9,6 +9,10 @@ import UIKit
 
 class PostToCommunityViewController: UIViewController {
     
+    var searchController: UISearchController!
+    var communityList: [String]?
+
+    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerView, searchView, tableView, UIView()])
         stackView.alignment = .fill
@@ -51,19 +55,25 @@ class PostToCommunityViewController: UIViewController {
     }()
     
 
-    var tableView: UIView = {
-        let view = UIView()
+    var tableView: UITableView = {
+        let view = UITableView()
         view.backgroundColor = .purple
         view.translatesAutoresizingMaskIntoConstraints = false
+        let nib = UINib(nibName: "CommuTableViewCell", bundle: nil)
+        view.register(nib, forCellReuseIdentifier: "CommuTableViewCell")
+        
+        
         return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        communityList = ["r/Technology", "r/News"]
         searchView.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         setupLayout()
-        print(stackView.frame)
     }
 
     func setupLayout() {
@@ -75,13 +85,13 @@ class PostToCommunityViewController: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
 
-        // Small Recntangle View
+        // Small Rectangle View
         dismissBT.heightAnchor.constraint(equalToConstant: 30).isActive = true
         dismissBT.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
         dismissBT.widthAnchor.constraint(equalToConstant: 67).isActive = true
         //searchView.heightAnchor.constraint(equalToConstant: 10).isActive = true
         tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
-
+        tableView.reloadData()
     }
     
     @objc
@@ -93,7 +103,6 @@ class PostToCommunityViewController: UIViewController {
 extension PostToCommunityViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        // TODO: add animation
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -102,3 +111,32 @@ extension PostToCommunityViewController: UISearchBarDelegate {
 }
 
 
+extension PostToCommunityViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return communityList!.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "PostCreation", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PostCreationVCID") as? PostCreationViewController
+        if let vc = vc {
+            vc.modalPresentationStyle = .fullScreen
+            if let community = self.communityList?[indexPath.row] {
+                vc.communityName = community
+                self.present(vc, animated: true)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommuTableViewCell", for: indexPath) as! CommuTableViewCell
+        cell.communityName.text = self.communityList![indexPath.row]
+        
+        return cell
+    }
+}
