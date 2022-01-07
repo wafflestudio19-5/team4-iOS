@@ -30,6 +30,8 @@ class HomeViewController: TabmanViewController, LoginProtocol {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tabBarItem.image = UIImage(systemName: "house.fill")
+        //tabBarItem.setTitleTextAttributes(<#T##attributes: [NSAttributedString.Key : Any]?##[NSAttributedString.Key : Any]?#>, for: <#T##UIControl.State#>)
                 
         //MARK: - set button boarder
         searchButton.layer.cornerRadius = 5

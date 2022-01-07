@@ -22,6 +22,7 @@ class SubscriptionsViewController: TabmanViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tabBarItem.image = UIImage(systemName: "eyeglasses")
         
         // TODO: To be modified
         // set button boarder

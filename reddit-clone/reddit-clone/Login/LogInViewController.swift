@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import AuthenticationServices
+import Firebase
+import GoogleSignIn
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     @IBOutlet weak var headerView: UIStackView!
     @IBOutlet weak var cancelBT: UIButton!
@@ -39,21 +42,61 @@ class LogInViewController: UIViewController {
         setMainView()
         setFooterView()
         
+        appleAuthButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
     }
     
-    /*
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
+        print(presentingViewController)
+        if let originalVC = presentingViewController as? HomeViewController {
+            DispatchQueue.main.async {
+                originalVC.reloadData()
+            }
+        }
     }
-     */
+    
     // a function to make sure the interface keyboards go down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    //MARK: - Google Login For Custom Button
+    @IBAction func googleLogicClicked(_ sender: Any) {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                }
+                else    {
+                    print("Login Successful")
+                    AppDelegate.googleUser = user
+                    print(user.profile?.email)
+                    print(user.profile?.name)
+                    let idToken = authentication.idToken
+                    print(idToken)
+                }
+            }
+    }
+
     
     // MARK: - Header View
     fileprivate func setHeaderView() {
@@ -181,7 +224,7 @@ class LogInViewController: UIViewController {
         //logoView?.frame = CGRect(x: 20, y: buttonHeight/2 + 10, width: 20, height: 20)
         
         let appleButtonStr = NSAttributedString(
-            string: "Continue with Google",
+            string: "Continue with Apple",
             attributes: attributes
         )
         appleAuthButton.setAttributedTitle(appleButtonStr, for: .normal)
@@ -247,7 +290,6 @@ class LogInViewController: UIViewController {
         present(findpwVC, animated: true)
     }
     
-    
     @IBAction func tryLogin(_ sender: Any) {
         if (usernmTextField.text == nil) {return}
         if (pwTextField.text == nil) {return}
@@ -255,5 +297,133 @@ class LogInViewController: UIViewController {
         let dataWillPost: Login_UserData = Login_UserData(email: usernmTextField.text!, password: pwTextField.text!)
         let postData = jsonEncoding(param: dataWillPost)
         networkRequest(postData: postData!)
+    }
+    
+    @IBAction func dimissPage(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func showPasswordCredentialAlert(username: String, password: String) {
+        let message = "The app has received your selected credential from the keychain. \n\n Username: \(username)\n Password: \(password)"
+        let alertController = UIAlertController(title: "Keychain Credential Received",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    /// - Tag: perform_appleid_request
+    @objc
+    func handleAuthorizationAppleIDButtonPress() {
+        print("Apple authentication")
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+            
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+        
+}
+
+
+extension LogInViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            // Create an account in your system.
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            
+            // For the purpose of this demo app, store the `userIdentifier` in the keychain.
+            //self.saveUserInKeychain(userIdentifier)
+            print(userIdentifier, fullName, email)
+            
+            // For the purpose of this demo app, show the Apple ID credential information in the `ResultViewController`.
+            //self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
+        
+        case let passwordCredential as ASPasswordCredential:
+        
+            // Sign in using an existing iCloud Keychain credential.
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            
+            // For the purpose of this demo app, show the password credential as an alert.
+            DispatchQueue.main.async {
+                self.showPasswordCredentialAlert(username: username, password: password)
+            }
+            
+        default:
+            break
+        }
+    
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("failed!")
+    }
+    
+    
+}
+
+extension LogInViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+}
+
+// MARK: - Keyboard Notification
+extension LogInViewController {
+    // Adding Notification
+    func addKeyboardNotifications(){
+        // install handler that notifies the app when keyboard showup
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        // install handler that notifies the app when keyboard goes down
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    // Removing Notification
+    func removeKeyboardNotifications(){
+        // remove handler that notifies the app when keyboard showup
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        // remove handler that notifies the app when keyboard goes down
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+        // Move the view up
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            // TODO: self.footerView.frame.origin.y shows negative ( -13 ) WTF..?
+            if self.view.frame.height - self.footerView.frame.origin.y < 150 {
+                self.footerView.frame.origin.y -= (keyboardHeight - self.view.safeAreaInsets.bottom)
+            }
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+        // Move the view up
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.footerView.frame.origin.y += (keyboardHeight - self.view.safeAreaInsets.bottom)
+        }
     }
 }

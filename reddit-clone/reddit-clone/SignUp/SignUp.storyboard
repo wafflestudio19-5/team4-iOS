@@ -82,6 +82,7 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="continueGoogleBT:" destination="XWm-Ac-Nxq" eventType="touchUpInside" id="8ag-Gh-Zs8"/>
+                                                    <action selector="googleLogicClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="QPn-cg-Gbx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQF-tY-bDD">

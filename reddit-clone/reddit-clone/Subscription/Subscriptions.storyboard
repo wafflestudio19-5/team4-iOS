@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Subscriptions View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SubscriptionsVCID" id="Y6W-OH-hqX" customClass="SubscriptionsViewController" customModule="reddit_clone" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,9 +61,11 @@
                             <constraint firstItem="NKj-vO-B0Q" firstAttribute="top" secondItem="pzK-dq-EvC" secondAttribute="top" constant="44" id="sXd-87-Dq5"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="IYx-IH-r3A"/>
                     <navigationItem key="navigationItem" id="vv4-Uw-rM8">
                         <nil key="title"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barView" destination="eoV-0V-usX" id="cb6-On-mKu"/>
                         <outlet property="searchButton" destination="NKj-vO-B0Q" id="l8f-F3-jOD"/>

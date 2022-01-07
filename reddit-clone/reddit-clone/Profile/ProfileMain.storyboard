@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,31 +17,106 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqf-wM-ipS">
-                                <rect key="frame" x="196" y="315" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqf-wM-ipS">
+                                <rect key="frame" x="10" y="54" width="55" height="44"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25"/>
+                                    <color key="baseForegroundColor" systemColor="systemGrayColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="dismissButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hxB-wX-Lgg"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-uU-bHq">
+                                <rect key="frame" x="20" y="118" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="JKS-4r-9OK"/>
+                                    <constraint firstAttribute="width" constant="120" id="fvv-RB-dPn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="u/userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ium-bf-vEC">
+                                <rect key="frame" x="20" y="258" width="138.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userJoinDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDS-YH-2pj">
+                                <rect key="frame" x="20" y="298" width="115" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R53-Hm-EWl">
+                                <rect key="frame" x="0.0" y="342" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jRY-H9-eEA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-ZR-gP3">
+                                <rect key="frame" x="319" y="192" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GWT-Fm-CCq"/>
+                                    <constraint firstAttribute="width" constant="75" id="Y5w-Zt-Xa7"/>
+                                </constraints>
+                                <color key="tintColor" name="AccentColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit">
+                                    <backgroundConfiguration key="background" cornerRadius="10">
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ium-bf-vEC" firstAttribute="top" secondItem="K8t-uU-bHq" secondAttribute="bottom" constant="20" id="1Dj-D1-Gk2"/>
+                            <constraint firstItem="TDS-YH-2pj" firstAttribute="top" secondItem="ium-bf-vEC" secondAttribute="bottom" constant="10" id="63N-gK-uEr"/>
+                            <constraint firstItem="R53-Hm-EWl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="7el-UG-BlU"/>
+                            <constraint firstItem="R53-Hm-EWl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7jM-0Z-91I"/>
+                            <constraint firstItem="K8t-uU-bHq" firstAttribute="top" secondItem="Nqf-wM-ipS" secondAttribute="bottom" constant="20" id="8s3-Ie-KEa"/>
+                            <constraint firstItem="K8t-uU-bHq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="CJ9-dI-5pk"/>
+                            <constraint firstItem="ium-bf-vEC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="GkW-ly-QhF"/>
+                            <constraint firstItem="Nqf-wM-ipS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="MEu-WM-wOs"/>
+                            <constraint firstItem="R53-Hm-EWl" firstAttribute="top" secondItem="Thc-ZR-gP3" secondAttribute="bottom" constant="100" id="O3e-Xf-lks"/>
+                            <constraint firstItem="TDS-YH-2pj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="SAI-4J-pdw"/>
+                            <constraint firstItem="Nqf-wM-ipS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="TTG-ux-C17"/>
+                            <constraint firstItem="R53-Hm-EWl" firstAttribute="top" secondItem="TDS-YH-2pj" secondAttribute="bottom" constant="20" id="tKu-lR-v15"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Thc-ZR-gP3" secondAttribute="trailing" constant="20" id="zg5-kV-KIi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Nqf-wM-ipS" id="Fyh-BY-Cnk"/>
+                        <outlet property="editButton" destination="Thc-ZR-gP3" id="mdA-o6-cMU"/>
+                        <outlet property="joinDateLabel" destination="TDS-YH-2pj" id="rUn-Za-Eq9"/>
+                        <outlet property="postTabBarView" destination="R53-Hm-EWl" id="dQu-1c-RP8"/>
+                        <outlet property="userImageView" destination="K8t-uU-bHq" id="KRk-Kx-TJf"/>
+                        <outlet property="userNameLabel" destination="ium-bf-vEC" id="NT1-WW-Ns0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="76"/>
+            <point key="canvasLocation" x="18.840579710144929" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
