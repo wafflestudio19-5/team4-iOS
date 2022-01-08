@@ -2,10 +2,11 @@ import Foundation
 import UIKit
 
 struct userInfo: Codable {
-    let id: Int
-    let username: String
-    let email: String
-    let date_joined: String
+    let userId: Int
+    let name: String
+    let imageUrl: String
+    let description: String
+    let followers: Int
 }
 
 extension ProfileMainViewController {
@@ -19,11 +20,12 @@ extension ProfileMainViewController {
     
     func networkRequest(_token: String?) {
         if _token == nil {return}
-        NetworkFunc.requestGetWithToken(url: "/api/v1/users/me/", accessToken: _token!) { (response, data) in
+        NetworkFunc.requestGetWithToken(url: "/api/v1/users/profile/me/", accessToken: _token!) { (response, data) in
             DispatchQueue.main.async {
                 print("Get user profile success")
                 guard let returnData = self.jsonDecoding(_data: data) else {return}
-                self.userNameLabel.text = "u/" + returnData.username
+                self.userNameLabel.text = "u/" + returnData.name
+                /*
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
                 let date = dateFormatter.date(from: returnData.date_joined)
@@ -31,8 +33,16 @@ extension ProfileMainViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
 
                 let dateString:String = dateFormatter.string(from: date!)
-                
-                self.joinDateLabel.text = "Joined at " + dateString
+                */
+                let followerString = String(returnData.followers)
+                self.joinDateLabel.text = followerString + "follows"
+                if returnData.imageUrl != "" {
+                    DispatchQueue.global().async {
+                        let imageUrl = URL(string: returnData.imageUrl)
+                        let imageData = try? Data(contentsOf: imageUrl!)
+                        self.userImageView.image = UIImage(data: imageData!)
+                    }
+                }
             }
         }
         failure: {
