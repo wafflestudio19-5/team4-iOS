@@ -20,6 +20,7 @@ struct NetworkFunc {
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+            dump(request)
             guard error == nil else {
                 print("Error: error calling GET")
                 print(error!)
@@ -60,6 +61,7 @@ struct NetworkFunc {
         request.addValue(accessToken, forHTTPHeaderField: "Authentication")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+            dump(request)
             guard error == nil else {
                 print("Error: error calling GET")
                 print(error!)
@@ -72,15 +74,9 @@ struct NetworkFunc {
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
                 print("Error: request failed")
                 print(response)
+                dump(data)
                 return
             }
-            
-            /*
-             guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
-                 print("Error: JSON Parsing failed")
-                 return
-             }
-            */
             
             completionHandler(response, data)
         }.resume()
