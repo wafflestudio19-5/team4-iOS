@@ -28,14 +28,12 @@ class PostToCommunityViewController: UIViewController {
     lazy var headerView: UIView = {
         let view = UIStackView(arrangedSubviews: [dismissBT, UIView()])
         view.axis = .horizontal
-        view.backgroundColor = .orange
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     var dismissBT: UIButton = {
         let view = UIButton()
-        view.backgroundColor = .purple
         let cancelImageConfig = UIImage.SymbolConfiguration(textStyle: .subheadline)
         let cancelImage = UIImage(
             systemName: "xmark",

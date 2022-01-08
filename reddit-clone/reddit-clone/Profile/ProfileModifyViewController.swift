@@ -7,12 +7,13 @@
 
 import UIKit
 
-class ProfileModifyViewController: UIViewController {
+class ProfileModifyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var decideButton: UIButton!
     
+    @IBOutlet weak var selectImageView: UIImageView!
     @IBOutlet weak var selectImageLabel: UIButton!
     
     @IBOutlet weak var userNameTextField: UITextField!
@@ -27,10 +28,25 @@ class ProfileModifyViewController: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var passwordDescriptionLabel: UILabel!
     
+    let picker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        picker.delegate = self
+    }
+    
+    
+    //MARK: - image select
+    @IBAction func selectButtonClicked(_ sender: Any) {
+        picker.sourceType = .photoLibrary
+        present(picker, animated: false, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectImageView.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissButtonClicked(_ sender: Any) {
@@ -39,40 +55,29 @@ class ProfileModifyViewController: UIViewController {
     
     @IBAction func decideButtonClicked(_ sender: Any) {
         
-        /*
-        if self.userEmailTextField.text == nil && self.userProfileNameTextField.text == nil && self.userPasswordTextField.text == nil {
-            return
-        }
-        var userNameTemp: String?
-        var userMailTemp: String?
-        var userPasswordTemp: String?
-        
-        
-        if self.userProfileNameTextField.text == nil { userNameTemp = nil }
-        else { userNameTemp = self.userProfileNameTextField.text }
-        if self.userEmailTextField.text == nil { userMailTemp = nil }
-        else { userMailTemp = self.userEmailTextField.text }
-        if self.userPasswordTextField.text == nil { userPasswordTemp = nil }
-        else { userPasswordTemp = self.userPasswordTextField.text }
-        
-        
-        let postDataTemp = UserInfoChange(email: userNameTemp, username: userMailTemp, password: userPasswordTemp)
-        guard let postData = self.jsonEncoding(postData: postDataTemp) else {return}
-        
         let token = UserDefaults.standard.object(forKey: "token")
         if token == nil {return}
         
-        print(postDataTemp)
-        
-        self.networkRequest(data: postData, token: token as! String)
-        */
-        
-        let token = UserDefaults.standard.object(forKey: "token")
-        if token == nil {return}
-        
+        var postDataImage: UserInfoChangeImage
         var postDataUserName: UserInfoChangeUserName
         var postDataEmail: UserInfoChangeEmail
         var postDataPassWord: UserInfoChangePassWord
+        
+        if self.selectImageView.image != nil {
+            
+            postDataImage = UserInfoChangeImage(filename: "test.png")
+            guard let postData = self.jsonEncodingImage(postData: postDataImage) else {return}
+            
+            /*
+            let image : UIImage = self.selectImageView.image!
+            let imageData = image.pngData()
+            
+            postDataImage = UserInfoChangeImage(filename: imageData!)
+            guard let postData = self.jsonEncodingImage(postData: postDataImage) else {return}
+             */
+            
+            self.networkRequestPhotos(data: postData, token: token as? String)
+        }
         
         if self.userNameTextField.text != ""{
             postDataUserName = UserInfoChangeUserName(username: self.userNameTextField.text!)

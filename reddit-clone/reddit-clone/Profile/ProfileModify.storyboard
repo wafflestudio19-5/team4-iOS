@@ -47,13 +47,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loT-w1-EDm">
-                                <rect key="frame" x="20" y="122" width="60" height="60"/>
+                                <rect key="frame" x="100" y="152" width="120" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Dpx-bI-6d7"/>
-                                    <constraint firstAttribute="height" constant="60" id="ifn-YA-1RV"/>
+                                    <constraint firstAttribute="width" constant="120" id="Dpx-bI-6d7"/>
+                                    <constraint firstAttribute="height" constant="30" id="d7V-53-ozE"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select Image">
+                                    <backgroundConfiguration key="background" cornerRadius="16">
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="selectButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SGa-Ju-kbk"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-6w-aFA">
                                 <rect key="frame" x="20" y="202" width="78.5" height="21"/>
@@ -115,20 +124,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Urs-cg-fLp">
+                                <rect key="frame" x="20" y="122" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="HJz-xZ-WVN"/>
+                                    <constraint firstAttribute="height" constant="60" id="gz4-3N-JeN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eXS-aj-MZY" firstAttribute="top" secondItem="XEv-6w-aFA" secondAttribute="bottom" constant="10" id="0Yr-V8-S2X"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iAj-os-vQj" secondAttribute="trailing" constant="20" id="0ZB-uL-mox"/>
+                            <constraint firstItem="loT-w1-EDm" firstAttribute="leading" secondItem="Urs-cg-fLp" secondAttribute="trailing" constant="20" id="11d-II-vr7"/>
                             <constraint firstItem="FRU-ac-rZm" firstAttribute="top" secondItem="eXS-aj-MZY" secondAttribute="bottom" constant="10" id="2hE-MA-hIt"/>
                             <constraint firstItem="6VT-bO-ryb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="3hc-fC-4GM"/>
                             <constraint firstItem="hhN-n6-6mG" firstAttribute="top" secondItem="FRU-ac-rZm" secondAttribute="bottom" constant="20" id="6k1-8R-zHc"/>
                             <constraint firstItem="jMT-ON-wLh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7Bg-sW-Nx8"/>
                             <constraint firstItem="XEv-6w-aFA" firstAttribute="top" secondItem="loT-w1-EDm" secondAttribute="bottom" constant="20" id="8ba-H0-R9U"/>
-                            <constraint firstItem="loT-w1-EDm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AuD-9w-B9e"/>
                             <constraint firstItem="eXS-aj-MZY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="B6H-wK-R6Z"/>
                             <constraint firstItem="Eb7-LK-oJx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="BoS-qu-GJF"/>
+                            <constraint firstItem="XEv-6w-aFA" firstAttribute="top" secondItem="Urs-cg-fLp" secondAttribute="bottom" constant="20" id="CDX-bZ-9ul"/>
                             <constraint firstItem="9py-1q-3ch" firstAttribute="top" secondItem="hhN-n6-6mG" secondAttribute="bottom" constant="10" id="D1k-A6-ehV"/>
                             <constraint firstItem="XEv-6w-aFA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="G0m-oE-eiq"/>
                             <constraint firstItem="6VT-bO-ryb" firstAttribute="top" secondItem="7gW-03-OKu" secondAttribute="bottom" constant="20" id="I2M-gH-kMq"/>
@@ -139,7 +156,8 @@
                             <constraint firstItem="ff5-Wu-aEx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="KRy-vN-2g9"/>
                             <constraint firstItem="iAj-os-vQj" firstAttribute="top" secondItem="ff5-Wu-aEx" secondAttribute="bottom" constant="10" id="Q8j-l5-mkV"/>
                             <constraint firstItem="iAj-os-vQj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="SdS-Es-oAa"/>
-                            <constraint firstItem="loT-w1-EDm" firstAttribute="top" secondItem="jMT-ON-wLh" secondAttribute="bottom" constant="40" id="VPE-id-Z5I"/>
+                            <constraint firstItem="Urs-cg-fLp" firstAttribute="top" secondItem="jMT-ON-wLh" secondAttribute="bottom" constant="40" id="VCs-hB-bxK"/>
+                            <constraint firstItem="Urs-cg-fLp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WkJ-Pe-gta"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eXS-aj-MZY" secondAttribute="trailing" constant="20" id="XeQ-oO-bkq"/>
                             <constraint firstItem="ff5-Wu-aEx" firstAttribute="top" secondItem="6VT-bO-ryb" secondAttribute="bottom" constant="10" id="ZZJ-nO-cB6"/>
                             <constraint firstAttribute="trailing" secondItem="FRU-ac-rZm" secondAttribute="trailing" constant="20" id="hr0-MI-Sfo"/>
@@ -158,6 +176,7 @@
                         <outlet property="mainLabel" destination="Eb7-LK-oJx" id="RFA-fh-5Ee"/>
                         <outlet property="passwordDescriptionLabel" destination="iAj-os-vQj" id="jJu-oZ-MAZ"/>
                         <outlet property="selectImageLabel" destination="loT-w1-EDm" id="bkH-b7-J8u"/>
+                        <outlet property="selectImageView" destination="Urs-cg-fLp" id="eg4-MX-lZ0"/>
                         <outlet property="userDescriptionLabel" destination="FRU-ac-rZm" id="F0n-cr-Uyh"/>
                         <outlet property="userEmailLabel" destination="hhN-n6-6mG" id="qgz-gW-oyX"/>
                         <outlet property="userEmailTextField" destination="9py-1q-3ch" id="wbi-zo-WB3"/>
@@ -177,6 +196,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
