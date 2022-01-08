@@ -68,7 +68,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="systemIndigoColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign In">
+                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                             <backgroundConfiguration key="background" cornerRadius="18" strokeWidth="4">
                                                 <color key="strokeColor" systemColor="systemIndigoColor"/>
                                             </backgroundConfiguration>
