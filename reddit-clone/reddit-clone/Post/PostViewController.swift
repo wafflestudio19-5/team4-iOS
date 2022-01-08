@@ -43,7 +43,8 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let textField = UITextField()
         textField.placeholder = "comments"
         textField.addLeftPadding()
-        textField.backgroundColor = .green
+        textField.backgroundColor = .lightGray
+        textField.layer.cornerRadius = 15
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -145,8 +146,6 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.userName.text = "u/" + comment.userName
         
         cell.indentationLevel = comment.depth
-        
-        print(cell.frame)
         return cell
     }
     
