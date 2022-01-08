@@ -85,12 +85,17 @@ class SignUpViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
                     
                 }
                 else    {
-                    print("Login Successful")
+                    print("SignUp/Login Successful")
                     AppDelegate.googleUser = user
                     print(user.profile?.email)
                     print(user.profile?.name)
-                    let idToken = authentication.idToken
-                    print(idToken)
+                    print(authentication.accessToken)
+                    print(authentication.refreshToken)
+                    
+                    if authentication.accessToken == nil {return}
+                    if authentication.refreshToken == nil {return}
+                    let tokenDataTemp = GoogleLogin_token(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
+                    self.networkRequestGoogleLogin(postData: self.jsonEncodingGoogleLogin(param: tokenDataTemp)!)
                 }
             }
     }
