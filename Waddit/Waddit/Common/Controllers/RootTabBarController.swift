@@ -7,23 +7,30 @@
 
 import UIKit
 
-class RootTabBarController: UITabBarController {
+class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Assign self for delegate for that ViewController can respond to UITabBarControllerDelegate methods
+        self.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        let tabOne = UINavigationController(rootViewController: BaseFeedViewController())
+        tabOne.tabBarItem = UITabBarItem(title: "Base", image: UIImage(systemName: "house.fill"), tag: 0)
+        
+        let tabTwo = UINavigationController(rootViewController: SubscriptionFeedViewController())
+        tabTwo.tabBarItem = UITabBarItem(title: "Subscript", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        
+        let tabThree = UINavigationController(rootViewController: CreatePostViewController())
+        tabThree.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "plus"), tag: 2)
+        
+        self.viewControllers = [tabOne, tabTwo, tabThree]
+        self.tabBar.backgroundColor = .white
+        
+        
     }
-    */
-
 }
+
+

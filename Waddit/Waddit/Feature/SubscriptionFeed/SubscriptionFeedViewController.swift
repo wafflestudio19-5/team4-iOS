@@ -1,5 +1,5 @@
 //
-//  BaseFeedViewController.swift
+//  SubscriptionFeedViewController.swift
 //  Waddit
 //
 //  Created by Uiseop Eom on 2022/01/10.
@@ -7,10 +7,11 @@
 
 import UIKit
 
-class BaseFeedViewController: UIViewController {
+class SubscriptionFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemMint
 
         // Do any additional setup after loading the view.
     }
