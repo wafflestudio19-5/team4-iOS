@@ -1,0 +1,27 @@
+# Project Name
+name: Waddit
+
+# A bash command to run after the project has been generated.
+options:
+  postGenCommand: pod install
+  bundledIdPrefix: com.misolab
+
+targets:
+  Waddit:
+    type: application
+    platform: iOS
+    attributes:
+      ProvisioningStyle: Automatic
+    sources:
+      - path: Waddit
+    deploymentTarget: 
+      iOS: 15.0
+    settings:
+      INFOPLIST_FILE: Waddit/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.misolab.Waddit
+    
+schemes:
+  Waddit_scheme:
+    build:
+      targets:
+        Waddit: all
