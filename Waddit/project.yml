@@ -2,9 +2,9 @@
 name: Waddit
 
 # A bash command to run after the project has been generated.
-#options:
-  #postGenCommand: pod install
-  #bundledIdPrefix: com.misolab
+options:
+  postGenCommand: pod install
+  bundledIdPrefix: com.misolab
 
 targets:
   Waddit:
