@@ -2,9 +2,9 @@
 name: Waddit
 
 # A bash command to run after the project has been generated.
-options:
-  postGenCommand: pod install
-  bundledIdPrefix: com.misolab
+#options:
+  #postGenCommand: pod install
+  #bundledIdPrefix: com.misolab
 
 targets:
   Waddit:
@@ -19,6 +19,13 @@ targets:
     settings:
       INFOPLIST_FILE: Waddit/Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: com.misolab.Waddit
+    postCompileScripts:
+      - script: "${PODS_ROOT}/SwiftLint/swiftlint"
+        name: Swiftlint
+
+    configFiles:
+      Debug: xcconfig/Waddit-Debug.xcconfig
+      Release: xcconfig/Waddit-Release.xcconfig
     
 schemes:
   Waddit_scheme:
