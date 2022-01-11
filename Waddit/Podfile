@@ -6,5 +6,5 @@ target 'Waddit' do
   use_frameworks!
   # Pods for Waddit
   pod 'SwiftLint'
-
+  pod 'Tabman'
 end
