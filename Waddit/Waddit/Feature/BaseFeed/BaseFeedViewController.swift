@@ -14,7 +14,7 @@ class BaseFeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
     }
-    
+
 
     /*
     // MARK: - Navigation

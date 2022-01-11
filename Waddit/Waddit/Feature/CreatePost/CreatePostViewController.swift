@@ -14,7 +14,7 @@ class CreatePostViewController: UIViewController {
         view.backgroundColor = .orange
         // Do any additional setup after loading the view.
     }
-    
+
 
     /*
     // MARK: - Navigation

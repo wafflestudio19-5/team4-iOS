@@ -20,7 +20,7 @@ public enum Way {
 
 public enum CustomConstraintsError: Error {
     case vagueAxisError
-    
+
     func getMessage() -> String {
         switch self {
         case .vagueAxisError:
@@ -30,7 +30,7 @@ public enum CustomConstraintsError: Error {
 }
 
 public extension NSLayoutConstraint {
-    
+
     /**
      Align top, bottom, leading, trailing constraint to the container view
      - Parameter subView: The target subview.
@@ -39,11 +39,11 @@ public extension NSLayoutConstraint {
      - Returns: None (Void)
      */
     static func activateFourWayConstraints(subView: UIView, containerView: UIView) {
-        
+
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         NSLayoutConstraint.activate([
             subView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             subView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
@@ -51,7 +51,7 @@ public extension NSLayoutConstraint {
             subView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
-    
+
     /// Align **subView** to the **containerView** by constants
     /// - Parameters:
     ///     - subView: The target subView to be constrained.
@@ -61,12 +61,14 @@ public extension NSLayoutConstraint {
     ///     - leading: constant constraint to leading from the containerView
     ///     - trailing: ocnstant constraint to trailing from the containverView
     /// - Returns: Void
-    static func activateFourWayConstraints(subView: UIView, containerView: UIView, top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat) {
-        
+    static func activateFourWayConstraints(subView: UIView,
+                                           containerView: UIView,
+                                           top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat) {
+
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         NSLayoutConstraint.activate([
             subView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: leading),
             subView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: trailing),
@@ -74,7 +76,7 @@ public extension NSLayoutConstraint {
             subView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: bottom)
         ])
     }
-    
+
     /**
      Set height and width constraint relative to the containerView
      - Parameters:
@@ -85,17 +87,17 @@ public extension NSLayoutConstraint {
      - Returns: Void
      */
     static func activateTwoWayContraints(subView: UIView, containerView: UIView, top: CGFloat, centerX: CGFloat) {
-        
+
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         NSLayoutConstraint.activate([
             subView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: top),
             subView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: centerX)
         ])
     }
-    
+
     /**
      Set height and width constraint relative to the containerView
      - Parameters:
@@ -106,17 +108,17 @@ public extension NSLayoutConstraint {
      - Returns: Void
      */
     static func activateTwoWayContraints(subView: UIView, containerView: UIView, top: CGFloat, left: CGFloat) {
-        
+
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         NSLayoutConstraint.activate([
             subView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: top),
             subView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: left)
         ])
     }
-    
+
     /**
      Set height and width constraint relative to the containerView
      - Parameters:
@@ -126,18 +128,20 @@ public extension NSLayoutConstraint {
         - heightMultiply: amount of relative height mulply (should be of decimal float)
      - Returns: Void
      */
-    static func activateTwoWayContraints(subView: UIView, containerView: UIView, widthMultiply: CGFloat, heightMultiply: CGFloat) {
-        
+    static func activateTwoWayContraints(subView: UIView,
+                                         containerView: UIView,
+                                         widthMultiply: CGFloat, heightMultiply: CGFloat) {
+
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         NSLayoutConstraint.activate([
             subView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: widthMultiply),
             subView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: heightMultiply)
         ])
     }
-    
+
     /**
      Set set a constraint from the basis View
      - Parameters:
@@ -148,11 +152,11 @@ public extension NSLayoutConstraint {
      - Returns: Void
      */
     static func activateOneWayContraint(targetView: UIView, basisView: UIView, way: Way, constant: CGFloat) {
-        
+
         if targetView.translatesAutoresizingMaskIntoConstraints {
             targetView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         switch way {
         case .top:
             NSLayoutConstraint.activate([
@@ -172,7 +176,7 @@ public extension NSLayoutConstraint {
             ])
         }
     }
-    
+
     /**
      Set set a x or y center constraint from the basis View
      - Parameters:
@@ -182,13 +186,17 @@ public extension NSLayoutConstraint {
         - constant: amount of constant contrainsts
      - Returns: Void
      */
-    static func activateOneWayContraint(targetView: UIView, basisView: UIView, axis: NSLayoutConstraint.Axis, constant: CGFloat) throws {
-        
+    static func activateOneWayContraint(targetView: UIView,
+                                        basisView: UIView,
+                                        axis: NSLayoutConstraint.Axis,
+                                        constant: CGFloat)
+    throws {
+
         if targetView.translatesAutoresizingMaskIntoConstraints {
             targetView.translatesAutoresizingMaskIntoConstraints = false
         }
-        
-        switch axis{
+
+        switch axis {
         case .horizontal:
             NSLayoutConstraint.activate([
                 targetView.centerXAnchor.constraint(equalTo: basisView.centerXAnchor, constant: constant)
