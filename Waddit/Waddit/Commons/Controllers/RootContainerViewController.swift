@@ -38,6 +38,7 @@ class RootContainerViewController: UIViewController {
         view.addSubview(tabBarVC.view)
         tabBarVC.didMove(toParent: self)
         (tabBarVC.tabOne.rootViewController as? BaseTabViewController)?.delegate = self
+        (tabBarVC.tabTwo.rootViewController as? BaseTabViewController)?.delegate = self
     }
 }
 
