@@ -27,7 +27,6 @@ class BaseTabViewController: UIViewController {
 
     @objc
     func didTapMenuButton() {
-        print("BaseTabViewController: tabbed")
         delegate?.didTapMenu()
     }
 
