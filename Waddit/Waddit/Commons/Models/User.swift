@@ -13,4 +13,3 @@ struct User: Codable, Identifiable {
     let username: String
     let profileImage: String?
 }
-

@@ -8,12 +8,12 @@
 import Foundation
 
 class CurrentUser {
-    
+
     static let shared = CurrentUser()
-    
+
     private init() { }
-    
+
     var profile: User?
-    
-    
+
+
 }

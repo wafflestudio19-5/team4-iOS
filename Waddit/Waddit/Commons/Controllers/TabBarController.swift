@@ -7,7 +7,12 @@
 
 import UIKit
 
-class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
+
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
+
+    let tabOne = UINavigationController(rootViewController: BaseFeedViewController())
+    let tabTwo = UINavigationController(rootViewController: SubscriptionFeedViewController())
+    let tabThree = UINavigationController(rootViewController: CreatePostViewController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,18 +22,13 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let tabOne = UINavigationController(rootViewController: BaseFeedViewController())
         tabOne.tabBarItem = UITabBarItem(title: "Base", image: UIImage(systemName: "house.fill"), tag: 0)
 
-        let tabTwo = UINavigationController(rootViewController: SubscriptionFeedViewController())
         tabTwo.tabBarItem = UITabBarItem(title: "Subscript", image: UIImage(systemName: "magnifyingglass"), tag: 1)
 
-        let tabThree = UINavigationController(rootViewController: CreatePostViewController())
         tabThree.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "plus"), tag: 2)
 
         self.viewControllers = [tabOne, tabTwo, tabThree]
         self.tabBar.backgroundColor = .white
-
-
     }
 }
