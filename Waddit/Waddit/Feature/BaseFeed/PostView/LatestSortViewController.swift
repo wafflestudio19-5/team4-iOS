@@ -9,6 +9,9 @@ class LatestSortViewController: UIViewController {
     // MARK: - Add post TableView
     func addPostTableView() {
         postTableView.dataSource = self
+        postTableView.delegate = self
+        postTableView.estimatedRowHeight = 50
+        postTableView.rowHeight = UITableView.automaticDimension
         postTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         view.addSubview(postTableView)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -16,8 +19,6 @@ class LatestSortViewController: UIViewController {
         postTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         postTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true
-        postTableView.estimatedRowHeight = 50
-        postTableView.rowHeight = UITableView.automaticDimension
     }
 }
 
@@ -27,10 +28,13 @@ extension LatestSortViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return PostTableViewCell() }
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+        // return postTableView.rowHeight
     }
 }
 // MARK: - Code for using canvas
