@@ -7,7 +7,8 @@
 
 import UIKit
 
-class SubscriptionFeedViewController: UIViewController {
+
+class SubscriptionFeedViewController: BaseFeedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
