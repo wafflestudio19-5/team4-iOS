@@ -7,4 +7,5 @@ target 'Waddit' do
   # Pods for Waddit
   pod 'SwiftLint'
   pod 'Tabman'
+  pod 'Alamofire'
 end

@@ -3,7 +3,7 @@ import Tabman
 import Pageboy
 
 class BaseFeedViewController: TabmanViewController {
-
+    
     let sideButton = UIButton()
     let searchButton = UIButton()
     let barView = UIView()
