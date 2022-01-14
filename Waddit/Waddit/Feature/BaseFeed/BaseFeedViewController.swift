@@ -68,7 +68,7 @@ class BaseFeedViewController: TabmanViewController {
     }
     // MARK: - Add viewcontroller to custom tabBar
     func addViewController() {
-        let latestVC = LatestSortViewController()
+        let latestVC = LatestSortFeedViewController()
         viewControllers.append(latestVC)
         self.dataSource = self
         // MARK: - create bar

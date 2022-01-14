@@ -1,6 +1,6 @@
 import UIKit
 
-class LatestSortViewController: UIViewController {
+class LatestSortFeedViewController: UIViewController {
     var postTableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +23,14 @@ class LatestSortViewController: UIViewController {
 }
 
 // MARK: - Code for postTableView
-extension LatestSortViewController: UITableViewDelegate, UITableViewDataSource {
+extension LatestSortFeedViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return PostTableViewCell() }
+        print(cell.frame.height)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -41,13 +42,13 @@ extension LatestSortViewController: UITableViewDelegate, UITableViewDataSource {
 import SwiftUI
 
     struct LatestSortViewControllerRepresentable: UIViewControllerRepresentable {
-        typealias UIViewControllerType = LatestSortViewController
+        typealias UIViewControllerType = LatestSortFeedViewController
 
-        func makeUIViewController(context: Context) -> LatestSortViewController {
-            return LatestSortViewController()
+        func makeUIViewController(context: Context) -> LatestSortFeedViewController {
+            return LatestSortFeedViewController()
         }
 
-        func updateUIViewController(_ uiViewController: LatestSortViewController, context: Context) {
+        func updateUIViewController(_ uiViewController: LatestSortFeedViewController, context: Context) {
         }
     }
 
