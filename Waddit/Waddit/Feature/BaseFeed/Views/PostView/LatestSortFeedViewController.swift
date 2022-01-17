@@ -10,7 +10,7 @@ class LatestSortFeedViewController: UIViewController {
     func addPostTableView() {
         postTableView.dataSource = self
         postTableView.delegate = self
-        postTableView.estimatedRowHeight = 50
+        postTableView.estimatedRowHeight = 160
         postTableView.rowHeight = UITableView.automaticDimension
         postTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         view.addSubview(postTableView)
@@ -34,8 +34,7 @@ extension LatestSortFeedViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
-        // return postTableView.rowHeight
+        return UITableView.automaticDimension
     }
 }
 // MARK: - Code for using canvas

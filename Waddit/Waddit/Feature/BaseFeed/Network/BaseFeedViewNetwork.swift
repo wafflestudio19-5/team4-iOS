@@ -1,10 +1,11 @@
 import Foundation
 import Alamofire
 
-struct postListResponseList: Codable {
+struct PostListResponseList: Codable {
     
 }
 
+/*
 extension BaseFeedViewController {
     public func getData() {
         let ip = "54.180.132.95"
@@ -25,3 +26,4 @@ extension BaseFeedViewController {
         }
     }
 }
+*/

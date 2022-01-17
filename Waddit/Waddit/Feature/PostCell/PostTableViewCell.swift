@@ -16,7 +16,6 @@ struct PostCellData: Codable {
 
 class PostTableViewCell: UITableViewCell {
     static let identifier = "PostTableViewCell"
-    let tableStackView = UIStackView()
     let communityView = UIView()
     let communityImageView = UIImageView()
     let communityNameLabel = UILabel()
@@ -32,7 +31,6 @@ class PostTableViewCell: UITableViewCell {
     let commentLabel = UILabel()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addCommunityStackView()
         addCommunityView()
         addCommunityImageView()
         addCommunityNameLabel()
@@ -47,24 +45,21 @@ class PostTableViewCell: UITableViewCell {
         addCommentImageView()
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been impl")
+        fatalError("init(coder:) has not been implement")
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    // MARK: - Set stackView that include communityImage, communityName, userName
-    func addCommunityStackView() {
-        contentView.addSubview(tableStackView)
-        tableStackView.axis = .vertical
-        tableStackView.translatesAutoresizingMaskIntoConstraints = false
-        tableStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        tableStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        tableStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-    }
+    // MARK: - Set View that include communityImage, communityName, userName
     func addCommunityView() {
-        tableStackView.insertArrangedSubview(communityView, at: 0)
+        contentView.addSubview(communityView)
+        communityView.translatesAutoresizingMaskIntoConstraints = false
+        communityView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        communityView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        communityView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        communityView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     // MARK: - Add CommunityImageView
     func addCommunityImageView() {
@@ -81,6 +76,7 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Add CommunityNameLabel
     func addCommunityNameLabel() {
         communityView.addSubview(communityNameLabel)
+        communityNameLabel.numberOfLines = 0
         communityNameLabel.text = "r/CommunityName"
         communityNameLabel.textColor = .systemGray
         communityNameLabel.font = UIFont.systemFont(ofSize: CGFloat(15), weight: .semibold)
@@ -91,6 +87,7 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Add CreateDateLabel
     func addUserNameLabel() {
         communityView.addSubview(userNameLabel)
+        userNameLabel.numberOfLines = 0
         userNameLabel.text = "username"
         userNameLabel.textColor = .systemGray2
         userNameLabel.font = UIFont.systemFont(ofSize: CGFloat(15))
@@ -101,6 +98,7 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Add CreateDateLabel
     func addCreateDateLabel() {
         communityView.addSubview(createDateLabel)
+        createDateLabel.numberOfLines = 0
         createDateLabel.text = "createDate"
         createDateLabel.textColor = .systemGray2
         createDateLabel.font = UIFont.systemFont(ofSize: CGFloat(15))
@@ -110,6 +108,7 @@ class PostTableViewCell: UITableViewCell {
     }
     func addPostNameLabel() {
         communityView.addSubview(postNameLabel)
+        postNameLabel.numberOfLines = 0
         postNameLabel.text = "Post Name"
         postNameLabel.font = UIFont.systemFont(ofSize: CGFloat(18), weight: .semibold)
         postNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -144,6 +143,7 @@ class PostTableViewCell: UITableViewCell {
     }
     func addVoteLabel() {
         communityView.addSubview(voteLabel)
+        voteLabel.numberOfLines = 0
         voteLabel.text = "Vote"
         voteLabel.font = UIFont.systemFont(ofSize: CGFloat(20), weight: .semibold)
         voteLabel.textColor = .systemGray
@@ -166,6 +166,7 @@ class PostTableViewCell: UITableViewCell {
     }
     func addCommentLabel() {
         communityView.addSubview(commentLabel)
+        commentLabel.numberOfLines = 0
         commentLabel.text = "Comment"
         commentLabel.font = UIFont.systemFont(ofSize: CGFloat(20), weight: .semibold)
         commentLabel.textColor = .systemGray
@@ -185,6 +186,7 @@ class PostTableViewCell: UITableViewCell {
         commentImageView.trailingAnchor.constraint(equalTo: commentLabel.leadingAnchor, constant: -5).isActive = true
         commentImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         commentImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        communityView.bottomAnchor.constraint(equalTo: commentImageView.bottomAnchor, constant: 5).isActive = true
     }
     func setData() {
         // TO DO
