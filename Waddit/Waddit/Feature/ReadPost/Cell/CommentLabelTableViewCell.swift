@@ -27,6 +27,5 @@ class CommentLabelTableViewCell: UITableViewCell {
         commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         commentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         commentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        commentLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

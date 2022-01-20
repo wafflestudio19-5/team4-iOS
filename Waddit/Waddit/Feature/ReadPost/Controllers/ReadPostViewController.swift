@@ -9,6 +9,7 @@ import UIKit
 
 class ReadPostViewController: UIViewController {
     var postTableView = UITableView()
+    static let identifier = "ReadPostViewController"
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -26,7 +27,7 @@ class ReadPostViewController: UIViewController {
         postTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         view.addSubview(postTableView)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
-        postTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        postTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         postTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         postTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true

@@ -187,7 +187,6 @@ class CommentTableViewCell: UITableViewCell {
         commentImageView.tintColor = .systemGray
         commentImageView.translatesAutoresizingMaskIntoConstraints = false
         commentImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        commentImageView.trailingAnchor.constraint(equalTo: commentLabel.leadingAnchor, constant: -5).isActive = true
         commentImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         commentImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         commentImageView.trailingAnchor.constraint(equalTo: commentLabel.leadingAnchor, constant: -7.5).isActive = true
