@@ -1,21 +1,25 @@
 import UIKit
 import Pageboy
 
-struct PostCellData: Codable {
+struct CommentCellData: Codable {
     let id: Int
     let userId: Int
     let userName: String
     let userImageUrl: String
     let title: String
+    let depth: Int
+    let parentId: Int
+    let groupId: Int
     let text: String
     let images: [String]
     let numUpVotes: Int
     let numDownVotes: Int
+    let deleted: Bool
     let creadAt: String
 }
 
-class PostTableViewCell: UITableViewCell {
-    static let identifier = "PostTableViewCell"
+class CommentTableViewCell: UITableViewCell {
+    static let identifier = "CommentTableViewCell"
     let communityView = UIView()
     let communityImageView = UIImageView()
     let communityNameLabel = UILabel()
@@ -38,9 +42,9 @@ class PostTableViewCell: UITableViewCell {
         addCreateDateLabel()
         addPostNameLabel()
         addPostDataLabel()
-        addUpVoteImageView()
-        addVoteLabel()
         addDownVoteImageView()
+        addVoteLabel()
+        addUpVoteImageView()
         addCommentLabel()
         addCommentImageView()
     }
@@ -49,6 +53,7 @@ class PostTableViewCell: UITableViewCell {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
     // MARK: - Set View that include communityImage, communityName, userName
@@ -128,17 +133,17 @@ class PostTableViewCell: UITableViewCell {
     func addPostImageView() {
         // TO DO
     }
-    func addUpVoteImageView() {
-        communityView.addSubview(upVoteImageView)
-        let selectedImageOriginal = UIImage(systemName: "arrow.up.square.fill")
+    func addDownVoteImageView() {
+        communityView.addSubview(downVoteImageView)
+        let selectedImageOriginal = UIImage(systemName: "arrow.down.square.fill")
         let selectedImage = selectedImageOriginal?.withRenderingMode(.alwaysTemplate)
-        upVoteImageView.image = selectedImage
-        upVoteImageView.tintColor = .systemGray
-        upVoteImageView.translatesAutoresizingMaskIntoConstraints = false
-        upVoteImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        upVoteImageView.leadingAnchor.constraint(equalTo: communityView.leadingAnchor, constant: 5).isActive = true
-        upVoteImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        upVoteImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        downVoteImageView.image = selectedImage
+        downVoteImageView.tintColor = .systemGray
+        downVoteImageView.translatesAutoresizingMaskIntoConstraints = false
+        downVoteImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
+        downVoteImageView.trailingAnchor.constraint(equalTo: communityView.trailingAnchor, constant: -5).isActive = true
+        downVoteImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        downVoteImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     func addVoteLabel() {
         communityView.addSubview(voteLabel)
@@ -148,31 +153,31 @@ class PostTableViewCell: UITableViewCell {
         voteLabel.textColor = .systemGray
         voteLabel.translatesAutoresizingMaskIntoConstraints = false
         voteLabel.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        voteLabel.leadingAnchor.constraint(equalTo: upVoteImageView.trailingAnchor, constant: 7.5).isActive = true
+        voteLabel.trailingAnchor.constraint(equalTo: downVoteImageView.leadingAnchor, constant: -7.5).isActive = true
         voteLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    func addDownVoteImageView() {
-        communityView.addSubview(downVoteImageView)
-        let selectedImageOriginal = UIImage(systemName: "arrow.down.square.fill")
+    func addUpVoteImageView() {
+        communityView.addSubview(upVoteImageView)
+        let selectedImageOriginal = UIImage(systemName: "arrow.up.square.fill")
         let selectedImage = selectedImageOriginal?.withRenderingMode(.alwaysTemplate)
-        downVoteImageView.image = selectedImage
-        downVoteImageView.tintColor = .systemGray
-        downVoteImageView.translatesAutoresizingMaskIntoConstraints = false
-        downVoteImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        downVoteImageView.leadingAnchor.constraint(equalTo: voteLabel.trailingAnchor, constant: 7.5).isActive = true
-        downVoteImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        downVoteImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        upVoteImageView.image = selectedImage
+        upVoteImageView.tintColor = .systemGray
+        upVoteImageView.translatesAutoresizingMaskIntoConstraints = false
+        upVoteImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
+        upVoteImageView.trailingAnchor.constraint(equalTo: voteLabel.leadingAnchor, constant: -5).isActive = true
+        upVoteImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        upVoteImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     func addCommentLabel() {
         communityView.addSubview(commentLabel)
         commentLabel.numberOfLines = 0
-        commentLabel.text = "Comment"
+        commentLabel.text = "Reply"
         commentLabel.font = UIFont.systemFont(ofSize: CGFloat(20), weight: .semibold)
         commentLabel.textColor = .systemGray
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        commentLabel.trailingAnchor.constraint(equalTo: communityView.trailingAnchor, constant: -5).isActive = true
-        voteLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        commentLabel.trailingAnchor.constraint(equalTo: upVoteImageView.leadingAnchor, constant: -10).isActive = true
+        commentLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     func addCommentImageView() {
         communityView.addSubview(commentImageView)
@@ -182,9 +187,9 @@ class PostTableViewCell: UITableViewCell {
         commentImageView.tintColor = .systemGray
         commentImageView.translatesAutoresizingMaskIntoConstraints = false
         commentImageView.topAnchor.constraint(equalTo: postDataLabel.bottomAnchor, constant: 10).isActive = true
-        commentImageView.trailingAnchor.constraint(equalTo: commentLabel.leadingAnchor, constant: -5).isActive = true
         commentImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         commentImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        commentImageView.trailingAnchor.constraint(equalTo: commentLabel.leadingAnchor, constant: -7.5).isActive = true
         communityView.bottomAnchor.constraint(equalTo: commentImageView.bottomAnchor, constant: 5).isActive = true
     }
     func setData() {
