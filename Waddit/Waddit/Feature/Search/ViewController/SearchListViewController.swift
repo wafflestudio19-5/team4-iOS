@@ -4,7 +4,7 @@ class SearchListViewController: UIViewController {
     var searchBar = UISearchBar()
     var cancelButton = UIButton()
     var searchData: [String] = []
-    let searchHistoryTableView = UITableViewController()
+    let searchHistoryTableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         addSearchBar()
@@ -32,10 +32,39 @@ class SearchListViewController: UIViewController {
         cancelButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    // MARK: - Add tableView
     func addTableView() {
+        self.searchHistoryTableView.dataSource = self
+        self.searchHistoryTableView.delegate = self
+        self.searchHistoryTableView.register(UITableViewCell.self,
+                                forCellReuseIdentifier: "TableViewCell")
+        view.addSubview(searchHistoryTableView)
+        searchHistoryTableView.translatesAutoresizingMaskIntoConstraints = false
+        searchHistoryTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        searchHistoryTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        searchHistoryTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        searchHistoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
     }
 }
 
+extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchData.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") else {return UITableViewCell()}
+        cell.textLabel?.text = searchData[indexPath.row]
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let vc = ReadPostViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 // MARK: - Code for using canvas
 import SwiftUI
 
