@@ -8,8 +8,7 @@
 import UIKit
 
 class LogInView: UIView {
-    
-    
+
 
     /*
     // Only override draw() if you perform custom drawing.

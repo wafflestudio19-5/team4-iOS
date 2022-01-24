@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 class SideMenuView: UIView {
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        
+
         setStyleForView()
         setLayoutForView()
     }
@@ -27,7 +27,8 @@ class SideMenuView: UIView {
         let navBar = UINavigationBar(frame: CGRect.zero)
 
         let navItem = UINavigationItem()
-        var img = UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
+        var img = UIImage(systemName: "xmark",
+                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
         let navBarButton = UIBarButtonItem(image: img,
                                            style: .done,
                                            target: nil, // Added in NavBarViewController
@@ -100,12 +101,24 @@ class SideMenuView: UIView {
                                                     containerView: self,
                                                     top: 100.0,
                                                     centerX: 0)
-        NSLayoutConstraint.activateOneWayContraint(subView: profileImgButton, containerView: self, way: .leading, constant: 10.0)
+        NSLayoutConstraint.activateOneWayContraint(subView: profileImgButton,
+                                                   containerView: self,
+                                                   way: .leading,
+                                                   constant: 10.0)
 
-        NSLayoutConstraint.activateTwoWayContraints(subView: label, containerView: self, widthMultiply: 1, heightMultiply: 0.1)
-        NSLayoutConstraint.activateOneWayContraint(targetView: label, basisView: profileImgButton, way: .top, constant: 10)
+        NSLayoutConstraint.activateTwoWayContraints(subView: label,
+                                                    containerView: self,
+                                                    widthMultiply: 1,
+                                                    heightMultiply: 0.1)
+        NSLayoutConstraint.activateOneWayContraint(targetView: label,
+                                                   basisView: profileImgButton,
+                                                   way: .top,
+                                                   constant: 10)
 
 
-        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView, basisView: label, way: .top, constant: 20.0)
+        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView,
+                                                   basisView: label,
+                                                   way: .top,
+                                                   constant: 20.0)
     }
 }

@@ -141,7 +141,7 @@ public extension NSLayoutConstraint {
             subView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: heightMultiply)
         ])
     }
-    
+
     /**
      Set set a constraint from the basis View
      - Parameters:
@@ -185,7 +185,9 @@ public extension NSLayoutConstraint {
         - constant: amount of constant contrainsts
      - Returns: Void
      */
-    static func activateOneWayContraint(subView: UIView, containerViewLayoutGuide: UILayoutGuide, way: Way, constant: CGFloat) {
+    static func activateOneWayContraint(subView: UIView,
+                                        containerViewLayoutGuide: UILayoutGuide,
+                                        way: Way, constant: CGFloat) {
 
         if subView.translatesAutoresizingMaskIntoConstraints {
             subView.translatesAutoresizingMaskIntoConstraints = false

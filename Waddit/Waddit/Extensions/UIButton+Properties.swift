@@ -13,17 +13,17 @@ extension UIButton {
         get { return self.title(for: .normal) }
         set { setTitle(newValue, for: .normal) }
     }
-    
+
     public var titleFont: UIFont? {
         get { return titleLabel?.font }
         set { titleLabel?.font = newValue }
     }
-    
+
     public var attributedTitle: NSAttributedString? {
         get { return self.attributedTitle(for: .normal) }
         set { setAttributedTitle(newValue, for: .normal) }
     }
-    
+
     public var titleColor: UIColor? {
         get { return self.titleColor(for: .normal) }
         set {
@@ -35,7 +35,7 @@ extension UIButton {
             }
         }
     }
-    
+
     public var titleShadowColor: UIColor? {
         get { return self.titleShadowColor(for: .normal) }
         set {
@@ -44,19 +44,19 @@ extension UIButton {
             setTitleShadowColor(newValue, for: .selected)
         }
     }
-    
+
     public var image: UIImage? {
         get { return self.image(for: .normal) }
         set {
             setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
-    
+
     public var selectedImage: UIImage? {
         get { return self.image(for: .selected) }
         set { setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
     }
-    
+
     public var backgroundImage: UIImage? {
         get { return self.backgroundImage(for: .normal) }
         set {
@@ -68,15 +68,15 @@ extension UIButton {
             }
         }
     }
-    
+
     public var selectedBackgroundImage: UIImage? {
         get { return self.backgroundImage(for: .selected) }
         set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .selected) }
     }
-    
+
     public var disabledBackgroundImage: UIImage? {
         get { return self.backgroundImage(for: .disabled) }
         set { setBackgroundImage(newValue?.withRenderingMode(.alwaysOriginal), for: .disabled) }
     }
-    
+
 }
