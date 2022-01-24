@@ -49,7 +49,7 @@ extension RootContainerViewController: BaseTabViewControllerDelegate {
             UIView.animate(withDuration: 0.3,
                            delay: 0,
                            options: .curveEaseOut) {
-                self.tabBarVC.view.frame.origin.x = self.menuVC.view.frame.size.width - 100
+                self.tabBarVC.view.frame.origin.x = self.menuVC.view.frame.size.width
             } completion: { done in
                 if done {
                     self.menuState = .opened
