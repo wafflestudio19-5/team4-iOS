@@ -75,8 +75,8 @@ class SearchResultViewController: TabmanViewController {
     }
     // MARK: - Add viewcontroller to custom tabBar
     func addViewController() {
-        let latestVC = LatestSortFeedViewController()
-        viewControllers.append(latestVC)
+        let searchPostVC = SearchPostViewController()
+        viewControllers.append(searchPostVC)
         self.dataSource = self
         // MARK: - create bar
         let bar = TMBar.ButtonBar()
