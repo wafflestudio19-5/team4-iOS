@@ -2,9 +2,11 @@ import UIKit
 
 class LatestSortFeedViewController: UIViewController {
     var postTableView = UITableView()
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         addPostTableView()
+        getData(pageNum: 0)
     }
     // MARK: - Add post TableView
     func addPostTableView() {
@@ -30,11 +32,14 @@ extension LatestSortFeedViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return PostTableViewCell() }
-        print(cell.frame.height)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let vc = ReadPostViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 // MARK: - Code for using canvas

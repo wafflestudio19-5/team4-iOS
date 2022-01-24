@@ -3,7 +3,6 @@ import Tabman
 import Pageboy
 
 class BaseFeedViewController: TabmanViewController {
-    
     let sideButton = UIButton()
     let searchButton = UIButton()
     let barView = UIView()
@@ -14,7 +13,6 @@ class BaseFeedViewController: TabmanViewController {
     // Tab bar libary
     private var viewControllers: [UIViewController] = []
     // UserDefaluts
-    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         addSideButton()
