@@ -17,30 +17,11 @@ class SideMenuView: UIView {
         setStyleForView()
         setLayoutForView()
     }
-    
+
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let profileImgButton: UIButton = {
-        let button = UIButton()
-        
-        let targetSize = CGSize(width: 100, height: 100)
-        var img = UIImage(systemName: "person.crop.circle")
-        img = img?.scalePreservingAspectRatio(targetSize: targetSize)
-        button.setImage(img, for: .normal)
-
-        return button
-    }()
-    
-    let menuTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = .blue
-
-        return tableView
-    }()
 
     let navBar: UINavigationBar = {
         let navBar = UINavigationBar(frame: CGRect.zero)
@@ -60,8 +41,41 @@ class SideMenuView: UIView {
         navBar.shadowImage = UIImage()
         navBar.layoutIfNeeded()
 
-
         return navBar
+    }()
+
+    let profileImgButton: UIButton = {
+        let button = UIButton()
+
+        let targetSize = CGSize(width: 100, height: 100)
+        var img = UIImage(systemName: "person.crop.circle")?.withTintColor(.lightGray)
+        img = img?.scalePreservingAspectRatio(targetSize: targetSize)
+        button.setImage(img, for: .normal)
+
+        return button
+    }()
+
+    let label: UILabel = {
+        let label = UILabel()
+        label.text = """
+                Sign up to upvote the best content,
+                customize your feed, share your interests,
+                and more!
+                """
+        label.font = UIFont(name: "Kailasa", size: 14)
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+
+        return label
+    }()
+
+    let menuTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .blue
+
+        return tableView
     }()
 
     private func setStyleForView() {
@@ -69,6 +83,7 @@ class SideMenuView: UIView {
 
     private func setLayoutForView() {
         self.addSubview(navBar)
+        self.addSubview(label)
         self.addSubview(profileImgButton)
         self.addSubview(menuTableView)
 
@@ -76,12 +91,21 @@ class SideMenuView: UIView {
                                                    containerViewLayoutGuide: self.safeAreaLayoutGuide,
                                                    way: .top,
                                                    constant: 0)
-        NSLayoutConstraint.activateTwoWayContraints(subView: navBar, containerView: self, widthMultiply: 1, heightMultiply: 0.2)
+        NSLayoutConstraint.activateTwoWayContraints(subView: navBar,
+                                                    containerView: self,
+                                                    widthMultiply: 1,
+                                                    heightMultiply: 0.2)
 
-
-        NSLayoutConstraint.activateTwoWayContraints(subView: profileImgButton, containerView: self, top: 100.0, centerX: 0)
+        NSLayoutConstraint.activateTwoWayContraints(subView: profileImgButton,
+                                                    containerView: self,
+                                                    top: 100.0,
+                                                    centerX: 0)
         NSLayoutConstraint.activateOneWayContraint(subView: profileImgButton, containerView: self, way: .leading, constant: 10.0)
 
-        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView, basisView: profileImgButton, way: .top, constant: 20.0)
+        NSLayoutConstraint.activateTwoWayContraints(subView: label, containerView: self, widthMultiply: 1, heightMultiply: 0.1)
+        NSLayoutConstraint.activateOneWayContraint(targetView: label, basisView: profileImgButton, way: .top, constant: 10)
+
+
+        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView, basisView: label, way: .top, constant: 20.0)
     }
 }

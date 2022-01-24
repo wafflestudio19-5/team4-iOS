@@ -23,7 +23,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(view.frame.height)
-        let rect = CGRect(x: 0, y: 0, width: ScreenSize.screenWidth - 100, height: ScreenSize.screenHeight)
+        let rect = CGRect(x: 0, y: 0, width: ScreenSize.screenWidth - ScreenSize.screenWidth * 0.2 , height: ScreenSize.screenHeight)
         print(ScreenSize.screenHeight)
         
         self.view = SideMenuView(frame: rect)
