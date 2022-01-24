@@ -14,8 +14,7 @@ class SideMenuView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
 
-        setStyleForView()
-        setLayoutForView()
+        createSubViews()
     }
 
     @available(*, unavailable)
@@ -79,10 +78,7 @@ class SideMenuView: UIView {
         return tableView
     }()
 
-    private func setStyleForView() {
-    }
-
-    private func setLayoutForView() {
+    private func createSubViews() {
         self.addSubview(navBar)
         self.addSubview(label)
         self.addSubview(profileImgButton)
@@ -115,10 +111,17 @@ class SideMenuView: UIView {
                                                    way: .top,
                                                    constant: 10)
 
+        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView, basisView: label, way: .top, constant: 5)
+        NSLayoutConstraint.activateTwoWayContraints(subView: menuTableView, containerView: self, widthMultiply: 1, heightMultiply: 0.7)
+        menuTableView.backgroundColor = .cyan
 
-        NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView,
-                                                   basisView: label,
-                                                   way: .top,
-                                                   constant: 20.0)
+        do {
+            try NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView,
+                                                       basisView: self, axis: .horizontal,
+                                                       constant: 0)
+        } catch let error {
+            let error = error as? CustomConstraintsError
+            fatalError(error?.getMessage() ?? "constraints error")
+        }
     }
 }
