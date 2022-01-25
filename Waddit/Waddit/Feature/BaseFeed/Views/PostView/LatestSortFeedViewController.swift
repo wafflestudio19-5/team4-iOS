@@ -2,9 +2,11 @@ import UIKit
 
 class LatestSortFeedViewController: UIViewController {
     var postTableView = UITableView()
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         addPostTableView()
+        getData(pageNum: 0)
     }
     // MARK: - Add post TableView
     func addPostTableView() {
