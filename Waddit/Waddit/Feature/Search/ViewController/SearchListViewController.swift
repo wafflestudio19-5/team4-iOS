@@ -7,6 +7,7 @@ class SearchListViewController: UIViewController {
     let searchHistoryTableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         addSearchBar()
         addCancelButton()
         addTableView()
@@ -20,9 +21,18 @@ class SearchListViewController: UIViewController {
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70).isActive = true
     }
+    // MARK: - pull up keyboard when view appear
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchBar.becomeFirstResponder()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.resignFirstResponder()
+    }
     // MARK: - Add cancelButton
     func addCancelButton() {
         view.addSubview(cancelButton)
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.addTarget(self, action: #selector(cancelButtonClicked(sender:)), for: .touchUpInside)
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         cancelButton.setTitleColor(.systemGray, for: .normal)
@@ -45,6 +55,16 @@ class SearchListViewController: UIViewController {
         searchHistoryTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         searchHistoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
     }
+    // MARK: - Set button click action
+    @objc func cancelButtonClicked(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultVCID") as? SearchResultViewController else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
+    }
 }
 
 extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -61,8 +81,6 @@ extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let vc = ReadPostViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 // MARK: - Code for using canvas
