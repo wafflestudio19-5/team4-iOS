@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchListViewController: UIViewController {
+class SearchListViewController: UIViewController, UISearchBarDelegate {
     var searchBar = UISearchBar()
     var cancelButton = UIButton()
     var searchData: [String] = []
@@ -8,12 +8,14 @@ class SearchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = .white
         addSearchBar()
         addCancelButton()
         addTableView()
     }
     // MARK: - Add searchBar
     func addSearchBar() {
+        searchBar.delegate = self
         view.addSubview(searchBar)
         searchBar.searchBarStyle = .minimal
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -55,16 +57,6 @@ class SearchListViewController: UIViewController {
         searchHistoryTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         searchHistoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
     }
-    // MARK: - Set button click action
-    @objc func cancelButtonClicked(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultVCID") as? SearchResultViewController else {return}
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-    }
 }
 
 extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -83,6 +75,18 @@ extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     }
 }
+
+extension SearchListViewController {
+    // MARK: - Set button click action
+    @objc func cancelButtonClicked(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let vc = SearchResultViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 // MARK: - Code for using canvas
 import SwiftUI
 

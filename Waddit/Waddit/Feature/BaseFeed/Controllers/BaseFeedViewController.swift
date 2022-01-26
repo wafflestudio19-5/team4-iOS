@@ -88,11 +88,6 @@ class BaseFeedViewController: TabmanViewController {
         bar.indicator.overscrollBehavior = .compress
         addBar(bar, dataSource: self, at: .custom(view: barView, layout: nil))
     }
-    // MARK: - select searchButton
-    @objc func searchButtonClicked(sender: UIButton!) {
-        let vc = SearchListViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 // MARK: - Code for custom tabBar
@@ -116,6 +111,14 @@ extension BaseFeedViewController: PageboyViewControllerDataSource, TMBarDataSour
     }
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return nil
+    }
+}
+
+extension BaseFeedViewController {
+    // MARK: - select searchButton
+    @objc func searchButtonClicked(sender: UIButton!) {
+        let vc = SearchListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
