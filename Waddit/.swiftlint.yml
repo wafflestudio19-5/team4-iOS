@@ -1,0 +1,22 @@
+opt_in_rules:
+  - empty_count
+  - empty_string
+
+function_parameter_count:
+  warning: 7
+  error: 20
+
+excluded:
+  - Pods
+  - Waddit/AppDelegate.swift
+  - Waddit/SceneDelegate.swift
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+
+line_length:
+  warning: 120
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
