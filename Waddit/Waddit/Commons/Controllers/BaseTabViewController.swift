@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol BaseTabViewControllerDelegate: AnyObject {
-    func didTapMenu()
+    func didTapMenuButton()
 }
 
 class BaseTabViewController: UIViewController {
@@ -27,7 +27,7 @@ class BaseTabViewController: UIViewController {
 
     @objc
     func didTapMenuButton() {
-        delegate?.didTapMenu()
+        delegate?.didTapMenuButton()
     }
 
 }
