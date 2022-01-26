@@ -15,6 +15,7 @@ class BaseFeedViewController: TabmanViewController {
     // UserDefaluts
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         addSideButton()
         addSearchButton()
         addTabBarView()
@@ -24,13 +25,15 @@ class BaseFeedViewController: TabmanViewController {
     // MARK: - Set sideMenuButton ui
     func addSideButton() {
         view.addSubview(sideButton)
+        searchButton.isUserInteractionEnabled = true
+        searchButton.addTarget(self, action: #selector(searchButtonClicked(sender:)), for: .touchUpInside)
         let iconOriginal = UIImage(systemName: "externaldrive.connected.to.line.below")
         let icon = iconOriginal?.withRenderingMode(.alwaysTemplate)
         sideButton.setImage(icon, for: .normal)
         sideButton.tintColor = .systemGray
         sideButton.translatesAutoresizingMaskIntoConstraints = false
         sideButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25.0).isActive = true
-        sideButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -45).isActive = true
+        sideButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         sideButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sideButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -47,7 +50,7 @@ class BaseFeedViewController: TabmanViewController {
         searchButton.tintColor = .systemGray
         searchButton.contentHorizontalAlignment = .leading
         searchButton.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -35).isActive = true
+        searchButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         searchButton.leadingAnchor.constraint(equalTo: sideButton.trailingAnchor, constant: 20.0).isActive = true
         searchButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -80).isActive = true
         searchButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -108,6 +111,14 @@ extension BaseFeedViewController: PageboyViewControllerDataSource, TMBarDataSour
     }
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return nil
+    }
+}
+
+extension BaseFeedViewController {
+    // MARK: - select searchButton
+    @objc func searchButtonClicked(sender: UIButton!) {
+        let vc = SearchListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

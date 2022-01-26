@@ -1,18 +1,21 @@
 import UIKit
 
-class SearchListViewController: UIViewController {
+class SearchListViewController: UIViewController, UISearchBarDelegate {
     var searchBar = UISearchBar()
     var cancelButton = UIButton()
     var searchData: [String] = []
     let searchHistoryTableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = .white
         addSearchBar()
         addCancelButton()
         addTableView()
     }
     // MARK: - Add searchBar
     func addSearchBar() {
+        searchBar.delegate = self
         view.addSubview(searchBar)
         searchBar.searchBarStyle = .minimal
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -20,9 +23,18 @@ class SearchListViewController: UIViewController {
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70).isActive = true
     }
+    // MARK: - pull up keyboard when view appear
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchBar.becomeFirstResponder()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.resignFirstResponder()
+    }
     // MARK: - Add cancelButton
     func addCancelButton() {
         view.addSubview(cancelButton)
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.addTarget(self, action: #selector(cancelButtonClicked(sender:)), for: .touchUpInside)
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         cancelButton.setTitleColor(.systemGray, for: .normal)
@@ -61,10 +73,20 @@ extension SearchListViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let vc = ReadPostViewController()
+    }
+}
+
+extension SearchListViewController {
+    // MARK: - Set button click action
+    @objc func cancelButtonClicked(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let vc = SearchResultViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 // MARK: - Code for using canvas
 import SwiftUI
 

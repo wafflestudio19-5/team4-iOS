@@ -17,7 +17,7 @@ class SearchPostViewController: UIViewController {
         postTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         view.addSubview(postTableView)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
-        postTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 175).isActive = true
+        postTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 165).isActive = true
         postTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         postTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true

@@ -4,7 +4,7 @@ import Pageboy
 
 class SearchResultViewController: TabmanViewController {
     var backButton = UIButton()
-    var searchBar = UISearchBar()
+    var searchButton = UIButton()
     var searchKeywordLabel = UILabel()
     var resultLabel = UILabel()
     let barView = UIView()
@@ -13,6 +13,8 @@ class SearchResultViewController: TabmanViewController {
     private var viewControllers: [UIViewController] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = .white
         addBackButton()
         addSearchBar()
         addSearchKeywordLabel()
@@ -23,7 +25,9 @@ class SearchResultViewController: TabmanViewController {
     // MARK: - Add backButton
     func addBackButton() {
         view.addSubview(backButton)
-            // arrow.backward
+        backButton.isUserInteractionEnabled = true
+        backButton.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
+
         let selectedImageOriginal = UIImage(systemName: "arrow.backward")
         let selectedImage = selectedImageOriginal?.withRenderingMode(.alwaysTemplate)
         backButton.setImage(selectedImage, for: .normal)
@@ -36,12 +40,23 @@ class SearchResultViewController: TabmanViewController {
     }
     // MARK: - Add searchBar
     func addSearchBar() {
-        view.addSubview(searchBar)
-        searchBar.searchBarStyle = .minimal
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: backButton.trailingAnchor).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        view.addSubview(searchButton)
+        searchButton.isUserInteractionEnabled = true
+        searchButton.addTarget(self, action: #selector(searchButtonClicked(sender:)), for: .touchUpInside)
+        let searchImageOriginal = UIImage(systemName: "magnifyingglass")
+        let searchImage = searchImageOriginal?.withRenderingMode(.alwaysTemplate)
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.setTitle("Search", for: .normal)
+        searchButton.layer.cornerRadius = 5
+        searchButton.backgroundColor = .systemGray6
+        searchButton.setTitleColor(.gray, for: .normal)
+        searchButton.tintColor = .systemGray
+        searchButton.contentHorizontalAlignment = .leading
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        searchButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor).isActive = true
+        searchButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        searchButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     // MARK: - Add SearchKeywordLabel
     func addSearchKeywordLabel() {
@@ -49,7 +64,7 @@ class SearchResultViewController: TabmanViewController {
         searchKeywordLabel.text = "Search Data"
         searchKeywordLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         searchKeywordLabel.translatesAutoresizingMaskIntoConstraints = false
-        searchKeywordLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        searchKeywordLabel.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 10).isActive = true
         searchKeywordLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
     }
     // MARK: - Add resultLabel, that just display 'Search results'
@@ -66,7 +81,7 @@ class SearchResultViewController: TabmanViewController {
         view.addSubview(barView)
         barView.backgroundColor = .white
         barView.translatesAutoresizingMaskIntoConstraints = false
-        barView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 10).isActive = true
+        barView.topAnchor.constraint(equalTo: resultLabel.bottomAnchor).isActive = true
         barView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         barView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         barView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
@@ -119,6 +134,17 @@ extension SearchResultViewController: PageboyViewControllerDataSource, TMBarData
     }
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return nil
+    }
+}
+
+extension SearchResultViewController {
+    // MARK: - Set button click action
+    @objc func backButtonClicked(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func searchButtonClicked(sender: UIButton!) {
+        let vc = SearchListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
