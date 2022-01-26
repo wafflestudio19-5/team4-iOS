@@ -9,6 +9,7 @@ import UIKit
 
 class ReadPostViewController: UIViewController {
     var postTableView = UITableView()
+    var postData: specificPostData?
     static let identifier = "ReadPostViewController"
     override func viewDidLoad() {
         super.viewDidLoad()

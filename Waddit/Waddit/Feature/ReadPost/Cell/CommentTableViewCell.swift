@@ -131,7 +131,11 @@ class CommentTableViewCell: UITableViewCell {
         postDataLabel.trailingAnchor.constraint(equalTo: communityView.trailingAnchor, constant: 5).isActive = true
     }
     func addPostImageView() {
-        // TO DO
+        communityView.addSubview(postImageView)
+        postImageView.translatesAutoresizingMaskIntoConstraints = false
+        postImageView.topAnchor.constraint(equalTo: postNameLabel.bottomAnchor, constant: 5).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: communityView.leadingAnchor, constant: 5).isActive = true
+        postImageView.trailingAnchor.constraint(equalTo: communityView.trailingAnchor, constant: 5).isActive = true
     }
     func addDownVoteImageView() {
         communityView.addSubview(downVoteImageView)
