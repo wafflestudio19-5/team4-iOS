@@ -43,7 +43,7 @@ class RootContainerViewController: UIViewController {
 }
 
 extension RootContainerViewController: BaseTabViewControllerDelegate {
-    func didTapMenu() {
+    func didTapMenuButton() {
         switch menuState {
         case .closed:
             UIView.animate(withDuration: 0.3,
