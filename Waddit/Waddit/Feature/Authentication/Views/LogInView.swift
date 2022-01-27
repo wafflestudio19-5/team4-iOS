@@ -50,14 +50,12 @@ class LogInView: UIView {
 
         // iOS navbar against scrolling
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
+//        appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
+        appearance.shadowImage = UIImage()
+        appearance.shadowColor = .white
         navBar.standardAppearance = appearance
         navBar.scrollEdgeAppearance = navBar.standardAppearance
-
-        // Needed to erase the bar line
-        navBar.shadowImage = UIImage()
-        navBar.layoutIfNeeded()
 
         return navBar
     }()
