@@ -49,7 +49,7 @@ extension UIButton {
 }
 
 class GradientButton: UIButton {
-    private let gradient : CAGradientLayer = CAGradientLayer()
+    private let gradient: CAGradientLayer = CAGradientLayer()
     private var gradientStartColor: UIColor
     private var gradientEndColor: UIColor
     private var radius: CGFloat?

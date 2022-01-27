@@ -87,7 +87,12 @@ class LogInView: UIView {
     }()
 
     let appleAuthButton: UIButton = {
-        let button = UIButton(title: "Continue with Apple", titleColor: UIColor(named: "RedditDarkBlue") ?? .systemPurple, font: .boldSystemFont(ofSize: 18), radius: 20, target: nil, action: nil)
+        let button = UIButton(title: "Continue with Apple",
+                              titleColor: UIColor(named: "RedditDarkBlue") ?? .systemPurple,
+                              font: .boldSystemFont(ofSize: 18),
+                              radius: 20,
+                              target: nil,
+                              action: nil)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(named: "RedditDarkBlue")?.cgColor
         let img = UIImage(systemName: "applelogo")?
@@ -111,7 +116,7 @@ class LogInView: UIView {
         let img = UIImage(named: "GoogleLogo")?
             .withRenderingMode(.alwaysOriginal)
         button.setImage(img, for: .normal)
-        button.imageView?.withSize(CGSize(width: 20,height: 20))
+        button.imageView?.withSize(CGSize(width: 20, height: 20))
         button.contentMode = .scaleAspectFit
         button.imageView?.centerYToSuperview()
         button.imageView?.anchor(.leading(button.leadingAnchor, constant: 20))
@@ -156,9 +161,11 @@ class LogInView: UIView {
                                      isSecureTextEntry: true)
 
     lazy var continueButton = GradientButton(title: "Continue",
-                                       titleColor: .white, font: .boldSystemFont(ofSize: 18),
-                                       backgroundColor: .orange,
-                                             radius: 20, gradientStartColor: .systemPink, gradientEndColor: .systemOrange)
+                                             titleColor: .white, font: .boldSystemFont(ofSize: 18),
+                                             backgroundColor: .orange,
+                                             radius: 20,
+                                             gradientStartColor: .systemPink,
+                                             gradientEndColor: .systemOrange)
 
     private func createFooterView() {
         let footerView = UIView()
@@ -178,11 +185,8 @@ class LogInView: UIView {
         let mainView = UIScrollView()
         self.addSubview(mainView)
 
-        mainView.anchor(.top(navBar.bottomAnchor, constant: 0),
-                        .leading(self.leadingAnchor, constant: 10),
-                        .trailing(self.trailingAnchor, constant: 10),
-                        .height(self.frame.height * 0.6))
-
+        mainView.anchor(.top(navBar.bottomAnchor, constant: 0), .leading(self.leadingAnchor, constant: 10),
+                        .trailing(self.trailingAnchor, constant: 10), .height(self.frame.height * 0.6))
 
         let textContainerStackView = UIStackView(arrangedSubviews: [titleLabel.withHeight(50),
                                                                      termsLabel.withHeight(60)])
@@ -195,9 +199,8 @@ class LogInView: UIView {
         textContainerStackView.anchor(.leading(mainView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
                                        .trailing(mainView.safeAreaLayoutGuide.trailingAnchor, constant: 0))
 
-
-
-        let socialAuthContainerStackView = UIStackView(arrangedSubviews: [appleAuthButton.withHeight(40), googleAuthButton.withHeight(40)])
+        let socialAuthContainerStackView = UIStackView(arrangedSubviews: [appleAuthButton.withHeight(40),
+                                                                          googleAuthButton.withHeight(40)])
         socialAuthContainerStackView.isLayoutMarginsRelativeArrangement = true
         socialAuthContainerStackView.axis = .vertical
         socialAuthContainerStackView.alignment = .center
@@ -229,8 +232,6 @@ class LogInView: UIView {
                           .trailing(mainView.trailingAnchor, constant: 0))
         password.anchor(.leading(mainView.leadingAnchor, constant: 0),
                           .trailing(mainView.trailingAnchor, constant: 0))
-
-
     }
 
     private func createHeaderView() {

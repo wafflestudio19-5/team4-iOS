@@ -112,7 +112,10 @@ class SideMenuView: UIView {
                                                    constant: 10)
 
         NSLayoutConstraint.activateOneWayContraint(targetView: menuTableView, basisView: label, way: .top, constant: 5)
-        NSLayoutConstraint.activateTwoWayContraints(subView: menuTableView, containerView: self, widthMultiply: 1, heightMultiply: 0.7)
+        NSLayoutConstraint.activateTwoWayContraints(subView: menuTableView,
+                                                    containerView: self,
+                                                    widthMultiply: 1,
+                                                    heightMultiply: 0.7)
         menuTableView.backgroundColor = .cyan
 
         do {

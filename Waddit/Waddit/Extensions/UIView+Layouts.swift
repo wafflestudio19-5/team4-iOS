@@ -95,7 +95,12 @@ extension UIView {
     }
 
     @discardableResult
-    open func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero
+    open func anchor(top: NSLayoutYAxisAnchor?,
+                     leading: NSLayoutXAxisAnchor?,
+                     bottom: NSLayoutYAxisAnchor?,
+                     trailing: NSLayoutXAxisAnchor?,
+                     padding: UIEdgeInsets = .zero,
+                     size: CGSize = .zero
     ) -> AnchoredConstraints {
 
         translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +135,7 @@ extension UIView {
          anchoredConstraints.bottom,
          anchoredConstraints.trailing,
          anchoredConstraints.width,
-         anchoredConstraints.height].forEach{ $0?.isActive = true }
+         anchoredConstraints.height].forEach { $0?.isActive = true }
 
         return anchoredConstraints
     }
@@ -146,7 +151,11 @@ extension UIView {
                 return anchoredConstraints
         }
 
-        return anchor(top: superviewTopAnchor, leading: superviewLeadingAnchor, bottom: superviewBottomAnchor, trailing: superviewTrailingAnchor, padding: padding)
+        return anchor(top: superviewTopAnchor,
+                      leading: superviewLeadingAnchor,
+                      bottom: superviewBottomAnchor,
+                      trailing: superviewTrailingAnchor,
+                      padding: padding)
     }
 
     @discardableResult
@@ -171,7 +180,11 @@ extension UIView {
             let superviewTrailingAnchor = superview?.safeAreaLayoutGuide.trailingAnchor else {
                 return anchoredConstraints
         }
-        return anchor(top: superviewTopAnchor, leading: superviewLeadingAnchor, bottom: superviewBottomAnchor, trailing: superviewTrailingAnchor, padding: padding)
+        return anchor(top: superviewTopAnchor,
+                      leading: superviewLeadingAnchor,
+                      bottom: superviewBottomAnchor,
+                      trailing: superviewTrailingAnchor,
+                      padding: padding)
     }
 
     open func centerInSuperview(size: CGSize = .zero) {

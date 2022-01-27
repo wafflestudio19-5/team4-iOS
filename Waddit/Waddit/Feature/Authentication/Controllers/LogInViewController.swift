@@ -34,8 +34,7 @@ class LogInViewController: UIViewController {
     func didTabCancelButton() {
         if let navVC = self.navigationController {
             navVC.dismiss(animated: true, completion: nil)
-        }
-        else {
+        } else {
             self.dismiss(animated: true, completion: nil)
         }
     }
