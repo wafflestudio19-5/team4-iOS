@@ -98,4 +98,3 @@ class GradientButton: UIButton {
         }
     }
 }
-

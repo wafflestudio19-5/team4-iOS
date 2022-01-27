@@ -31,7 +31,6 @@ class RootContainerViewController: UIViewController {
         addChild(menuVC)
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
-        // TODO: Add delegate
         menuVC.delegate = self
 
         // add tabBar VC
