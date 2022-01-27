@@ -17,6 +17,11 @@ public enum Way {
     case trailing
 }
 
+public enum SizeWay {
+    case height
+    case width
+}
+
 
 public enum CustomConstraintsError: Error {
     case vagueAxisError
@@ -281,6 +286,25 @@ public extension NSLayoutConstraint {
             throw CustomConstraintsError.vagueAxisError
         }
     }
+
+    static func activateOneWayContraint(targetView: UIView, sizeWay: SizeWay, constant: CGFloat) {
+
+        if targetView.translatesAutoresizingMaskIntoConstraints {
+            targetView.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        switch sizeWay {
+        case .height:
+            NSLayoutConstraint.activate([
+                targetView.heightAnchor.constraint(equalToConstant: constant)
+            ])
+        case .width:
+            NSLayoutConstraint.activate([
+                targetView.widthAnchor.constraint(equalToConstant: constant)
+            ])
+        }
+    }
 }
+
 
 #endif

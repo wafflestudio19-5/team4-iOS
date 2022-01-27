@@ -9,13 +9,36 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .blue
+    var loginView: LogInView {
+        let rect = UIScreen.main.bounds
+        let view = LogInView(frame: rect)
 
-        // Do any additional setup after loading the view.
+        return view
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view = loginView
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
+        let navBar = (view as? LogInView)?.navBar ?? {
+            print("nil")
+            return UINavigationBar()
+        }()
+
+        navBar.topItem?.leftBarButtonItem?.target = self
+        navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
+    }
+
+    @objc
+    func didTabCancelButton() {
+        if let navVC = self.navigationController {
+            navVC.dismiss(animated: true, completion: nil)
+        }
+        else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
     /*
     // MARK: - Navigation

@@ -30,8 +30,8 @@ class SideMenuView: UIView {
                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
         let navBarButton = UIBarButtonItem(image: img,
                                            style: .done,
-                                           target: nil, // Added in NavBarViewController
-                                           action: nil) // Added in NavBarViewController
+                                           target: nil, // Added in SideMenuViewController
+                                           action: nil) // Added in SideMenuViewController
         navBarButton.tintColor = .gray
 
         navItem.leftBarButtonItem = navBarButton

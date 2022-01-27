@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 
 struct ScreenSize {
@@ -18,7 +19,7 @@ protocol MenuViewControllerDelegete: AnyObject {
     func didSelect(menuItem: MenuOptions)
 }
 
-class MenuViewController: UIViewController {
+class SideMenuViewController: UIViewController {
 
     weak var delegate: MenuViewControllerDelegete?
 
@@ -43,15 +44,24 @@ class MenuViewController: UIViewController {
         }()
         menuTableView.delegate = self
         menuTableView.dataSource = self
+
+        let navBar = (view as? SideMenuView)?.navBar ?? {
+            print("nil")
+            return UINavigationBar()
+        }()
+
+        navBar.topItem?.leftBarButtonItem?.target = self
+        navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
     }
 
     @objc
     func didTabCancelButton() {
+        print("called")
         delegate?.didTapCancelButton()
     }
 }
 
-extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MenuOptions.allCases.count
     }
