@@ -205,8 +205,7 @@ class LogInView: UIView {
         textContainerStackView.alignment = .leading
 
         mainView.addSubview(textContainerStackView)
-        textContainerStackView.anchor(.leading(mainView.leadingAnchor, constant: 0),
-                                       .trailing(mainView.trailingAnchor, constant: 0))
+        textContainerStackView.anchor(.leading(mainView.leadingAnchor, constant: 0), .trailing(mainView.trailingAnchor, constant: 0))
 
         let socialAuthContainerStackView = UIStackView(arrangedSubviews: [appleAuthButton.withHeight(40),
                                                                           googleAuthButton.withHeight(40)])

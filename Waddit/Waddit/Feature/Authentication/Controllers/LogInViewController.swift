@@ -32,11 +32,8 @@ class LogInViewController: FormViewController {
         self.moveLowestElement = true
 
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        loginView.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
     }
-
-
-
 
     @objc
     func didTabCancelButton() {

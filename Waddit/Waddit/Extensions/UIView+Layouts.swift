@@ -262,9 +262,9 @@ extension UIView {
         layer.shadowColor = color.cgColor
     }
 
-    convenience public init(backgroundColor: UIColor = .clear) {
-        self.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-    }
+    //convenience public init(backgroundColor: UIColor = .clear) {
+    //    self.init(frame: .zero)
+    //    self.backgroundColor = backgroundColor
+    //}
 
 }
