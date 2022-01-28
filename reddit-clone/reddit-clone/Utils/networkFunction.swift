@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 protocol json {
     func jsonParsing(data: Data) -> Any
@@ -199,5 +200,32 @@ struct NetworkFunc {
             completionHandler(response, data)
         }.resume()
     }
+    
+    static func imageUpload(url: String, uploadImage: UIImage) {
+        let uploadUrl = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        guard let imageData = uploadImage.jpegData(compressionQuality: 0.4) else { return }
 
-}
+        AF.upload(imageData, to: URL(string: url)!, method: .put).responseJSON { (response) in
+            switch response.result {
+            case .success(let res):
+                do {
+                print(response.response)
+                }
+            case .failure(let err):
+                print(response.response?.statusCode)
+            }
+        }
+    }
+    static func imageDownload(url: String) -> UIImage? {
+        var downloadImage: UIImage?
+        AF.request(url).responseData() {(response) in
+            switch response.result {
+            case .success(let responseData):
+                downloadImage = UIImage(data: responseData, scale: 1)
+            case .failure(let error):
+                print(error)
+                downloadImage = nil
+            }
+        }
+        return downloadImage
+    }}
