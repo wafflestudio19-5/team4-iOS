@@ -44,26 +44,23 @@ class SignUpViewController: FormViewController {
 
     @objc
     func didTabLogInButton() {
-        if let navVC = self.navigationController {
-            navVC.pushViewController(SignUpViewController(), animated: true)
-            navVC.popViewController(animated: true)
-        } else {
-            self.present(LogInViewController(), animated: true) {
-                self.dismiss(animated: true, completion: nil)
-            }
+        guard let pvc = self.presentingViewController else { return }
+        let vc = LogInViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle   = .coverVertical
+        self.dismiss(animated: false) {
+            pvc.present(vc, animated: true)
         }
     }
 
     @objc
     func didTabCancelButton() {
         if let navVC = self.navigationController {
-            let vc = LogInViewController()
-            navVC.show(vc, sender: nil)
+            navVC.dismiss(animated: true, completion: nil)
         } else {
-            self.present(LogInViewController(), animated: true) {
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.dismiss(animated: true, completion: nil)
         }
+
     }
 
     @objc
@@ -87,9 +84,11 @@ class SignUpViewController: FormViewController {
                 switch dataResponse.result {
                 case .success:
                     print( "Success ")
+                    self.didTabLogInButton()
                 case let .failure(error):
                     print(error)
                 }
+
             }
     }
 }

@@ -45,14 +45,12 @@ class LogInViewController: FormViewController {
 
     @objc
     func didTabSignUpButton() {
-        if let navVC = self.navigationController {
-            let vc = SignUpViewController()
-            navVC.show(vc, sender: nil)
-
-        } else {
-            self.present(SignUpViewController(), animated: true) {
-                self.dismiss(animated: true, completion: nil)
-            }
+        guard let pvc = self.presentingViewController else { return }
+        let vc = SignUpViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle   = .coverVertical
+        self.dismiss(animated: false) {
+            pvc.present(vc, animated: true)
         }
     }
 
