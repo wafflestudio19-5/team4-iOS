@@ -8,6 +8,8 @@
 import UIKit
 import JGProgressHUD
 
+import Alamofire
+
 class LogInViewController: FormViewController {
 
     var loginView: LogInView = {
@@ -58,5 +60,22 @@ class LogInViewController: FormViewController {
 
 
         // TODO: NetworkCode
+        guard let email = loginView.username.text else { return }
+        guard let password = loginView.password.text else { return }
+
+        let logInInfo = AuthRequestData(email: email, password: password)
+        AF.request(EndPoint(path: "/signin/").url, method: .post, parameters: logInInfo, encoder: JSONParameterEncoder.default).validate()
+            .response { (dataResponse) in
+                hud.dismiss(animated: true)
+                debugPrint(dataResponse)
+
+                switch dataResponse.result {
+                case .success:
+                    print( "Success ")
+                case let .failure(error):
+                    print(error)
+                }
+
+            }
     }
 }

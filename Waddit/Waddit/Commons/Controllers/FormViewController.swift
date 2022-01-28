@@ -75,7 +75,6 @@ class FormViewController: UIViewController {
         }
 
         if moveLowestElement {
-            scrollView.contentInset.bottom += lowestElement.frame.height * 0.4
             lowestElement.frame.origin.y = keyboardFrame.origin.y - lowestElement.frame.height
         }
 
@@ -90,7 +89,6 @@ class FormViewController: UIViewController {
         }
         self.scrollView.contentInset.bottom = 0
         self.scrollView.scrollIndicatorInsets.bottom = 0
-
     }
 
     public enum FormAlignment {

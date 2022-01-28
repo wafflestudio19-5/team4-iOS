@@ -14,6 +14,4 @@ class CurrentUser {
     private init() { }
 
     var profile: User?
-
-
 }

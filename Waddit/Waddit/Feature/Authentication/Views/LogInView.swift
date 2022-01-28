@@ -146,7 +146,7 @@ class LogInView: UIView {
         return centerLine
     }()
 
-    let username = IndentedTextField(placeholder: "Username",
+    let username = IndentedTextField(placeholder: "Email",
                                      padding: 24,
                                      cornerRadius: 20,
                                      backgroundColor: UIColor(named: "RedditLightGray") ?? .systemGray6)
