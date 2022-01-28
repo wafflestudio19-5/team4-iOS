@@ -50,9 +50,7 @@ class LogInView: UIView {
 
         // iOS navbar against scrolling
         let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        appearance.shadowImage = UIImage()
+        appearance.configureWithOpaqueBackground()
         appearance.shadowColor = .white
         navBar.standardAppearance = appearance
         navBar.scrollEdgeAppearance = navBar.standardAppearance
@@ -60,7 +58,8 @@ class LogInView: UIView {
         return navBar
     }()
 
-    let mainView = UIView(frame: CGRect.zero)
+    let scrollView = UIScrollView()
+    let mainView = UIView()
 
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -158,6 +157,11 @@ class LogInView: UIView {
                                      backgroundColor: UIColor(named: "RedditLightGray") ?? .systemGray6,
                                      isSecureTextEntry: true)
 
+
+    let formContainerStackView = UIStackView()
+
+    let footerView = UIView()
+
     lazy var continueButton = GradientButton(title: "Continue",
                                              titleColor: .white, font: .boldSystemFont(ofSize: 18),
                                              backgroundColor: .orange,
@@ -166,12 +170,12 @@ class LogInView: UIView {
                                              gradientEndColor: .systemOrange)
 
     private func createFooterView() {
-        let footerView = UIView()
         footerView.addSubview(continueButton)
+        footerView.backgroundColor = .red
         footerView.sizeToFit()
 
         self.addSubview(footerView)
-        footerView.anchor(.bottom(self.bottomAnchor, constant: 0), .height(150))
+        footerView.anchor(.bottom(self.bottomAnchor, constant: 0), .height(80))
         continueButton.anchor(.leading(self.leadingAnchor, constant: 10),
                               .trailing(self.trailingAnchor, constant: 10), .height(40))
         continueButton.centerInSuperview()
@@ -180,22 +184,29 @@ class LogInView: UIView {
     }
 
     private func createMainView() {
-        let mainView = UIScrollView()
-        self.addSubview(mainView)
+        self.addSubview(scrollView)
+        scrollView.anchor(.top(navBar.bottomAnchor, constant: 0),
+                          .height(self.frame.height * 0.7), .width(self.frame.width))
 
-        mainView.anchor(.top(navBar.bottomAnchor, constant: 0), .leading(self.leadingAnchor, constant: 10),
-                        .trailing(self.trailingAnchor, constant: 10), .height(self.frame.height * 0.6))
+        scrollView.addSubview(mainView)
+        print(scrollView.contentSize)
 
-        let textContainerStackView = UIStackView(arrangedSubviews: [titleLabel.withHeight(50),
-                                                                     termsLabel.withHeight(60)])
+        print(scrollView.isScrollEnabled)
 
+        mainView.anchor(.top(scrollView.topAnchor, constant: 0), .leading(scrollView.leadingAnchor, constant: 10),
+                        .trailing(scrollView.trailingAnchor, constant: 10), .bottom(scrollView.bottomAnchor, constant: 0),
+                        .height(self.frame.height * 0.7), .width(self.frame.width - 20))
+        mainView.centerXToSuperview(constant: 0)
+        scrollView.showsVerticalScrollIndicator = true
+
+        let textContainerStackView = UIStackView(arrangedSubviews: [titleLabel.withHeight(50), termsLabel.withHeight(60)])
         textContainerStackView.isLayoutMarginsRelativeArrangement = true
         textContainerStackView.axis = .vertical
         textContainerStackView.alignment = .leading
 
         mainView.addSubview(textContainerStackView)
-        textContainerStackView.anchor(.leading(mainView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                                       .trailing(mainView.safeAreaLayoutGuide.trailingAnchor, constant: 0))
+        textContainerStackView.anchor(.leading(mainView.leadingAnchor, constant: 0),
+                                       .trailing(mainView.trailingAnchor, constant: 0))
 
         let socialAuthContainerStackView = UIStackView(arrangedSubviews: [appleAuthButton.withHeight(40),
                                                                           googleAuthButton.withHeight(40)])
@@ -206,8 +217,8 @@ class LogInView: UIView {
 
         mainView.addSubview(socialAuthContainerStackView)
         socialAuthContainerStackView.anchor(.top(textContainerStackView.bottomAnchor, constant: 5),
-                                            .leading(mainView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                                            .trailing(mainView.safeAreaLayoutGuide.trailingAnchor, constant: 0))
+                                            .leading(mainView.leadingAnchor, constant: 0),
+                                            .trailing(mainView.trailingAnchor, constant: 0))
         appleAuthButton.fillSuperviewWidth()
         googleAuthButton.fillSuperviewWidth()
 
@@ -216,7 +227,8 @@ class LogInView: UIView {
         centerLine.anchor(.top(socialAuthContainerStackView.bottomAnchor, constant: 5), .height(50))
         centerLine.fillSuperviewWidth()
 
-        let formContainerStackView = UIStackView(arrangedSubviews: [username.withHeight(40), password.withHeight(40)])
+        formContainerStackView.addArrangedSubview(username.withHeight(40))
+        formContainerStackView.addArrangedSubview(password.withHeight(40))
         formContainerStackView.isLayoutMarginsRelativeArrangement = true
         formContainerStackView.axis = .vertical
         formContainerStackView.alignment = .center
@@ -224,8 +236,8 @@ class LogInView: UIView {
 
         mainView.addSubview(formContainerStackView)
         formContainerStackView.anchor(.top(centerLine.bottomAnchor, constant: 5),
-                                      .leading(mainView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                                      .trailing(mainView.safeAreaLayoutGuide.trailingAnchor, constant: 0))
+                                      .leading(mainView.leadingAnchor, constant: 0),
+                                      .trailing(mainView.trailingAnchor, constant: 0))
         username.anchor(.leading(mainView.leadingAnchor, constant: 0),
                           .trailing(mainView.trailingAnchor, constant: 0))
         password.anchor(.leading(mainView.leadingAnchor, constant: 0),
@@ -234,6 +246,7 @@ class LogInView: UIView {
 
     private func createHeaderView() {
         self.addSubview(navBar)
+        navBar.backgroundColor = .red
         navBar.sizeToFit()
 
         navBar.topItem?.titleView?.widthAnchor.constraint(equalToConstant: 70).isActive = true

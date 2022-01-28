@@ -7,28 +7,36 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: FormViewController {
 
-    var loginView: LogInView {
+    var loginView: LogInView = {
         let rect = UIScreen.main.bounds
         let view = LogInView(frame: rect)
+        view.scrollView.keyboardDismissMode = .interactive
 
         return view
-    }
+    }()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view = loginView
         navigationController?.setNavigationBarHidden(true, animated: true)
 
-        let navBar = (view as? LogInView)?.navBar ?? {
-            print("nil")
-            return UINavigationBar()
-        }()
+        loginView.navBar.topItem?.leftBarButtonItem?.target = self
+        loginView.navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
 
-        navBar.topItem?.leftBarButtonItem?.target = self
-        navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
+        self.lowestElement = loginView.footerView
+        self.scrollView = loginView.scrollView
+        self.formContainerStackView = loginView.formContainerStackView
+        self.moveLowestElement = true
+
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        loginView.addGestureRecognizer(tap)
     }
+
+
+
 
     @objc
     func didTabCancelButton() {
@@ -39,14 +47,8 @@ class LogInViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
+    @objc
+    func handleLogin() {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }
