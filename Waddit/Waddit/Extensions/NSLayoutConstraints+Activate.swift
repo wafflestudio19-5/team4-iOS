@@ -17,6 +17,11 @@ public enum Way {
     case trailing
 }
 
+public enum SizeWay {
+    case height
+    case width
+}
+
 
 public enum CustomConstraintsError: Error {
     case vagueAxisError
@@ -145,6 +150,78 @@ public extension NSLayoutConstraint {
     /**
      Set set a constraint from the basis View
      - Parameters:
+        - subView: the target subView
+        - ContainerView: the containerView(parentView) that holds the subView
+        - way: one of 4 ways
+        - constant: amount of constant contrainsts
+     - Returns: Void
+     */
+    static func activateOneWayContraint(subView: UIView, containerView: UIView, way: Way, constant: CGFloat) {
+
+        if subView.translatesAutoresizingMaskIntoConstraints {
+            subView.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        switch way {
+        case .top:
+            NSLayoutConstraint.activate([
+                subView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: constant)
+            ])
+        case .bottom:
+            NSLayoutConstraint.activate([
+                subView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: constant)
+            ])
+        case .leading:
+            NSLayoutConstraint.activate([
+                subView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: constant)
+            ])
+        case .trailing:
+            NSLayoutConstraint.activate([
+                subView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: constant)
+            ])
+        }
+    }
+        /**
+     Set set a constraint from the basis View
+     - Parameters:
+        - subView: the target subView
+        - ContainerView: the containerView(parentView) that holds the subView
+        - way: one of 4 ways
+        - constant: amount of constant contrainsts
+     - Returns: Void
+     */
+    static func activateOneWayContraint(subView: UIView,
+                                        containerViewLayoutGuide: UILayoutGuide,
+                                        way: Way, constant: CGFloat) {
+
+        if subView.translatesAutoresizingMaskIntoConstraints {
+            subView.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        switch way {
+        case .top:
+            NSLayoutConstraint.activate([
+                subView.topAnchor.constraint(equalTo: containerViewLayoutGuide.topAnchor, constant: constant)
+            ])
+        case .bottom:
+            NSLayoutConstraint.activate([
+                subView.bottomAnchor.constraint(equalTo: containerViewLayoutGuide.bottomAnchor, constant: constant)
+            ])
+        case .leading:
+            NSLayoutConstraint.activate([
+                subView.leadingAnchor.constraint(equalTo: containerViewLayoutGuide.leadingAnchor, constant: constant)
+            ])
+        case .trailing:
+            NSLayoutConstraint.activate([
+                subView.trailingAnchor.constraint(equalTo: containerViewLayoutGuide.trailingAnchor, constant: constant)
+            ])
+        }
+    }
+
+
+    /**
+     Set set a constraint from the basis View
+     - Parameters:
         - targetView: the target subview
         - basisView: the containerView that holds the target subview
         - way: one of 4 ways
@@ -209,6 +286,25 @@ public extension NSLayoutConstraint {
             throw CustomConstraintsError.vagueAxisError
         }
     }
+
+    static func activateOneWayContraint(targetView: UIView, sizeWay: SizeWay, constant: CGFloat) {
+
+        if targetView.translatesAutoresizingMaskIntoConstraints {
+            targetView.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        switch sizeWay {
+        case .height:
+            NSLayoutConstraint.activate([
+                targetView.heightAnchor.constraint(equalToConstant: constant)
+            ])
+        case .width:
+            NSLayoutConstraint.activate([
+                targetView.widthAnchor.constraint(equalToConstant: constant)
+            ])
+        }
+    }
 }
+
 
 #endif
