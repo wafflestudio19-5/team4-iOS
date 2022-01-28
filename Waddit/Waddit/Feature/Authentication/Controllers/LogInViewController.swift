@@ -70,13 +70,11 @@ class LogInViewController: FormViewController {
         hud.textLabel.text = "Logging In"
         hud.show(in: view)
 
-
-        // TODO: NetworkCode
         guard let email = loginView.email.text else { return }
         guard let password = loginView.password.text else { return }
 
         let logInInfo = AuthRequestData(username: nil, email: email, password: password)
-        AF.request(EndPoint(path: "/signin/").url, method: .post, parameters: logInInfo, encoder: JSONParameterEncoder.default).validate()
+        AF.request(EndPoint(path: "/users/signin/").url, method: .post, parameters: logInInfo, encoder: JSONParameterEncoder.default).validate()
             .response { (dataResponse) in
                 hud.dismiss(animated: true)
                 debugPrint(dataResponse)
@@ -84,6 +82,13 @@ class LogInViewController: FormViewController {
                 switch dataResponse.result {
                 case .success:
                     print( "Success ")
+                    guard let token = dataResponse.response?.allHeaderFields["Authentication"] else {
+                        print("something wrong with the token")
+                        return
+                    }
+                    UserManager.token = token as? String
+                    self.didTabCancelButton()
+
                 case let .failure(error):
                     print(error)
                 }

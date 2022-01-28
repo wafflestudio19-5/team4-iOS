@@ -6,20 +6,30 @@
 //
 
 import Foundation
+import Alamofire
+
+
+enum UrlParams: String {
+    typealias RawValue = String
+
+    case lastCommunityId
+    case size
+    case topicId
+    case keyword
+
+
+}
 
 
 protocol EndpointProtocol {
-    //var httpMethod: HTTPMethod { get }
     var path: String { get set }
     var headers: [String: Any]? { get set }
-    var body: [String: Any]? { get set }
 
 }
 
 struct EndPoint: EndpointProtocol {
     var path: String
     var headers: [String: Any]?
-    var body: [String: Any]?
 
     var queryItems: [URLQueryItem] = []
 
@@ -37,6 +47,17 @@ struct EndPoint: EndpointProtocol {
         }
 
         return url
+    }
+
+    static var httpHeader: HTTPHeaders? {
+        guard let token = UserManager.token else { return nil}
+
+        let header: HTTPHeaders = [
+            "Authorization": token,
+            "Accept": "application/json"
+        ]
+
+        return header
     }
 
 }

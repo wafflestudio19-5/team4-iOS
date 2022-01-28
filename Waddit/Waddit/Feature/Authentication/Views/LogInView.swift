@@ -243,7 +243,6 @@ class LogInView: UIView {
 
     private func createHeaderView() {
         self.addSubview(navBar)
-        navBar.backgroundColor = .red
         navBar.sizeToFit()
 
         navBar.topItem?.titleView?.widthAnchor.constraint(equalToConstant: 70).isActive = true

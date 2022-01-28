@@ -73,7 +73,6 @@ class SideMenuView: UIView {
     let menuTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = .blue
 
         return tableView
     }()

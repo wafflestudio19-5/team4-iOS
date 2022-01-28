@@ -11,12 +11,15 @@ excluded:
   - Waddit/AppDelegate.swift
   - Waddit/SceneDelegate.swift
 
+identifier_name:
+  allowed_symbols: "_"
+
 vertical_whitespace:
   max_empty_lines: 2
 
 
 line_length:
-  warning: 120
+  warning: 150
   ignores_comments: true
   ignores_interpolated_strings: true
   ignores_urls: true

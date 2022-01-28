@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CreatePostViewController: BaseTabViewController {
+class CreatePostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
