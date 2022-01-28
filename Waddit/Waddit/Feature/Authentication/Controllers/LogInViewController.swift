@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class LogInViewController: FormViewController {
 
@@ -26,6 +27,8 @@ class LogInViewController: FormViewController {
         loginView.navBar.topItem?.leftBarButtonItem?.target = self
         loginView.navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
 
+        (view as? LogInView)!.continueButton.addTarget(self, action: #selector(self.handleLogin), for: .touchUpInside)
+
         self.lowestElement = loginView.footerView
         self.scrollView = loginView.scrollView
         self.formContainerStackView = loginView.formContainerStackView
@@ -33,7 +36,9 @@ class LogInViewController: FormViewController {
 
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+
     }
+
 
     @objc
     func didTabCancelButton() {
@@ -46,6 +51,12 @@ class LogInViewController: FormViewController {
 
     @objc
     func handleLogin() {
+        print("login")
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Logging In"
+        hud.show(in: view)
 
+
+        // TODO: NetworkCode
     }
 }

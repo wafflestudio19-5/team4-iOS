@@ -171,16 +171,14 @@ class LogInView: UIView {
 
     private func createFooterView() {
         footerView.addSubview(continueButton)
-        footerView.backgroundColor = .red
+        footerView.backgroundColor = .white
         footerView.sizeToFit()
 
-        self.addSubview(footerView)
-        footerView.anchor(.bottom(self.bottomAnchor, constant: 0), .height(80))
+        self.addSubview(footerView.withWidth(ScreenSize.screenWidth))
+        footerView.anchor(.bottom(self.bottomAnchor, constant: 0), .height(50))
         continueButton.anchor(.leading(self.leadingAnchor, constant: 10),
                               .trailing(self.trailingAnchor, constant: 10), .height(40))
         continueButton.centerInSuperview()
-
-
     }
 
     private func createMainView() {

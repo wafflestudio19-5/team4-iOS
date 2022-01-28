@@ -18,9 +18,9 @@ class FormViewController: UIViewController {
     var formContainerStackView: UIStackView!
 
     // a function to make sure the interface keyboards go down
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ class FormViewController: UIViewController {
     func handleKeyboardShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = value.cgRectValue
-        print("a")
+
         scrollView.contentInset.bottom = keyboardFrame.height
 
         // when stackView is center aligned, we need some extra bottom padding, not sure why yet...
@@ -74,9 +74,8 @@ class FormViewController: UIViewController {
             scrollView.contentInset.bottom -= distanceToBottom
         }
 
-        self.scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: -keyboardFrame.height, left: 0, bottom: keyboardFrame.height, right: 0)
-
         if moveLowestElement {
+            scrollView.contentInset.bottom += lowestElement.frame.height * 0.4
             lowestElement.frame.origin.y = keyboardFrame.origin.y - lowestElement.frame.height
         }
 
