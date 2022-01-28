@@ -6,9 +6,9 @@ target 'Waddit' do
   use_frameworks!
   # Pods for Waddit
   pod 'SwiftLint'
+  pod 'Tabman'
   pod 'Alamofire'
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'JGProgressHUD'
-
 end
