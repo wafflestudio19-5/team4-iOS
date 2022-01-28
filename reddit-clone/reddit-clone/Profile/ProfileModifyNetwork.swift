@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+//import Alamofire
 
 struct UserInfoChange: Codable {
     let email: String?
@@ -101,7 +102,7 @@ extension ProfileModifyViewController {
         }
     }
     
-    static func requestGetPhotos(url: String, accessToken: String, sendData: Data, completionHandler: @escaping (HTTPURLResponse, Data) -> Void, failure: @escaping () -> ()) {
+    static func requestGetPhotos(url: String, accessToken: String, completionHandler: @escaping (HTTPURLResponse, Data) -> Void, failure: @escaping () -> ()) {
         
         let ip = "54.180.132.95"
         
@@ -147,24 +148,14 @@ extension ProfileModifyViewController {
         }.resume()
     }
     
-    func networkRequestPhotos(data: Data, token: String?) {
+    func networkRequestPhotos(_data: UIImage, token: String?) {
         if token == nil { return }
         
-        ProfileModifyViewController.requestGetPhotos(url: "/api/v1/users/profile/image/", accessToken: token!, sendData: data) { (response, data) in
+        ProfileModifyViewController.requestGetPhotos(url: "/api/v1/users/profile/image/", accessToken: token!) { (response, data) in
             DispatchQueue.main.async {
                 guard let returnData = self.jsonDecoding(_data: data) else {return}
                 print(returnData)
-                
-                //let alert = UIAlertController(title: "Success", message: "user update success", preferredStyle: UIAlertController.Style.alert)
-                
-                /*
-                let image : UIImage = self.selectImageView.image!
-                let imageData = image.pngData()
-                
-                var postDataImage: UserInfoChangeImage
-                postDataImage = UserInfoChangeImage(filename: imageData!)
-                guard let postData = self.jsonEncodingImage(postData: postDataImage) else {return}
-                 */
+                NetworkFunc.imageUpload(url: returnData.preSignedUrl, uploadImage: _data)
             }
         }
         failure: {

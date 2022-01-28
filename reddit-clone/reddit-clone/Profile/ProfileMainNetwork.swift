@@ -1,12 +1,14 @@
 import Foundation
 import UIKit
+import Alamofire
 
 struct userInfo: Codable {
-    let userId: Int
-    let name: String
-    let imageUrl: String
+    let user_id: Int
+    let nickname: String
+    let image_url: String
     let description: String
     let followers: Int
+    let followings: Int
 }
 
 extension ProfileMainViewController {
@@ -24,7 +26,7 @@ extension ProfileMainViewController {
             DispatchQueue.main.async {
                 print("Get user profile success")
                 guard let returnData = self.jsonDecoding(_data: data) else {return}
-                self.userNameLabel.text = "u/" + returnData.name
+                self.userNameLabel.text = "u/" + returnData.nickname
                 /*
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
@@ -36,11 +38,14 @@ extension ProfileMainViewController {
                 */
                 let followerString = String(returnData.followers)
                 self.joinDateLabel.text = followerString + "follows"
-                if returnData.imageUrl != "" {
-                    DispatchQueue.global().async {
-                        let imageUrl = URL(string: returnData.imageUrl)
-                        let imageData = try? Data(contentsOf: imageUrl!)
-                        self.userImageView.image = UIImage(data: imageData!)
+                if returnData.image_url != "" {
+                    AF.request(returnData.image_url).responseData() {(response) in
+                        switch response.result {
+                        case .success(let responseData):
+                            self.userImageView.image = UIImage(data: responseData, scale: 1)
+                        case .failure(let error):
+                            print(error)
+                        }
                     }
                 }
             }

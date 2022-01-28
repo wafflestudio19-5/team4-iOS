@@ -66,17 +66,7 @@ class ProfileModifyViewController: UIViewController, UIImagePickerControllerDele
         if self.selectImageView.image != nil {
             
             postDataImage = UserInfoChangeImage(filename: "test.png")
-            guard let postData = self.jsonEncodingImage(postData: postDataImage) else {return}
-            
-            /*
-            let image : UIImage = self.selectImageView.image!
-            let imageData = image.pngData()
-            
-            postDataImage = UserInfoChangeImage(filename: imageData!)
-            guard let postData = self.jsonEncodingImage(postData: postDataImage) else {return}
-             */
-            
-            self.networkRequestPhotos(data: postData, token: token as? String)
+            self.networkRequestPhotos(_data: self.selectImageView.image!, token: token as? String)
         }
         
         if self.userNameTextField.text != ""{
