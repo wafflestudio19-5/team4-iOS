@@ -7,7 +7,6 @@
 
 import UIKit
 import JGProgressHUD
-
 import Alamofire
 
 class LogInViewController: FormViewController {
@@ -29,6 +28,9 @@ class LogInViewController: FormViewController {
         loginView.navBar.topItem?.leftBarButtonItem?.target = self
         loginView.navBar.topItem?.leftBarButtonItem?.action = #selector(didTabCancelButton)
 
+        loginView.navBar.topItem?.rightBarButtonItem?.target = self
+        loginView.navBar.topItem?.rightBarButtonItem?.action = #selector(didTabSignUpButton)
+
         (view as? LogInView)!.continueButton.addTarget(self, action: #selector(self.handleLogin), for: .touchUpInside)
 
         self.lowestElement = loginView.footerView
@@ -41,6 +43,18 @@ class LogInViewController: FormViewController {
 
     }
 
+    @objc
+    func didTabSignUpButton() {
+        if let navVC = self.navigationController {
+            let vc = SignUpViewController()
+            navVC.show(vc, sender: nil)
+
+        } else {
+            self.present(SignUpViewController(), animated: true) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 
     @objc
     func didTabCancelButton() {
@@ -60,10 +74,10 @@ class LogInViewController: FormViewController {
 
 
         // TODO: NetworkCode
-        guard let email = loginView.username.text else { return }
+        guard let email = loginView.email.text else { return }
         guard let password = loginView.password.text else { return }
 
-        let logInInfo = AuthRequestData(email: email, password: password)
+        let logInInfo = AuthRequestData(username: nil, email: email, password: password)
         AF.request(EndPoint(path: "/signin/").url, method: .post, parameters: logInInfo, encoder: JSONParameterEncoder.default).validate()
             .response { (dataResponse) in
                 hud.dismiss(animated: true)

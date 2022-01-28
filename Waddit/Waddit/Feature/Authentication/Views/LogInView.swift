@@ -146,7 +146,7 @@ class LogInView: UIView {
         return centerLine
     }()
 
-    let username = IndentedTextField(placeholder: "Email",
+    let email = IndentedTextField(placeholder: "Email",
                                      padding: 24,
                                      cornerRadius: 20,
                                      backgroundColor: UIColor(named: "RedditLightGray") ?? .systemGray6)
@@ -224,7 +224,7 @@ class LogInView: UIView {
         centerLine.anchor(.top(socialAuthContainerStackView.bottomAnchor, constant: 5), .height(50))
         centerLine.fillSuperviewWidth()
 
-        formContainerStackView.addArrangedSubview(username.withHeight(40))
+        formContainerStackView.addArrangedSubview(email.withHeight(40))
         formContainerStackView.addArrangedSubview(password.withHeight(40))
         formContainerStackView.isLayoutMarginsRelativeArrangement = true
         formContainerStackView.axis = .vertical
@@ -235,7 +235,7 @@ class LogInView: UIView {
         formContainerStackView.anchor(.top(centerLine.bottomAnchor, constant: 5),
                                       .leading(mainView.leadingAnchor, constant: 0),
                                       .trailing(mainView.trailingAnchor, constant: 0))
-        username.anchor(.leading(mainView.leadingAnchor, constant: 0),
+        email.anchor(.leading(mainView.leadingAnchor, constant: 0),
                           .trailing(mainView.trailingAnchor, constant: 0))
         password.anchor(.leading(mainView.leadingAnchor, constant: 0),
                           .trailing(mainView.trailingAnchor, constant: 0))
